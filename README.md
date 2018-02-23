@@ -23,7 +23,7 @@ This file must be placed in your root project directory and has the following st
 #### For Merchant
 - FOR GTB display ```*737*50*amount*159#```and return flwRef for the customer so as to complete the transaction
 #### For the developer
-- Use webhooks to get notified on transaction, and set it to pending, then complete/failed once notified with same status on webhook. See guide on using webhooks here: https://flutterwavedevelopers.readme.io/v2.0/docs/events-webhooks
+- Use webhooks to get notified on transaction, and set it to pending, then complete/failed once notified with same status on webhook. - - Webhooks? See guide on using webhooks here: https://flutterwavedevelopers.readme.io/v2.0/docs/events-webhooks
 - After getting the notofication, requery to confirm final status
 ## Ghana Mobile Money
 #### For the developer
@@ -33,7 +33,7 @@ This file must be placed in your root project directory and has the following st
 ## Kenya Mpesa
 -Display the Mpesa Buisness account number ```637747``` and the Account number which is returned as orderRef in the charge response.
 #### For the developer
--Use webhooks to get notified on transaction, and set it to pending, then complete/failed once notified with same status on webhook. See guide on using webhooks here: https://flutterwavedevelopers.readme.io/v2.0/docs/events-webhooks
+- Use webhooks to get notified on transaction, and set it to pending, then complete/failed once notified with same status on webhook. - - Webhooks? See guide on using webhooks here: https://flutterwavedevelopers.readme.io/v2.0/docs/events-webhooks
 -After getting the notofication, requery to confirm final status
 
 # The MIT License (MIT)
