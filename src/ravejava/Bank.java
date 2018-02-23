@@ -18,7 +18,6 @@ public class Bank {
     public JsonNode getAllBanks(){   
      this.apiConnection = new ApiConnection(Endpoints.BANK_ENDPOINT);
        
-     
         return this.apiConnection.connectAndQueryWithGet();
     
    
