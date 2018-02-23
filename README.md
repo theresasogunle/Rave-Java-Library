@@ -20,24 +20,23 @@ This file must be placed in your root project directory and has the following st
 ```
 # Alternative Payment Methods
 ## Nigerian USSD- GTB and Zenith Bank
-### For Merchant
+#### For Merchant
 - FOR GTB display *737*50*amount*159#and return flwRef for the customer so as to complete the transaction
-### For the developer
+#### For the developer
 - Use webhooks to get notified on transaction, and set it to pending, then complete/failed once notified with same status on webhook. See guide on using webhooks here: https://flutterwavedevelopers.readme.io/v2.0/docs/events-webhooks
 - After getting the notofication, requery to confirm final status
 ## Ghana Mobile Money
-### For the developer
+#### For the developer
 - Use webhooks to get notified on transaction, and set it to pending, then complete/failed once notified with same status on webhook.
 - Webhooks? See guide on using webhooks here: https://flutterwavedevelopers.readme.io/v2.0/docs/events-webhooks
 - After getting the notofication, requery to confirm final status
 ## Kenya Mpesa
 -Display the Mpesa Buisness account number637747 and the Account number which is returned as orderRef in the charge response.
-
-### For the developer
+#### For the developer
 -Use webhooks to get notified on transaction, and set it to pending, then complete/failed once notified with same status on webhook. See guide on using webhooks here: https://flutterwavedevelopers.readme.io/v2.0/docs/events-webhooks
 -After getting the notofication, requery to confirm final status
 
-#The MIT License (MIT)
+# The MIT License (MIT)
 Copyright (c) 2018 Sogunle Theresa
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
