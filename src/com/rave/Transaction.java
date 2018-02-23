@@ -5,6 +5,7 @@
  */
 package com.rave;
 
+import java.io.FileNotFoundException;
 import org.json.JSONObject;
 
 /**
@@ -13,12 +14,18 @@ import org.json.JSONObject;
  */
 public class Transaction {
     ApiConnection apiConnection;
-    
-    public JSONObject verifyTransaction(String flw_ref){   
+    //requery all failed transactions
+    public JSONObject verifyTransactionRequery(String flw_ref){   
      this.apiConnection = new ApiConnection(Endpoints.VERIFY_TRANSACTION_ENDPOINT);
        ApiQuery api= new ApiQuery();
       Keys key= new Keys();
-      key.initializeKeys();
+   
+        try {
+            key.initializeKeys();
+        } catch (FileNotFoundException e) {
+            System.out.print("Required Keys.json file could not be found.");
+            e.printStackTrace();
+        }
       String secret_key=key.SECRET_KEY;
       api.putParams("flw_ref", flw_ref);
       api.putParams("SECKEY", secret_key);
@@ -28,12 +35,18 @@ public class Transaction {
     return this.apiConnection.connectAndQuery(api);
     }
     
-    public JSONObject verifyXqueryTransaction(String txref,String flwref,String last_attempt,String only_successful){   
+    public JSONObject verifyTransactionXquery(String txref,String flwref,String last_attempt,String only_successful){   
      
         this.apiConnection = new ApiConnection(Endpoints.VERIFY_XQUERY_ENDPOINT);
        ApiQuery api= new ApiQuery();
       Keys key= new Keys();
-      key.initializeKeys();
+     
+        try {
+            key.initializeKeys();
+        } catch (FileNotFoundException e) {
+            System.out.print("Required Keys.json file could not be found.");
+            e.printStackTrace();
+        }
       String secret_key=key.SECRET_KEY;
       api.putParams("txref", txref);
       api.putParams("flwref", flwref);

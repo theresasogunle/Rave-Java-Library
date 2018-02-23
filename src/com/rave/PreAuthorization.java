@@ -10,6 +10,7 @@ import org.json.JSONObject;
 import static com.rave.Encryption.encryptData;
 import static com.rave.Encryption.getKey;
 
+
 /**
  *
  * @author Theresa
@@ -25,10 +26,12 @@ public class PreAuthorization {
       this.apiConnection = new ApiConnection(Endpoints.CARD_CHARGE_ENDPOINT);
       JSONObject obj = new JSONObject();
        Keys key= new Keys();
-        key.initializeKeys();
+       
         
       //preauthorization requires special public key
-        String public_key="FLWPUBK-8cd258c49f38e05292e5472b2b15906e-X ";
+        key.setPUBLIC_KEY("FLWPUBK-8cd258c49f38e05292e5472b2b15906e-X ");
+        String public_key=key.getPUBLIC_KEY();
+        System.out.println(public_key);
          try{  
        obj.put("PBFPubKey", public_key);
        obj.put("cardno",cardno);
@@ -48,10 +51,12 @@ public class PreAuthorization {
        obj.put("redirect_url", redirect_url);
        obj.put("device_fingerprint",device_fingerprint);
      //  obj.put("passcode", passcode);
-        }catch(JSONException ex){System.out.println("Couldnt get a parameter");}
+        }catch(JSONException ex){System.out.println("Error!");}
       String message= obj.toString();
        //preauth special secret key
-       String secret_key=" FLWSECK-c51891678d48c39eff3701ff686bdb69-X";
+       key.setSECRET_KEY("FLWSECK-c51891678d48c39eff3701ff686bdb69-X");
+    
+      String secret_key=key.getSECRET_KEY();
        String encrypt_secret_key=getKey(secret_key);
        String encrypted_message= encryptData(message,encrypt_secret_key);
        String alg="3DES-24";
@@ -72,9 +77,10 @@ public class PreAuthorization {
       this.apiConnection = new ApiConnection(Endpoints.CAPTURE_ENDPOINT);
       ApiQuery api= new ApiQuery();
       Keys key= new Keys();
-      key.initializeKeys();
-      //preauth special secret key
-      String secret_key=" FLWSECK-c51891678d48c39eff3701ff686bdb69-X";
+     key.setSECRET_KEY("FLWSECK-c51891678d48c39eff3701ff686bdb69-X");
+    
+      String secret_key=key.getSECRET_KEY();
+       System.out.println(secret_key);
       api.putParams("flwRef", flwRef);
       api.putParams("SECKEY", secret_key);
       
@@ -86,9 +92,10 @@ public class PreAuthorization {
    this.apiConnection = new ApiConnection(Endpoints.REFUNDVOID_ENDPOINT);
     ApiQuery api= new ApiQuery();
       Keys key= new Keys();
-      key.initializeKeys();
-      //preauth special secret key
-      String secret_key=" FLWSECK-c51891678d48c39eff3701ff686bdb69-X";
+    
+     key.setSECRET_KEY("FLWSECK-c51891678d48c39eff3701ff686bdb69-X");
+    
+      String secret_key=key.getSECRET_KEY();
       api.putParams("ref", ref);
       api.putParams("action", action);
       api.putParams("SECKEY", secret_key);

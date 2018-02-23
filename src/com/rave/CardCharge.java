@@ -11,6 +11,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import static com.rave.Encryption.encryptData;
 import static com.rave.Encryption.getKey;
+import java.io.FileNotFoundException;
 
 
 
@@ -31,7 +32,13 @@ public class CardCharge {
           
         JSONObject obj = new JSONObject();
         Keys key= new Keys();
-        key.initializeKeys();
+        
+        try {
+            key.initializeKeys();
+        } catch (FileNotFoundException e) {
+            System.out.print("Required Keys.json file could not be found.");
+            e.printStackTrace();
+        }
         String public_key=key.PUBLIC_KEY;
           System.out.println(public_key);
         try{
@@ -80,7 +87,12 @@ public class CardCharge {
           
         JSONObject obj = new JSONObject();
         Keys key= new Keys();
-        key.initializeKeys();
+        try {
+            key.initializeKeys();
+        } catch (FileNotFoundException e) {
+            System.out.print("Required Keys.json file could not be found.");
+            e.printStackTrace();
+        }
         String public_key=key.PUBLIC_KEY;
         System.out.println(public_key);
         try{
@@ -113,10 +125,16 @@ public class CardCharge {
        api.putParams("client", encrypted_message);
        api.putParams("alg", alg);
        System.out.println("Succesful");
-       
-     
-       
-       return this.apiConnection.connectAndQuery(api);
+       /*
+       There is a space between the string in the auturl thats why this wont work,
+       Once it returns json, pass it manually to the method validateCardChargeVB
+     try{
+       JSONObject response= this.apiConnection.connectAndQuery(api).optJSONObject("data");
+       String authUrl=response.getString("authurl");
+       validateCardChargeVB(authUrl);
+     }catch(Exception e){}
+      */
+     return this.apiConnection.connectAndQuery(api);
         
         
     }
@@ -126,12 +144,19 @@ public class CardCharge {
     if AuthMode::"PIN"
     @params public_key, transaction reference,OTP 
     */
-    public JSONObject validateCardCharge(String public_key,String transaction_reference,String otp){
+    public JSONObject validateCardCharge(String transaction_reference,String otp){
      
         this.apiConnection = new ApiConnection(Endpoints.CARD_VALIDATE_ENDPOINT);
       
         ApiQuery api=new ApiQuery();
-    
+        Keys key= new Keys();
+        try {
+            key.initializeKeys();
+        } catch (FileNotFoundException e) {
+            System.out.print("Required Keys.json file could not be found.");
+            e.printStackTrace();
+        }
+        String public_key=key.PUBLIC_KEY;
         api.putParams("PBFPubKey", public_key);
         api.putParams("transaction_reference", transaction_reference);
         api.putParams("otp", otp);

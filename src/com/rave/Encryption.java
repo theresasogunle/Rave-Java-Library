@@ -78,48 +78,5 @@ public static String encryptData(String message, String _encryptionKey)  {
             return "";
         }
     
-}/*
-   public JSONObject payViaCard(String cardno,String currency,String country,String cvv,String amount, String expiryyear,String expirymonth,
-           String suggested_auth, String pin,String email, String IP,String txRef, String device_fingerprint){
-       this.apiConnection = new ApiConnection(Definitions.ENCRYPTION_ENDPOINT);
-    
-      String public_key="FLWPUBK-d8369e6826011f8a1f9f6c7c14a09b80-X";
-       System.out.println(public_key);
-      
-       ArrayList<String> details=new ArrayList<>();
-       details.add(public_key);
-       details.add(cardno);
-       details.add(currency);
-       details.add(country);
-       details.add(cvv);
-       details.add(amount);
-       details.add(expiryyear);
-       details.add(expirymonth);
-       details.add(suggested_auth);
-       details.add(pin);
-       details.add(email);
-       details.add(IP);
-       details.add(txRef);
-       details.add(device_fingerprint);
-       
-       
-      
-       
-     String message= details.toString();
-     String secret_key="FLWSECK-8abf446c71a58aaa858323f3a9ed156b-X";
-     String encrypted_message= encryptData(message,secret_key);
-     String alg="3DES-24";
-     
-     ApiQuery api=new ApiQuery();
-     api.putParams("PBFPubKey", public_key);
-     api.putParams("client", encrypted_message);
-     api.putParams("alg", alg);
-       System.out.println("Succesful");
-     return this.apiConnection.connectAndQuery(api);
-     
-       
-   
-   
-   }
-*/
+}
 }

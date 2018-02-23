@@ -5,6 +5,7 @@
  */
 package com.rave;
 
+import java.io.FileNotFoundException;
 import org.json.JSONObject;
 
 /**
@@ -17,7 +18,13 @@ public class Refund {
           this.apiConnection = new ApiConnection(Endpoints.REFUND_ENDPOINT);
       ApiQuery api= new ApiQuery();
       Keys key= new Keys();
-      key.initializeKeys();
+     
+        try {
+            key.initializeKeys();
+        } catch (FileNotFoundException e) {
+            System.out.print("Required Keys.json file could not be found.");
+            e.printStackTrace();
+        }
       String secret_key=key.SECRET_KEY;
       api.putParams("ref", ref);
       api.putParams("seckey", secret_key);

@@ -5,6 +5,7 @@
  */
 package com.rave;
 
+import java.io.FileNotFoundException;
 import org.json.JSONObject;
 
 /**
@@ -17,7 +18,13 @@ public class ExchangeRates {
           this.apiConnection = new ApiConnection(Endpoints.FOREX_ENDPOINT);
       ApiQuery api= new ApiQuery();
       Keys key= new Keys();
-      key.initializeKeys();
+    
+        try {
+            key.initializeKeys();
+        } catch (FileNotFoundException e) {
+            System.out.print("Required Keys.json file could not be found.");
+            e.printStackTrace();
+        }
       String secret_key=key.SECRET_KEY;
       
         //System.out.println(secret_key);

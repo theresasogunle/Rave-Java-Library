@@ -1,5 +1,10 @@
 package com.rave;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import org.json.JSONObject;
+
 
 
 /**
@@ -7,20 +12,36 @@ package com.rave;
  */
 class Keys {
 
-    protected String SECRET_KEY;
-    protected String PUBLIC_KEY;
-   
+    public String SECRET_KEY;
+    public String PUBLIC_KEY;
   
-    void initializeKeys(){
-        SECRET_KEY = "FLWSECK-YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY-X";
-        PUBLIC_KEY = "FLWPUBK-YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY-X";
-       
-    }
     
 
-    
     /**
-     * Used to set test secret key
+     * Used to initialise all necessary API keys
+     *
+     * @throws FileNotFoundException
+     */
+    void initializeKeys() throws FileNotFoundException {
+        JSONObject keyObject;
+        String fileContent = "";
+        File file = new File("Keys.json");
+        Scanner scanner = new Scanner(file);
+
+        while (scanner.hasNext()) {
+            fileContent += scanner.nextLine();
+        }
+        try{
+        keyObject = new JSONObject(fileContent).getJSONObject("API_KEYS");
+       
+        this.SECRET_KEY = keyObject.getString("SECRET_KEY");
+        this.PUBLIC_KEY = keyObject.getString("PUBLIC_KEY");
+       
+        }catch(Exception e){System.out.println("Cant get keys");}
+    }
+
+    /**
+     * Used to set  secret key
      *
      * @param key
      */
@@ -29,7 +50,7 @@ class Keys {
     }
 
     /**
-     * Used to get test secret key
+     * Used to get secret key
      *
      * @return
      */
@@ -38,7 +59,7 @@ class Keys {
     }
 
     /**
-     * Used to set test public key
+     * Used to set public key
      *
      * @param key
      */
@@ -47,7 +68,7 @@ class Keys {
     }
 
     /**
-     * Used to get test public key
+     * Used to get  public key
      *
      * @return
      */
@@ -56,6 +77,5 @@ class Keys {
     }
 
     
-   
-
 }
+    

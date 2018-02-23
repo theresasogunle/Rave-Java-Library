@@ -9,6 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import static com.rave.Encryption.encryptData;
 import static com.rave.Encryption.getKey;
+import java.io.FileNotFoundException;
 
 
 /**
@@ -28,7 +29,13 @@ public class AlternativePayment {
       this.apiConnection = new ApiConnection(Endpoints.CARD_CHARGE_ENDPOINT);
       JSONObject obj = new JSONObject();
       Keys key= new Keys();
-       key.initializeKeys();
+       
+        try {
+            key.initializeKeys();
+        } catch (FileNotFoundException e) {
+            System.out.print("Required Keys.json file could not be found.");
+            e.printStackTrace();
+        }
       
         String public_key=key.PUBLIC_KEY;
          try{   
@@ -49,7 +56,7 @@ public class AlternativePayment {
        obj.put("is_ussd", is_ussd);
        obj.put("device_fingerprint",device_fingerprint);
      //  obj.put("passcode", passcode);
-        }catch(JSONException ex){System.out.println("Couldnt get a parameter");}
+        }catch(JSONException ex){System.out.println("Error!");}
       String message= obj.toString();
        
        String secret_key=key.SECRET_KEY;
@@ -81,7 +88,13 @@ public class AlternativePayment {
      
       JSONObject obj = new JSONObject();
       Keys key= new Keys();
-      key.initializeKeys();
+     
+        try {
+            key.initializeKeys();
+        } catch (FileNotFoundException e) {
+            System.out.print("Required Keys.json file could not be found.");
+            e.printStackTrace();
+        }
       
         String public_key=key.PUBLIC_KEY;
          try{
@@ -103,7 +116,7 @@ public class AlternativePayment {
        obj.put("is_mobile_money_gh", is_mobile_money_gh);
        obj.put("device_fingerprint",device_fingerprint);
      //  obj.put("passcode", passcode);
-        }catch(JSONException ex){System.out.println("Couldnt get a parameter");}
+        }catch(JSONException ex){System.out.println("Error!");}
          
         String message= obj.toString();
         String secret_key=key.SECRET_KEY;
@@ -135,7 +148,13 @@ public class AlternativePayment {
      
         JSONObject obj = new JSONObject();
         Keys key= new Keys();
-        key.initializeKeys();
+        
+        try {
+            key.initializeKeys();
+        } catch (FileNotFoundException e) {
+            System.out.print("Required Keys.json file could not be found.");
+            e.printStackTrace();
+        }
         String public_key=key.PUBLIC_KEY;
         
          try{      
@@ -154,7 +173,7 @@ public class AlternativePayment {
        obj.put("is_mpesa", is_mpesa);
        obj.put("device_fingerprint",device_fingerprint);
      //  obj.put("passcode", passcode);
-        }catch(JSONException ex){System.out.println("Couldnt get a parameter");}
+        }catch(JSONException ex){System.out.println("Error!");}
        
        String message= obj.toString();
        
@@ -179,7 +198,13 @@ public class AlternativePayment {
      this.apiConnection = new ApiConnection(Endpoints.VERIFY_TRANSACTION_ENDPOINT);
        ApiQuery api= new ApiQuery();
       Keys key= new Keys();
-      key.initializeKeys();;
+    
+        try {
+            key.initializeKeys();
+        } catch (FileNotFoundException e) {
+            System.out.print("Required Keys.json file could not be found.");
+            e.printStackTrace();
+        }
       String secret_key=key.SECRET_KEY;
       api.putParams("txref", txref);
       api.putParams("flwref", flwref);
@@ -195,7 +220,13 @@ public class AlternativePayment {
      this.apiConnection = new ApiConnection(Endpoints.VERIFY_XQUERY_ENDPOINT);
        ApiQuery api= new ApiQuery();
       Keys key= new Keys();
-      key.initializeKeys();
+   
+        try {
+            key.initializeKeys();
+        } catch (FileNotFoundException e) {
+            System.out.print("Required Keys.json file could not be found.");
+            e.printStackTrace();
+        }
       String secret_key=key.SECRET_KEY;
       api.putParams("flw_ref", flw_ref);
       api.putParams("SECKEY", secret_key);

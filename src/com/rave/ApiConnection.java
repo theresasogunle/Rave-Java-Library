@@ -4,6 +4,7 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import java.io.FileNotFoundException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -33,9 +34,7 @@ public class ApiConnection {
      */
     public ApiConnection(String url) {
        this.url = url;
-       Keys key= new Keys();
-       key.initializeKeys();
-       this.apiKey = key.SECRET_KEY;
+       
        this.enforceTlsV1point2();
     }
 
@@ -71,7 +70,7 @@ public class ApiConnection {
         try {
             HttpResponse<JsonNode> queryForResponse = Unirest.post(url)
                     .header("Accept", "application/json")
-                    .header("Authorization", "Bearer " + apiKey)
+                    .header("Authorization", "Bearer ")
                     .fields(query.getParams())
                     .asJson();
             
@@ -97,7 +96,7 @@ public class ApiConnection {
         try {
             HttpResponse<JsonNode> queryForResponse = Unirest.post(url)
                     .header("Accept", "application/json")
-                    .header("Authorization", "Bearer " + apiKey)
+                    .header("Authorization", "Bearer ")
                     .fields(query)
                     .asJson();
             return queryForResponse.getBody().getObject();
@@ -116,7 +115,7 @@ public class ApiConnection {
         try {
             HttpResponse<JsonNode> queryForResponse = Unirest.get(url)
                     .header("content-type", "application/json")
-                    .header("Authorization", "Bearer " + apiKey)
+                    .header("Authorization", "Bearer ")
                     .asJson();
             
             return queryForResponse.getBody();
@@ -130,7 +129,7 @@ public class ApiConnection {
         try {
             HttpResponse<JsonNode> queryForResponse = Unirest.post(url)
                     .header("content-type", "application/json")
-                    .header("Authorization", "Bearer " + apiKey)
+                    .header("Authorization", "Bearer " )
                     .asJson();
             
             return queryForResponse.getBody();
@@ -151,7 +150,7 @@ public class ApiConnection {
         try {
             HttpResponse<JsonNode> queryForResponse = Unirest.get(url)
                     .header("Accept", "application/json")
-                    .header("Authorization", "Bearer " + apiKey)
+                    .header("Authorization", "Bearer " )
                     .queryString(query.getParams())
                     .asJson();
             return queryForResponse.getBody().getObject();
@@ -171,7 +170,7 @@ public class ApiConnection {
         try {
             HttpResponse<JsonNode> queryForResponse = Unirest.get(url)
                     .header("Accept", "application/json")
-                    .header("Authorization", "Bearer " + apiKey)
+                    .header("Authorization", "Bearer " )
                     .queryString(query)
                     .asJson();
             return queryForResponse.getBody().getObject();
@@ -191,7 +190,7 @@ public class ApiConnection {
         try {
             HttpResponse<JsonNode> queryForResponse = Unirest.put(url)
                     .header("Accept", "application/json")
-                    .header("Authorization", "Bearer " + apiKey)
+                    .header("Authorization", "Bearer " )
                     .fields(query.getParams())
                     .asJson();
             return queryForResponse.getBody().getObject();
@@ -211,7 +210,7 @@ public class ApiConnection {
         try {
             HttpResponse<JsonNode> queryForResponse = Unirest.get(url)
                     .header("Accept", "application/json")
-                    .header("Authorization", "Bearer " + apiKey)
+                    .header("Authorization", "Bearer " )
                     .queryString(query)
                     .asJson();
             return queryForResponse.getBody().getObject();

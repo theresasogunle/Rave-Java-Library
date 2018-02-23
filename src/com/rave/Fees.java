@@ -6,6 +6,7 @@
 package com.rave;
 
 
+import java.io.FileNotFoundException;
 import org.json.JSONObject;
 
 /**
@@ -18,10 +19,16 @@ public class Fees {
      
      public JSONObject getFees(String amount,String currency){   
      this.apiConnection = new ApiConnection(Endpoints.FEES_ENDPOINT);
-     Keys key= new Keys();
-     key.initializeKeys();
-    
-     String public_key=key.PUBLIC_KEY;
+     
+     
+     Keys keys= new Keys();
+        try {
+            keys.initializeKeys();
+        } catch (FileNotFoundException e) {
+            System.out.print("Required Keys.json file could not be found.");
+            e.printStackTrace();
+        }
+     String public_key=keys.PUBLIC_KEY;
      
       ApiQuery api= new ApiQuery();
       api.putParams("amount", amount);
@@ -38,10 +45,15 @@ public class Fees {
      */
      public JSONObject getFeesForCard6(String amount,String currency, String card6){
       this.apiConnection = new ApiConnection(Endpoints.FEES_ENDPOINT);
-      Keys key= new Keys();
-     key.initializeKeys();
-    
-     String public_key=key.PUBLIC_KEY;
+    Keys keys= new Keys();
+        try {
+            keys.initializeKeys();
+        } catch (FileNotFoundException e) {
+            System.out.print("Required Keys.json file could not be found.");
+            e.printStackTrace();
+        }
+      
+     String public_key=keys.PUBLIC_KEY;
      
       ApiQuery api= new ApiQuery();
       api.putParams("amount", amount);
