@@ -27,7 +27,7 @@ import org.json.JSONException;
 public class ApiConnection {
 
     private String url;
-    private String apiKey;
+  
 
     /**
      * @param url - Flutterwave API url

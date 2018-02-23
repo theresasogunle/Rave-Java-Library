@@ -6,7 +6,7 @@
 package com.rave;
 
 
-import java.io.FileNotFoundException;
+
 import org.json.JSONObject;
 
 /**
@@ -15,24 +15,16 @@ import org.json.JSONObject;
  */
 public class Fees {
      private ApiConnection apiConnection;
-     
+     Keys key= new Keys();
+     Endpoints end= new Endpoints();
+   
      
      public JSONObject getFees(String amount,String currency){   
-     this.apiConnection = new ApiConnection(Endpoints.FEES_ENDPOINT);
-     
-     
-     Keys keys= new Keys();
-        try {
-            keys.initializeKeys();
-        } catch (FileNotFoundException e) {
-            System.out.print("Required Keys.json file could not be found.");
-            e.printStackTrace();
-        }
-     String public_key=keys.PUBLIC_KEY;
+     this.apiConnection = new ApiConnection(end.getFeesEndPoint());
      
       ApiQuery api= new ApiQuery();
       api.putParams("amount", amount);
-      api.putParams("PBFPubKey", public_key);
+      api.putParams("PBFPubKey", key.getPublicKey());
       api.putParams("currency", currency);
       api.putParams("ptype",2);
      
@@ -44,20 +36,12 @@ public class Fees {
      it also helps determine international fees on the transaction if the card being used is an international card
      */
      public JSONObject getFeesForCard6(String amount,String currency, String card6){
-      this.apiConnection = new ApiConnection(Endpoints.FEES_ENDPOINT);
-    Keys keys= new Keys();
-        try {
-            keys.initializeKeys();
-        } catch (FileNotFoundException e) {
-            System.out.print("Required Keys.json file could not be found.");
-            e.printStackTrace();
-        }
-      
-     String public_key=keys.PUBLIC_KEY;
+      this.apiConnection = new ApiConnection(end.getFeesEndPoint());
+   
      
       ApiQuery api= new ApiQuery();
       api.putParams("amount", amount);
-      api.putParams("PBFPubKey", public_key);
+      api.putParams("PBFPubKey", key.getPublicKey());
       api.putParams("currency", currency);
       api.putParams("ptype",2);
       api.putParams("card6", card6);

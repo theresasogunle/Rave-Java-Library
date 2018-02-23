@@ -13,21 +13,15 @@ import org.json.JSONObject;
  * @author Theresa
  */
 public class Refund {
-    ApiConnection apiConnection;
+    private ApiConnection apiConnection;
+    private Keys key= new Keys();
+    Endpoints end= new Endpoints();
     public JSONObject refund(String ref){
-          this.apiConnection = new ApiConnection(Endpoints.REFUND_ENDPOINT);
+          this.apiConnection = new ApiConnection(end.getRefundEndPoint());
       ApiQuery api= new ApiQuery();
-      Keys key= new Keys();
-     
-        try {
-            key.initializeKeys();
-        } catch (FileNotFoundException e) {
-            System.out.print("Required Keys.json file could not be found.");
-            e.printStackTrace();
-        }
-      String secret_key=key.SECRET_KEY;
+
       api.putParams("ref", ref);
-      api.putParams("seckey", secret_key);
+      api.putParams("seckey", key.getSecretKey());
       
    
       return this.apiConnection.connectAndQuery(api);

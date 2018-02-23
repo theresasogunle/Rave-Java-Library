@@ -14,45 +14,33 @@ import org.json.JSONObject;
  */
 public class Transaction {
     ApiConnection apiConnection;
+    private Keys key=new Keys();
+    Endpoints end= new Endpoints();
+    
+    
     //requery all failed transactions
     public JSONObject verifyTransactionRequery(String flw_ref){   
-     this.apiConnection = new ApiConnection(Endpoints.VERIFY_TRANSACTION_ENDPOINT);
+     this.apiConnection = new ApiConnection(end.getVerifyEndPoint());
        ApiQuery api= new ApiQuery();
-      Keys key= new Keys();
-   
-        try {
-            key.initializeKeys();
-        } catch (FileNotFoundException e) {
-            System.out.print("Required Keys.json file could not be found.");
-            e.printStackTrace();
-        }
-      String secret_key=key.SECRET_KEY;
+     
       api.putParams("flw_ref", flw_ref);
-      api.putParams("SECKEY", secret_key);
+      api.putParams("SECKEY",key.getSecretKey() );
       
       
     
     return this.apiConnection.connectAndQuery(api);
     }
     
-    public JSONObject verifyTransactionXquery(String txref,String flwref,String last_attempt,String only_successful){   
+    public JSONObject verifyTransactionXquery(String flwref){   
      
-        this.apiConnection = new ApiConnection(Endpoints.VERIFY_XQUERY_ENDPOINT);
+        this.apiConnection = new ApiConnection(end.getVerifyXqueryEndPoint());
        ApiQuery api= new ApiQuery();
-      Keys key= new Keys();
      
-        try {
-            key.initializeKeys();
-        } catch (FileNotFoundException e) {
-            System.out.print("Required Keys.json file could not be found.");
-            e.printStackTrace();
-        }
-      String secret_key=key.SECRET_KEY;
-      api.putParams("txref", txref);
+      
       api.putParams("flwref", flwref);
-      api.putParams("SECKEY", secret_key);
-      api.putParams("last_attempt", last_attempt);
-      api.putParams("only_successful", only_successful);
+      api.putParams("SECKEY", key.getSecretKey());
+      api.putParams("last_attempt", 1);
+      api.putParams("only_successful", 1);
       
       
       

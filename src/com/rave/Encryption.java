@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.rave;
+import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.util.Arrays;
@@ -20,11 +21,16 @@ import java.util.logging.Logger;
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class Encryption {
      private String key;
        private ApiConnection apiConnection;
-
+       Keys keys= new Keys();
+        String cardno,currency,country,cvv,amount,expiryyear, expirymonth,suggested_auth, pin, email,  IP,txRef,device_fingerprint,redirectUrl;
+      
+        
 // Method to turn bytes in hex
   public static String toHexStr(byte[] bytes){
 
@@ -77,6 +83,49 @@ public static String encryptData(String message, String _encryptionKey)  {
             e.printStackTrace();
             return "";
         }
+        
+       
+}/**
+ *
+ * @param api(JSON object)
+ * @return String
+ */
+
+    public String encryptParameters(JSONObject api){
+           
+              try{
+               api.put("PBFPubKey",keys.getPublicKey());
+              }catch(Exception ex){}
+               
+              String message= api.toString();
+             
+             
+              
+              String encrypt_secret_key=getKey(keys.getSecretKey());
+              String encrypted_message= encryptData(message,encrypt_secret_key);
+
+
+               return encrypted_message;
+
+               }
+    public String encryptParametersPreAuth(JSONObject api){
+           
+              try{
+               api.put("PBFPubKey","FLWPUBK-8cd258c49f38e05292e5472b2b15906e-X");
+              }catch(Exception ex){}
+               
+              String message= api.toString();
+             
+             
+              
+              String encrypt_secret_key=getKey("FLWSECK-c51891678d48c39eff3701ff686bdb69-X");
+              String encrypted_message= encryptData(message,encrypt_secret_key);
+
+
+               return encrypted_message;
+
+               }
+        
+       
     
-}
 }

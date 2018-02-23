@@ -14,9 +14,11 @@ import org.json.JSONObject;
  */
 public class Bank {
     private ApiConnection apiConnection;
+    Endpoints ed= new Endpoints();
     
-    public JsonNode getAllBanks(){   
-     this.apiConnection = new ApiConnection(Endpoints.BANK_ENDPOINT);
+    public JsonNode getAllBanks(){  
+        
+     this.apiConnection = new ApiConnection(ed.getBankEndPoint());
        
         return this.apiConnection.connectAndQueryWithGet();
     

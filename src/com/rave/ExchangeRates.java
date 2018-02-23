@@ -14,22 +14,22 @@ import org.json.JSONObject;
  */
 public class ExchangeRates {
      ApiConnection apiConnection;
+     Endpoints end= new Endpoints();
+     Keys key=new Keys();
+     /**
+ *
+ * @params
+ * origin_currency,destination_currency , amount
+ * @return JSONObject
+ */
+     
     public JSONObject forex(String origin_currency,String destination_currency,String amount){
-          this.apiConnection = new ApiConnection(Endpoints.FOREX_ENDPOINT);
+        
+      this.apiConnection = new ApiConnection(end.getForexEndPoint());
       ApiQuery api= new ApiQuery();
-      Keys key= new Keys();
-    
-        try {
-            key.initializeKeys();
-        } catch (FileNotFoundException e) {
-            System.out.print("Required Keys.json file could not be found.");
-            e.printStackTrace();
-        }
-      String secret_key=key.SECRET_KEY;
-      
-        //System.out.println(secret_key);
+     
       //API PARAMETERS
-      api.putParams("SECKEY", secret_key);
+      api.putParams("SECKEY",key.getSecretKey());
       api.putParams("origin_currency", origin_currency);
       api.putParams("destination_currency",  destination_currency);
       api.putParams("amount",  amount);

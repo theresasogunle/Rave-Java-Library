@@ -10,10 +10,11 @@ import org.json.JSONObject;
 /**
  * @author Theresa
  */
-class Keys {
+public class Keys {
 
     public String SECRET_KEY;
     public String PUBLIC_KEY;
+    public String env;
   
     
 
@@ -22,7 +23,7 @@ class Keys {
      *
      * @throws FileNotFoundException
      */
-    void initializeKeys() throws FileNotFoundException {
+      public  void initializeKeys() throws FileNotFoundException {
         JSONObject keyObject;
         String fileContent = "";
         File file = new File("env.json");
@@ -33,7 +34,8 @@ class Keys {
         }
         try{
         keyObject = new JSONObject(fileContent).getJSONObject("API_KEYS");
-       
+      
+        this.env= keyObject.getString("ENV_KEY");
         this.SECRET_KEY = keyObject.getString("SECRET_KEY");
         this.PUBLIC_KEY = keyObject.getString("PUBLIC_KEY");
        
@@ -49,15 +51,8 @@ class Keys {
         this.SECRET_KEY = key;
     }
 
-    /**
-     * Used to get secret key
-     *
-     * @return
-     */
-    protected String getSECRET_KEY() {
-        return this.SECRET_KEY;
-    }
-
+    
+   
     /**
      * Used to set public key
      *
@@ -72,8 +67,50 @@ class Keys {
      *
      * @return
      */
-    protected String getPUBLIC_KEY() {
-        return this.PUBLIC_KEY;
+    
+         public String getPublicKey(){
+        Keys key= new Keys();
+
+               try {
+                   key.initializeKeys();
+               } catch (FileNotFoundException e) {
+                   System.out.print("Required Keys.json file could not be found.");
+                   e.printStackTrace();
+               }
+               String public_key=key.PUBLIC_KEY;
+                 //System.out.println(public_key);
+                 
+                 return public_key;
+        
+        }
+     public String getSecretKey(){
+        Keys key= new Keys();
+
+               try {
+                   key.initializeKeys();
+               } catch (FileNotFoundException e) {
+                   System.out.print("Required Keys.json file could not be found.");
+                   e.printStackTrace();
+               }
+               String secret_key=key.SECRET_KEY;
+               //  System.out.println(public_key);
+                 
+                 return secret_key;
+        
+        }
+    protected void setEnvironment(String env){
+    this.env=env;
+    }
+    protected String getEnvironment() {
+        Keys key= new Keys();
+         try {
+            key.initializeKeys();
+        } catch (FileNotFoundException e) {
+            System.out.print("Required Keys.json file could not be found.");
+            e.printStackTrace();
+        }
+            String envv=key.env;
+        return envv;
     }
 
     

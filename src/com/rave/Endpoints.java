@@ -5,30 +5,116 @@
  */
 package com.rave;
 
+import java.io.FileNotFoundException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Theresa
  */
 public class Endpoints {
+       Keys key= new Keys();
+      String staging_url="http://flw-pms-dev.eu-west-1.elasticbeanstalk.com/";
+      String live_url="https://api.ravepay.co";
+      String  url;
+      public  String BANK_ENDPOINT;
+      public static String CARD_CHARGE_ENDPOINT;
+      public static String CARD_VALIDATE_ENDPOINT;
+      public static String TIMEOUT_ENDPOINT;
+      public static String POLL_ENDPOINT;
+      public static String FEES_ENDPOINT;
+      public static String REFUND_ENDPOINT;
+      public static String FOREX_ENDPOINT;
+      public static String VERIFY_TRANSACTION_ENDPOINT;
+      public static String VERIFY_XQUERY_ENDPOINT;
+      public static String CAPTURE_ENDPOINT;
+      public static String REFUNDVOID_ENDPOINT;
+      
+     
+      void init(){
+      
+          if(key.getEnvironment().equalsIgnoreCase("live")){
+           
+            url=live_url;
+          
+          }
+          else if(key.getEnvironment().equalsIgnoreCase("testing")) {
+          url=staging_url;
+          }
+          else{
+              url=null;
+              JOptionPane.showMessageDialog(null, "Enter either 'testing' or 'live' in env.json file", "ERROR", JOptionPane.ERROR_MESSAGE);
+          
+          }
+         
+       BANK_ENDPOINT= url+"/flwv3-pug/getpaidx/api/flwpbf-banks.js?json=1";
+       CARD_CHARGE_ENDPOINT =url+"/flwv3-pug/getpaidx/api/charge";
+       CARD_VALIDATE_ENDPOINT = url+"flwv3-pug/getpaidx/api/validatecharge";
+       TIMEOUT_ENDPOINT=url+"flwv3-pug/getpaidx/api/charge?use_polling=1";
+       POLL_ENDPOINT=url+"flwv3-pug/getpaidx/api/requests/RCORE_CHREQ_3FC28781846AD8E1C598";
+        FEES_ENDPOINT=url+"flwv3-pug/getpaidx/api/fee";
+       REFUND_ENDPOINT=url+"gpx/merchant/transactions/refund";
+       FOREX_ENDPOINT=url+"/flwv3-pug/getpaidx/api/forex";
+       VERIFY_TRANSACTION_ENDPOINT=url+"flwv3-pug/getpaidx/api/verify";
+       VERIFY_XQUERY_ENDPOINT=url+"flwv3-pug/getpaidx/api/xrequery";
+        CAPTURE_ENDPOINT=url+"flwv3-pug/getpaidx/api/capture";
+        REFUNDVOID_ENDPOINT=url+"flwv3-pug/getpaidx/api/refundorvoid";
+        
+      }
+      
+     public String getBankEndPoint(){
+         init();
+         return BANK_ENDPOINT;
+     
+     }
+     public String getChargeEndPoint(){
+         init();
+         return CARD_CHARGE_ENDPOINT;
+     
+     }
+     public String getValidateChargeEndPoint(){
+         init();
+         return CARD_VALIDATE_ENDPOINT;
+     
+     }
+     public String getFeesEndPoint(){
+         init();
+         return FEES_ENDPOINT;
+     
+     }
+     public String getRefundEndPoint(){
+         init();
+         return REFUND_ENDPOINT;
+     
+     }
+     public String getForexEndPoint(){
+         init();
+         return FOREX_ENDPOINT;
+     
+     }
+     public String getVerifyEndPoint(){
+         init();
+         return VERIFY_TRANSACTION_ENDPOINT;
+     
+     }
+     public String getVerifyXqueryEndPoint(){
+         init();
+         return VERIFY_XQUERY_ENDPOINT;
+     
+     }
+     public String getCaptureEndPoint(){
+         init();
+         return CAPTURE_ENDPOINT;
+     
+     }
+     public String getRefundOrVoidEndPoint(){
+         init();
+         return  REFUNDVOID_ENDPOINT;
+     
+     }
+       
     
- 
-      public static final String CARD_CHARGE_ENDPOINT = "http://flw-pms-dev.eu-west-1.elasticbeanstalk.com/flwv3-pug/getpaidx/api/charge";
-      public static final String CARD_VALIDATE_ENDPOINT = "http://flw-pms-dev.eu-west-1.elasticbeanstalk.com/flwv3-pug/getpaidx/api/validatecharge";
       
-      public static final String BANK_ENDPOINT="http://flw-pms-dev.eu-west-1.elasticbeanstalk.com/flwv3-pug/getpaidx/api/flwpbf-banks.js?json=1";
       
-      public static final String TIMEOUT_ENDPOINT="http://flw-pms-dev.eu-west-1.elasticbeanstalk.com/flwv3-pug/getpaidx/api/charge?use_polling=1";
-      public static final String POLL_ENDPOINT="https://rave-api-v2.herokuapp.com/flwv3-pug/getpaidx/api/requests/RCORE_CHREQ_3FC28781846AD8E1C598";
-      
-      public static final String FEES_ENDPOINT="http://flw-pms-dev.eu-west-1.elasticbeanstalk.com/flwv3-pug/getpaidx/api/fee";
-      
-      public static final String REFUND_ENDPOINT="http://flw-pms-dev.eu-west-1.elasticbeanstalk.com/gpx/merchant/transactions/refund";
-      
-      public static final String FOREX_ENDPOINT="http://flw-pms-dev.eu-west-1.elasticbeanstalk.com/flwv3-pug/getpaidx/api/forex";
-      
-      public static final String VERIFY_TRANSACTION_ENDPOINT="http://flw-pms-dev.eu-west-1.elasticbeanstalk.com/flwv3-pug/getpaidx/api/verify";
-      public static final String VERIFY_XQUERY_ENDPOINT="http://flw-pms-dev.eu-west-1.elasticbeanstalk.com/flwv3-pug/getpaidx/api/xrequery";
-      public static final String CAPTURE_ENDPOINT="http://flw-pms-dev.eu-west-1.elasticbeanstalk.com/flwv3-pug/getpaidx/api/capture";
-      public static final String REFUNDVOID_ENDPOINT="http://flw-pms-dev.eu-west-1.elasticbeanstalk.com/flwv3-pug/getpaidx/api/refundorvoid";
       
 }
