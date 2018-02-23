@@ -25,7 +25,7 @@ class Keys {
     void initializeKeys() throws FileNotFoundException {
         JSONObject keyObject;
         String fileContent = "";
-        File file = new File("Keys.json");
+        File file = new File("env.json");
         Scanner scanner = new Scanner(file);
 
         while (scanner.hasNext()) {
