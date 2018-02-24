@@ -34,9 +34,7 @@ public class Charge {
         ApiQuery api=new ApiQuery();
         
         api.putParams("PBFPubKey", key.getPublicKey());
-        System.out.println(key.getPublicKey());
         api.putParams("client", encrypted_message);
-        System.out.println(encrypted_message);
         api.putParams("alg", alg);
       
         

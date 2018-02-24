@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 public class Endpoints {
        Keys key= new Keys();
       String staging_url="http://flw-pms-dev.eu-west-1.elasticbeanstalk.com/";
-      String live_url="https://api.ravepay.co";
+      String live_url="https://api.ravepay.co/";
       String  url;
       public  String BANK_ENDPOINT;
       public static String CARD_CHARGE_ENDPOINT;

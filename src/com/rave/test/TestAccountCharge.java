@@ -38,9 +38,9 @@ public class TestAccountCharge {
        }catch(Exception ex){}
        String encrypted_message= encryption.encryptParameters(api);
     
-     //  JSONObject res=ch.chargeAccount(encrypted_message);
+      JSONObject res=ch.chargeAccount(encrypted_message);
        
-      // JSONObject val=ch.validateAccountCharge("ACHG-1519428047882", "12345");
-        //System.out.println(val);
+      JSONObject val=ch.validateAccountCharge("ACHG-1519428047882", "12345");
+      System.out.println(val);
     }
 }
