@@ -159,6 +159,7 @@ The documentation for each classes and methods
 8. [PreAuthorization](Documentation/PREAUTH.md)
 9. [Refund](Documentation/REFUND.md)
 10. [Transaction](Documentation/REFUND.md)
+11. [IntegrityChecksum](Documentation/CHECKSUM.md)
 
 # Alternative Payment Methods
 ## Nigerian USSD- GTB and Zenith Bank
