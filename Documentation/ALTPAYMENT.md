@@ -4,9 +4,9 @@
 
 
 #### Fields
-    >txref - This is the merchant's unique transaction reference.
-    
-    >flwref - This is the payment gateway's unique reference.
+>txref - This is the merchant's unique transaction reference.
+
+>flwref - This is the payment gateway's unique reference.
     
 
 #### Methods
