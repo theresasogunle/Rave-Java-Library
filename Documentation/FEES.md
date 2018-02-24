@@ -4,15 +4,18 @@
 
 
 #### Fields
-    >currency - This is the specified currency to charge the card in.
-    >amount - This is the amount of the product or service to charged from the customer
-    >card6 - The first 6digits of their card number, it also helps determine international fees on the transaction if the card being used is an international card
+>currency - This is the specified currency to charge the card in.
+
+>amount - This is the amount of the product or service to charged from the customer
+
+>card6 - The first 6digits of their card number, it also helps determine international fees on the transaction if the card being used is an international card
 
 #### Methods
 1. getFees()
 
 
     >currency - This is the specified currency to charge the card in.
+    
     >amount - This is the amount of the product or service to charged from the customer
 
     returns `JSONObject`
@@ -21,7 +24,9 @@
 2. getFeesForCard6()
 
     >currency - This is the specified currency to charge the card in.
+    
     >amount - This is the amount of the product or service to charged from the customer
+    
     >card6 - The first 6digits of their card number, it also helps determine international fees on the transaction if the card being used is an international card
     
     returns `JSONObject`
