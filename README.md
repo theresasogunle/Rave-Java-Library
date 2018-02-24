@@ -1,5 +1,8 @@
-# Rave-Java-Library
+# Flutterwave Rave (Rave-Java-Library)
 Rave-Java-Library facilites quick and easy development and integration of Java based applications with the Flutterwave API. It also implements several methods for rapid prototyping and testing.
+
+- **Contributors:** **Theresa Sogunle**, Oluwole Adebiyi (KingFlamez)
+- **Tags:** rave, flutterwave, payment gateway, bank account, credit card, debit card, nigeria, kenya, ghana, international, mastercard, visa, KES, GHC, NGN,  Java.
 
 # Getting Started
 ## Installation
@@ -16,15 +19,22 @@ Rave-Java-Library facilites quick and easy development and integration of Java b
 ```json
 {
     "API_KEYS": {
-      "ENV_KEY": "LIVE", //TESTING or LIVE
-      "PUBLIC_KEY": "FLWPUBK-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-X", //Gotten From Your Rave Dashboard
-      "SECRET_KEY": "FLWSECK-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-X" //Gotten From Your Rave Dashboard
+      "ENV_KEY": "LIVE",
+      "PUBLIC_KEY": "FLWPUBK-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-X",
+      "SECRET_KEY": "FLWSECK-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-X"
     }
 }
 ```
-- `**Be sure to remove the comments from the env.json**`
+
+- `ENV_KEY` - Either `LIVE` or `TESTING`
+- `PUBLIC_KEY` - Gotten From Your Rave Dashboard
+- `SECRET_KEY` - Gotten From Your Rave Dashboard
 
 - Set to go 💪
+
+
+> You can signup for an account [here](https://rave.flutterwave.com)
+
 
 ## Sample Use
 
@@ -169,6 +179,6 @@ The documentation for each classes and methods
 
 - Recurring Payments
 
-## License 
+## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
