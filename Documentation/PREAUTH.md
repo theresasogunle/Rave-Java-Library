@@ -5,6 +5,7 @@
  
 #### Fields
  >flwRef(ref) - This is the payment gateway's unique reference.
+ 
  >action - This is the action to be taken i.e. `refund` or `void`
 #### Methods
 1. preAuthorizeCard(String client)
@@ -20,8 +21,9 @@
     
 
 3. refundOrVoid()
-=======
+
     >ref - This is the `flwRef` returned in the `capture response.`
+    
     >action - This is the action to be taken i.e. `refund` or `void`
  
  
