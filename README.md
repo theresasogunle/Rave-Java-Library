@@ -19,7 +19,7 @@ Rave-Java-Library facilites quick and easy development and integration of Java b
 ```json
 {
     "API_KEYS": {
-      "ENV_KEY": "LIVE",
+      "ENV": "LIVE",
       "PUBLIC_KEY": "FLWPUBK-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-X",
       "SECRET_KEY": "FLWSECK-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-X"
     }
@@ -136,6 +136,7 @@ public class Main {
         
         System.out.println(res);
         //Validate The Charge
+        // ch.
         //JSONObject val=ch.validateAccountCharge("ACHG-1519428047882", "12345");
     }
 }
