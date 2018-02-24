@@ -1,4 +1,4 @@
-# Flutterwave Rave (Rave-Java-Library)
+﻿# Flutterwave Rave (Rave-Java-Library)
 Rave-Java-Library facilites quick and easy development and integration of Java based applications with the Flutterwave API. It also implements several methods for rapid prototyping and testing.
 
 - **Contributors:** **Theresa Sogunle**, Oluwole Adebiyi (KingFlamez)
@@ -136,8 +136,10 @@ public class Main {
         
         System.out.println(res);
         //Validate The Charge
-        // ch.
-        //JSONObject val=ch.validateAccountCharge("ACHG-1519428047882", "12345");
+         //do not forget to set your fields
+        ch.otp="12345";
+        ch.transaction_reference="ACHG-1519428047882";
+        JSONObject val=ch.validateAccountCharge();
     }
 }
 
