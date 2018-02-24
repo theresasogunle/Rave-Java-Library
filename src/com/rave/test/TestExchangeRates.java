@@ -13,7 +13,7 @@ import com.rave.ExchangeRates;
  */
 public class TestExchangeRates {
     public static void main(String [] args){
-    ExchangeRates e=new ExchangeRates();
+        ExchangeRates e=new ExchangeRates();
         System.out.println(e.forex("NGN", "USD", "300"));
     
     }

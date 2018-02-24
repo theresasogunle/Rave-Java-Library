@@ -42,10 +42,6 @@ public class TestCardCharge {
       // JSONObject validateCharge=ch.validateCardCharge("FLW-MOCK-d310263f5f73e51d01e6dab32c893679", "12345");
        
       //  System.out.println(validateCharge);
-       
-
-
-
-     
+      
     }
 }

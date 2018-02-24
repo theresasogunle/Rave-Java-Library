@@ -13,7 +13,7 @@ import com.rave.Bank;
  */
 public class TestBank {
     public static void main(String [] args){
-    Bank b= new Bank();
+        Bank b= new Bank();
         System.out.println(b.getAllBanks());
     }
 }
