@@ -21,12 +21,12 @@ public class Charge {
     Keys key= new Keys();
 /**
  *
- * @param encrypted_message
+ * @param client
  * @return JSONObject
  */
     
     //for all charges
-    public JSONObject charge(String encrypted_message){
+    public JSONObject charge(String client){
         this.apiConnection = new ApiConnection(ed.getChargeEndPoint());
           
        String alg="3DES-24";
@@ -34,9 +34,7 @@ public class Charge {
         ApiQuery api=new ApiQuery();
         
         api.putParams("PBFPubKey", key.getPublicKey());
-        System.out.println(key.getPublicKey());
-        api.putParams("client", encrypted_message);
-        System.out.println(encrypted_message);
+        api.putParams("client", client);
         api.putParams("alg", alg);
       
         

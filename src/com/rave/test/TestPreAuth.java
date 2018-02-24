@@ -22,31 +22,32 @@ public class TestPreAuth {
        //card charge
        try{
        
-  api.put("cardno", "5438898014560229");
-  api.put("charge_type","preauth");
- api.put("cvv", "812");
-  api.put("expirymonth", "08");
-  api.put("expiryyear","20");
- api.put( "currency", "NGN");
-  api.put("country", "NG");
-  api.put("amount", "100");
-  api.put("email", "user@example.com");
-  api.put("phonenumber", "08056552980");
-  api.put("firstname", "user");
-  api.put("lastname", "example");
-  api.put("IP", "40.198.14");
-  api.put("txRef", "MXX-ASC-4578");
-  api.put("redirect_url", "https://rave-web.herokuapp.com/receivepayment");
-  api.put("device_fingerprint", "69e6b7f0b72037aa8428b70fbe03986c");
+        api.put("cardno", "5438898014560229");
+        api.put("charge_type","preauth");
+        api.put("cvv", "812");
+        api.put("expirymonth", "08");
+        api.put("expiryyear","20");
+        api.put( "currency", "NGN");
+        api.put("country", "NG");
+        api.put("amount", "100");
+        api.put("email", "user@example.com");
+        api.put("phonenumber", "08056552980");
+        api.put("firstname", "user");
+        api.put("lastname", "example");
+        api.put("IP", "40.198.14");
+        api.put("txRef", "MXX-ASC-4578");
+        api.put("redirect_url", "https://rave-web.herokuapp.com/receivepayment");
+        api.put("device_fingerprint", "69e6b7f0b72037aa8428b70fbe03986c");
        
        }catch(Exception ex){}
        String encrypted_message= encryption.encryptParameters(api);
        
        
        JSONObject charge=ch.preAuthorizeCard(encrypted_message);
-       
-       JSONObject capture=ch.capture("FLW-MOCK-d310263f5f73e51d01e6dab32c893679");
-       JSONObject refundOrVoid=ch.refundOrVoid("FLW-MOCK-d310263f5f73e51d01e6dab32c893679","refund");
+       ch.flwref="FLW-MOCK-d310263f5f73e51d01e6dab32c893679";
+       ch.action="refund";
+       ch.capture();
+       ch.refundOrVoid();
        
        
        System.out.println(charge);

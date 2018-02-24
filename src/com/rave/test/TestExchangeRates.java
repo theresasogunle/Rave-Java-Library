@@ -5,6 +5,7 @@
  */
 package com.rave.test;
 
+import com.rave.ApiQuery;
 import com.rave.ExchangeRates;
 
 /**
@@ -13,8 +14,12 @@ import com.rave.ExchangeRates;
  */
 public class TestExchangeRates {
     public static void main(String [] args){
-    ExchangeRates e=new ExchangeRates();
-        System.out.println(e.forex("NGN", "USD", "300"));
+      
+        ExchangeRates e=new ExchangeRates();
+        e.amount="500";
+        e.destination_currency="USD";
+        e.origin_currency="NGN";
+        System.out.println( e.forex());
     
     }
 }

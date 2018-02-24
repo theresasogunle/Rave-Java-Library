@@ -19,15 +19,16 @@ public class TestCardCharge {
        
        //card charge
        try{
-       api.put("cardno", "5438898014560229");
-       api.put("cvv", "789");
+       api.put("cardno", "4187427415564246");
+       api.put("cvv", "828");
        api.put("currency", "NGN");
        api.put("country", "NG");
        api.put("amount", "6000");
        api.put("expiryyear", "19");
        api.put("expirymonth", "09");
-       api.put("suggested_auth", "pin");
-       api.put("pin", "3310");
+      // api.put("suggested_auth", "pin");
+     //  api.put("pin", "3310");
+       api.put("redirect_url", "http://www.google.com");
        api.put("email", "sogunledolapo@gmail.com");
        api.put("IP", "103.238.105.185");
        api.put("txRef", "MXX-ASC-4578");
@@ -37,15 +38,17 @@ public class TestCardCharge {
        String encrypted_message= encryption.encryptParameters(api);
        
        
-      // JSONObject charge=ch.chargeCard(encrypted_message);
+      JSONObject charge=ch.chargeCard(encrypted_message);
+       ch.otp="12345";
+       ch.transaction_reference="FLW-MOCK-XXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+    //  JSONObject validateCharge=ch.validateCardChargeWithPin();
        
-      // JSONObject validateCharge=ch.validateCardCharge("FLW-MOCK-d310263f5f73e51d01e6dab32c893679", "12345");
-       
-      //  System.out.println(validateCharge);
-       
-
-
-
-     
+       //for visa and intl cards
+       /*
+       ch.authUrl="yourauthurl";
+       ch.validateCardChargeVB();
+               */
+      System.out.println(charge);
+      
     }
 }

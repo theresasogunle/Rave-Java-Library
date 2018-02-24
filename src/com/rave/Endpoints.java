@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 public class Endpoints {
        Keys key= new Keys();
       String staging_url="http://flw-pms-dev.eu-west-1.elasticbeanstalk.com/";
-      String live_url="https://api.ravepay.co";
+      String live_url="https://api.ravepay.co/";
       String  url;
       public  String BANK_ENDPOINT;
       public static String CARD_CHARGE_ENDPOINT;
@@ -26,7 +26,7 @@ public class Endpoints {
       public static String REFUND_ENDPOINT;
       public static String FOREX_ENDPOINT;
       public static String VERIFY_TRANSACTION_ENDPOINT;
-      public static String VERIFY_XQUERY_ENDPOINT;
+      public static String VERIFY_XREQUERY_ENDPOINT;
       public static String CAPTURE_ENDPOINT;
       public static String REFUNDVOID_ENDPOINT;
       
@@ -56,7 +56,7 @@ public class Endpoints {
        REFUND_ENDPOINT=url+"gpx/merchant/transactions/refund";
        FOREX_ENDPOINT=url+"/flwv3-pug/getpaidx/api/forex";
        VERIFY_TRANSACTION_ENDPOINT=url+"flwv3-pug/getpaidx/api/verify";
-       VERIFY_XQUERY_ENDPOINT=url+"flwv3-pug/getpaidx/api/xrequery";
+       VERIFY_XREQUERY_ENDPOINT=url+"flwv3-pug/getpaidx/api/xrequery";
         CAPTURE_ENDPOINT=url+"flwv3-pug/getpaidx/api/capture";
         REFUNDVOID_ENDPOINT=url+"flwv3-pug/getpaidx/api/refundorvoid";
         
@@ -97,9 +97,9 @@ public class Endpoints {
          return VERIFY_TRANSACTION_ENDPOINT;
      
      }
-     public String getVerifyXqueryEndPoint(){
+     public String getVerifyXrequeryEndPoint(){
          init();
-         return VERIFY_XQUERY_ENDPOINT;
+         return VERIFY_XREQUERY_ENDPOINT;
      
      }
      public String getCaptureEndPoint(){

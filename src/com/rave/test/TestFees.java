@@ -13,11 +13,14 @@ import org.json.JSONObject;
  * @author Theresa
  */
 public class TestFees {
-     public static void main(String[] args){
-    JSONObject api=new JSONObject();
-    Fees rf=new Fees();
-        System.out.println(rf.getFees("5000","NGN"));
-         System.out.println(rf.getFeesForCard6("5000", "NGN", "674893"));
+    public static void main(String[] args){
+        Fees fee=new Fees();
+        fee.amount="500";
+        fee.card6="673900";
+        fee.currency="NGN";
+        
+        //System.out.println(fee.getFees());
+        //System.out.println(fee.getFeesForCard6());
     
     }
 }

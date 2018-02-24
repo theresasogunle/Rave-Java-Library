@@ -19,7 +19,7 @@ import static org.apache.http.conn.ssl.SSLConnectionSocketFactory.BROWSER_COMPAT
 import org.apache.http.conn.ssl.SSLContexts;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.json.JSONException;
+
 
 /**
  * @author Theresa

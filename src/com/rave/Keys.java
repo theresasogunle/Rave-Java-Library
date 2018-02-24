@@ -35,7 +35,7 @@ public class Keys {
         try{
         keyObject = new JSONObject(fileContent).getJSONObject("API_KEYS");
       
-        this.env= keyObject.getString("ENV_KEY");
+        this.env= keyObject.getString("ENV");
         this.SECRET_KEY = keyObject.getString("SECRET_KEY");
         this.PUBLIC_KEY = keyObject.getString("PUBLIC_KEY");
        
@@ -78,9 +78,8 @@ public class Keys {
                    e.printStackTrace();
                }
                String public_key=key.PUBLIC_KEY;
-                 //System.out.println(public_key);
                  
-                 return public_key;
+               return public_key;
         
         }
      public String getSecretKey(){

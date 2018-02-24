@@ -25,27 +25,26 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Encryption {
-     private String key;
-       private ApiConnection apiConnection;
-       Keys keys= new Keys();
-        String cardno,currency,country,cvv,amount,expiryyear, expirymonth,suggested_auth, pin, email,  IP,txRef,device_fingerprint,redirectUrl;
+    private String key;
+    private ApiConnection apiConnection;
+    Keys keys= new Keys();
+    String cardno,currency,country,cvv,amount,expiryyear, expirymonth,suggested_auth, pin, email,  IP,txRef,device_fingerprint,redirectUrl;
       
         
-// Method to turn bytes in hex
-  public static String toHexStr(byte[] bytes){
+    // Method to turn bytes in hex
+    public static String toHexStr(byte[] bytes){
 
-       StringBuilder builder = new StringBuilder();
+        StringBuilder builder = new StringBuilder();
 
-       for(int i = 0; i < bytes.length; i++ ){
-           builder.append(String.format("%02x", bytes[i]));
-       }
+        for(int i = 0; i < bytes.length; i++ ){
+            builder.append(String.format("%02x", bytes[i]));
+        }
 
-       return builder.toString();
-   }
+        return builder.toString();
+    }
 
-   // this is the getKey function that generates an encryption Key for you by passing your Secret Key as a parameter.
-
-   public static String getKey(String seedKey) {
+    // this is the getKey function that generates an encryption Key for you by passing your Secret Key as a parameter.
+    public static String getKey(String seedKey) {
         try {
             MessageDigest md = MessageDigest.getInstance("md5");
             byte[] hashedString = md.digest(seedKey.getBytes("utf-8"));
@@ -65,8 +64,7 @@ public class Encryption {
     }
 
     // This is the encryption function that encrypts your payload by passing the stringified format and your encryption Key.
-
-public static String encryptData(String message, String _encryptionKey)  {
+    public static String encryptData(String message, String _encryptionKey)  {
         try {
             final byte[] digestOfPassword = _encryptionKey.getBytes("utf-8");
             final byte[] keyBytes = Arrays.copyOf(digestOfPassword, 24);
@@ -84,47 +82,47 @@ public static String encryptData(String message, String _encryptionKey)  {
             return "";
         }
         
-       
-}/**
- *
- * @param api(JSON object)
- * @return String
- */
+    }
 
+    /**
+    *
+    * @param api(JSON object)
+    * @return String
+    */
     public String encryptParameters(JSONObject api){
            
-              try{
-               api.put("PBFPubKey",keys.getPublicKey());
-              }catch(Exception ex){}
-               
-              String message= api.toString();
-             
-             
-              
-              String encrypt_secret_key=getKey(keys.getSecretKey());
-              String encrypted_message= encryptData(message,encrypt_secret_key);
+        try{
+            api.put("PBFPubKey",keys.getPublicKey());
+        }catch(Exception ex){}
+        
+        String message= api.toString();
+        
+        String encrypt_secret_key=getKey(keys.getSecretKey());
+        String encrypted_message= encryptData(message,encrypt_secret_key);
 
 
-               return encrypted_message;
+        return encrypted_message;
 
-               }
+    }
+
+    //for test
     public String encryptParametersPreAuth(JSONObject api){
            
-              try{
-               api.put("PBFPubKey","FLWPUBK-8cd258c49f38e05292e5472b2b15906e-X");
-              }catch(Exception ex){}
-               
-              String message= api.toString();
-             
-             
-              
-              String encrypt_secret_key=getKey("FLWSECK-c51891678d48c39eff3701ff686bdb69-X");
-              String encrypted_message= encryptData(message,encrypt_secret_key);
+        try{
+            api.put("PBFPubKey","FLWPUBK-8cd258c49f38e05292e5472b2b15906e-X");
+        }catch(Exception ex){}
+        
+        String message= api.toString();
+        
+        
+        
+        String encrypt_secret_key=getKey("FLWSECK-c51891678d48c39eff3701ff686bdb69-X");
+        String encrypted_message= encryptData(message,encrypt_secret_key);
 
 
-               return encrypted_message;
+        return encrypted_message;
 
-               }
+    }
         
        
     

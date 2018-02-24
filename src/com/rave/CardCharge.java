@@ -18,24 +18,25 @@ public class CardCharge {
     Endpoints ed=new Endpoints();
     ApiConnection apiConnection;
     Keys key=new Keys();
+   public String transaction_reference,otp, authUrl;
     /**
- *
- * @param encrypted_message
- * @return JSONObject
- */
+    *
+    * @param client
+    * @return JSONObject
+    */
     //charge visa,mastercard,intl and verve cards
-     public JSONObject chargeCard(String encrypted_message){
+    public JSONObject chargeCard(String client){
         Charge ch=new Charge();
         
-        return ch.charge(encrypted_message);
-   
-    
+        return ch.charge(client);
+        
     }
-      /*
+
+    /*
     if AuthMode::"PIN"
-    @params public_key, transaction reference(flwRef),OTP 
+    @params transaction reference(flwRef),OTP 
     */
-    public JSONObject validateCardCharge(String transaction_reference,String otp){
+    public JSONObject validateCardCharge(){
      
         this.apiConnection = new ApiConnection(ed.getValidateChargeEndPoint());
       
@@ -43,9 +44,9 @@ public class CardCharge {
         
         api.putParams("PBFPubKey",key.getPublicKey());
         api.putParams("transaction_reference", transaction_reference);
+   //  
         api.putParams("otp", otp);
-       System.out.println("Succesful");
-  
+       // System.out.println("Succesful");
        
         return this.apiConnection.connectAndQuery(api);
     }
@@ -55,7 +56,7 @@ public class CardCharge {
     @params authUrl This requires that you copy the authurl returned in the response
     and paste it in the argument and it opens a small window for card validation
     */
-    public void validateCardChargeVB(String authUrl){
+    public void validateCardChargeVB(){
      
       if (Desktop.isDesktopSupported()) {
           try{
