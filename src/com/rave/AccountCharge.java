@@ -23,13 +23,9 @@ public class AccountCharge {
    public  String transaction_reference, otp;//to be called
    
    
+    
     public JsonNode getAllBanks(){   
-     
-<<<<<<< HEAD
-=======
-    public JsonNode getAllBanks(){   
-     
->>>>>>> fedc6d2151a2f23234227b302155077bf8f274b4
+ 
         Bank b=new Bank();
     
         return b.getAllBanks();
@@ -37,36 +33,23 @@ public class AccountCharge {
 
     /**
     *
-<<<<<<< HEAD
+
     * @param client
     */   
     public JSONObject chargeAccount(String client){
         Charge ch=new Charge();
         
         return ch.charge(client);
-=======
-    * @param encrypted_message
-    */   
-    public JSONObject chargeAccount(String encrypted_message){
-        Charge ch=new Charge();
-        
-        return ch.charge(encrypted_message);
->>>>>>> fedc6d2151a2f23234227b302155077bf8f274b4
-    
-    }
 
+    }
     /**
 <<<<<<< HEAD
     * 
     * @return JSONObject
     */
     public JSONObject validateAccountCharge(){
-=======
-    * @param transaction_reference(flwRef) ,
-    * @param otp
-    */
-    public JSONObject validateAccountCharge(String transaction_reference,String otp){
->>>>>>> fedc6d2151a2f23234227b302155077bf8f274b4
+    
+  
         this.apiConnection = new ApiConnection(end.getValidateChargeEndPoint());
         ApiQuery api=new ApiQuery();
         api.putParams("PBFPubKey", key.getPublicKey());

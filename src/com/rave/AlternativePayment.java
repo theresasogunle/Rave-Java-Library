@@ -16,14 +16,13 @@ import org.json.JSONObject;
 public class AlternativePayment {
     
     ApiConnection apiConnection;
-<<<<<<< HEAD
+
      public   String txref,flwref;
-=======
->>>>>>> fedc6d2151a2f23234227b302155077bf8f274b4
+
 
     /**
     *
-    * @param encrypted_message
+    * @param client
     * @return JSONObject
     */
     
@@ -32,11 +31,9 @@ public class AlternativePayment {
         //getting charge endpoint
         Charge cha= new Charge();
         
-<<<<<<< HEAD
+
         return  cha.charge(client); 
-=======
-        return  cha.charge(encrypted_message); 
->>>>>>> fedc6d2151a2f23234227b302155077bf8f274b4
+
     }
 
     /**
@@ -46,20 +43,13 @@ public class AlternativePayment {
     * @return JSONObject
     */ 
     //to requery transaction for ghana mobile money,kenya mpesa and nigerian ussd using xquery
-<<<<<<< HEAD
+
     public JSONObject completeTransactionWithXrequery(){
      
         Transaction t= new Transaction();
         
         return t.verifyTransactionXrequery();
-=======
-    public JSONObject completeTransactionWithXquery(String txref="", String flwref=""){
-     
-        Transaction t= new Transaction();
-        
-        return t.verifyTransactionXquery(txref, flwref);
->>>>>>> fedc6d2151a2f23234227b302155077bf8f274b4
-    
+
     }
 
     /**
@@ -67,11 +57,9 @@ public class AlternativePayment {
     * @param flw_ref
     * @return JSONObject
     */
-<<<<<<< HEAD
+
     public JSONObject completeTransactionRequery(){   
-=======
-    public JSONObject completeTransactionRequery(String flw_ref){   
->>>>>>> fedc6d2151a2f23234227b302155077bf8f274b4
+   
         Transaction t= new Transaction();
         
         return t.verifyTransactionRequery();

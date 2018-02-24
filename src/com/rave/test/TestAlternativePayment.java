@@ -7,12 +7,11 @@ package com.rave.test;
 
 //import com.rave.AlternativePayment;
 //import com.rave.Encryption;
-<<<<<<< HEAD
+
 import com.rave.AlternativePayment;
 import com.rave.Encryption;
-=======
->>>>>>> fedc6d2151a2f23234227b302155077bf8f274b4
 import org.json.JSONObject;
+
 
 /**
  *
@@ -84,11 +83,9 @@ public class TestAlternativePayment {
     JSONObject charge=ch.alternativePaymentCharge(encrypted_message);
        
     // JSONObject validateCharge=ch.validateCardCharge("FLW-MOCK-d310263f5f73e51d01e6dab32c893679", "12345");
-<<<<<<< HEAD
     ch.completeTransactionRequery();
     ch.completeTransactionWithXrequery();
-=======
->>>>>>> fedc6d2151a2f23234227b302155077bf8f274b4
+
        
     System.out.println(charge);
     

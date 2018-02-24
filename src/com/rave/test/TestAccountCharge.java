@@ -20,11 +20,9 @@ public class TestAccountCharge {
         Encryption encryption=new Encryption();
         AccountCharge ch=new AccountCharge();
         
-<<<<<<< HEAD
+
         //account charge
-=======
-        //card charge
->>>>>>> fedc6d2151a2f23234227b302155077bf8f274b4
+
         try{
         api.put("accountnumber", "0690000004");
         api.put("accountbank", "044");
@@ -43,15 +41,12 @@ public class TestAccountCharge {
         String encrypted_message= encryption.encryptParameters(api);
         
         JSONObject res=ch.chargeAccount(encrypted_message);
-<<<<<<< HEAD
+
         //validate
         ch.otp="12345";
         ch.transaction_reference="ACHG-1519428047882";
         JSONObject val=ch.validateAccountCharge();
-=======
-        
-        JSONObject val=ch.validateAccountCharge("ACHG-1519428047882", "12345");
->>>>>>> fedc6d2151a2f23234227b302155077bf8f274b4
+
         System.out.println(val);
     }
 }

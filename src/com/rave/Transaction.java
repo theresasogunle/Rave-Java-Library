@@ -19,11 +19,9 @@ public class Transaction {
    public String txref,flwref;
     
     //requery all failed transactions
-<<<<<<< HEAD
+
     public JSONObject verifyTransactionRequery(){   
-=======
-    public JSONObject verifyTransactionRequery(String flw_ref){   
->>>>>>> fedc6d2151a2f23234227b302155077bf8f274b4
+
       this.apiConnection = new ApiConnection(end.getVerifyEndPoint());
       ApiQuery api= new ApiQuery();
      
@@ -33,15 +31,11 @@ public class Transaction {
       return this.apiConnection.connectAndQuery(api);
     }
     
-<<<<<<< HEAD
+
     public JSONObject verifyTransactionXrequery(){   
      
       this.apiConnection = new ApiConnection(end.getVerifyXrequeryEndPoint());
-=======
-    public JSONObject verifyTransactionXquery(String txref="", String flwref=""){   
-     
-      this.apiConnection = new ApiConnection(end.getVerifyXqueryEndPoint());
->>>>>>> fedc6d2151a2f23234227b302155077bf8f274b4
+
       ApiQuery api= new ApiQuery();
       
       api.putParams("txref", txref);

@@ -105,10 +105,8 @@ public class Encryption {
 
     }
 
-<<<<<<< HEAD
     //for test
-=======
->>>>>>> fedc6d2151a2f23234227b302155077bf8f274b4
+
     public String encryptParametersPreAuth(JSONObject api){
            
         try{

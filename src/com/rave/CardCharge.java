@@ -30,16 +30,9 @@ public class CardCharge {
         Charge ch=new Charge();
         
         return ch.charge(client);
-=======
-    * @param encrypted_message
-    * @return JSONObject
-    */
-    //charge visa,mastercard,intl and verve cards
-    public JSONObject chargeCard(String encrypted_message){
-        Charge ch=new Charge();
+
         
-        return ch.charge(encrypted_message);
->>>>>>> fedc6d2151a2f23234227b302155077bf8f274b4
+
         
     }
 
@@ -47,11 +40,9 @@ public class CardCharge {
     if AuthMode::"PIN"
     @params transaction reference(flwRef),OTP 
     */
-<<<<<<< HEAD
+
     public JSONObject validateCardCharge(){
-=======
-    public JSONObject validateCardCharge(String transaction_reference,String otp=""){
->>>>>>> fedc6d2151a2f23234227b302155077bf8f274b4
+
      
         this.apiConnection = new ApiConnection(ed.getValidateChargeEndPoint());
       
@@ -61,12 +52,7 @@ public class CardCharge {
         api.putParams("transaction_reference", transaction_reference);
    //  
         api.putParams("otp", otp);
-<<<<<<< HEAD
-       // System.out.println("Succesful");
-=======
-        System.out.println("Succesful");
->>>>>>> fedc6d2151a2f23234227b302155077bf8f274b4
-       
+
         return this.apiConnection.connectAndQuery(api);
     }
     

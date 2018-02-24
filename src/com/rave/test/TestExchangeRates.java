@@ -14,17 +14,14 @@ import com.rave.ExchangeRates;
  */
 public class TestExchangeRates {
     public static void main(String [] args){
-<<<<<<< HEAD
+
       
         ExchangeRates e=new ExchangeRates();
         e.amount="500";
         e.destination_currency="USD";
         e.origin_currency="NGN";
         System.out.println( e.forex());
-=======
-        ExchangeRates e=new ExchangeRates();
-        System.out.println(e.forex("NGN", "USD", "300"));
->>>>>>> fedc6d2151a2f23234227b302155077bf8f274b4
+
     
     }
 }

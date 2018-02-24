@@ -2,13 +2,12 @@
 
 ### Class Name - CardCharge
 
-<<<<<<< HEAD
+
 #### Fields
 	 >transaction_reference(flwref) - This is the transaction reference
     
     	>otp
-=======
->>>>>>> fedc6d2151a2f23234227b302155077bf8f274b4
+
 #### Methods
 1. chargeCard(String client)
 
@@ -65,14 +64,10 @@ String encrypted_message= encryption.encryptParameters(api);
 
 
 // JSONObject charge=ch.chargeCard(encrypted_message);
-<<<<<<< HEAD
+
    ch.transaction_reference="FLW-MOCK-XXXXXXXXXXXXXXXXXXXXXXXXXXXX";
    ch.otp="123456";
 // JSONObject validateCharge=ch.validateCardCharge();
-=======
-
-// JSONObject validateCharge=ch.validateCardCharge("FLW-MOCK-d310263f5f73e51d01e6dab32c893679", "12345");
->>>>>>> fedc6d2151a2f23234227b302155077bf8f274b4
 
 //  System.out.println(validateCharge);
 ```

@@ -2,7 +2,7 @@
 
 ### Class Name - Fees
 
-<<<<<<< HEAD
+
 #### Fields
     >currency - This is the specified currency to charge the card in.
     >amount - This is the amount of the product or service to charged from the customer
@@ -10,21 +10,16 @@
 
 #### Methods
 1. getFees()
-=======
-#### Methods
-1. getFees(String amount,String currency)
->>>>>>> fedc6d2151a2f23234227b302155077bf8f274b4
+
 
     >currency - This is the specified currency to charge the card in.
     >amount - This is the amount of the product or service to charged from the customer
 
     returns `JSONObject`
     
-<<<<<<< HEAD
+
 2. getFeesForCard6()
-=======
-2. getFeesForCard6(String amount,String currency, String card6)
->>>>>>> fedc6d2151a2f23234227b302155077bf8f274b4
+
     >currency - This is the specified currency to charge the card in.
     >amount - This is the amount of the product or service to charged from the customer
     >card6 - The first 6digits of their card number, it also helps determine international fees on the transaction if the card being used is an international card
@@ -45,7 +40,7 @@
 #### Sample
 
 ```java
-<<<<<<< HEAD
+
 Fees fee=new Fees();
 //set field values
 fee.currency="NGN";
@@ -54,10 +49,6 @@ fee.card6="674893";
 
 System.out.println(rf.getFees());
 System.out.println(rf.getFeesForCard6());
-=======
-Fees rf=new Fees();
-System.out.println(rf.getFees("5000","NGN"));
-System.out.println(rf.getFeesForCard6("5000", "NGN", "674893"));
->>>>>>> fedc6d2151a2f23234227b302155077bf8f274b4
+
 ```
 
