@@ -26,7 +26,7 @@ Rave-Java-Library facilites quick and easy development and integration of Java b
 }
 ```
 
-- `ENV_KEY` - Either `LIVE` or `TESTING`
+- `ENV` - Either `LIVE` or `TESTING`
 - `PUBLIC_KEY` - Gotten From Your Rave Dashboard
 - `SECRET_KEY` - Gotten From Your Rave Dashboard
 
