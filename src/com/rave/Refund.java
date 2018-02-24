@@ -16,15 +16,14 @@ public class Refund {
     private ApiConnection apiConnection;
     private Keys key= new Keys();
     Endpoints end= new Endpoints();
-    public JSONObject refund(String ref){
-          this.apiConnection = new ApiConnection(end.getRefundEndPoint());
-      ApiQuery api= new ApiQuery();
 
-      api.putParams("ref", ref);
-      api.putParams("seckey", key.getSecretKey());
-      
-   
-      return this.apiConnection.connectAndQuery(api);
-    
+    public JSONObject refund(String ref){
+        this.apiConnection = new ApiConnection(end.getRefundEndPoint());
+        ApiQuery api= new ApiQuery();
+
+        api.putParams("ref", ref);
+        api.putParams("seckey", key.getSecretKey());
+
+        return this.apiConnection.connectAndQuery(api);
     }
 }

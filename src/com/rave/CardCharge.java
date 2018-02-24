@@ -19,23 +19,23 @@ public class CardCharge {
     ApiConnection apiConnection;
     Keys key=new Keys();
     /**
- *
- * @param encrypted_message
- * @return JSONObject
- */
+    *
+    * @param encrypted_message
+    * @return JSONObject
+    */
     //charge visa,mastercard,intl and verve cards
-     public JSONObject chargeCard(String encrypted_message){
+    public JSONObject chargeCard(String encrypted_message){
         Charge ch=new Charge();
         
         return ch.charge(encrypted_message);
-   
-    
+        
     }
-      /*
+
+    /*
     if AuthMode::"PIN"
-    @params public_key, transaction reference(flwRef),OTP 
+    @params transaction reference(flwRef),OTP 
     */
-    public JSONObject validateCardCharge(String transaction_reference,String otp){
+    public JSONObject validateCardCharge(String transaction_reference,String otp=""){
      
         this.apiConnection = new ApiConnection(ed.getValidateChargeEndPoint());
       
@@ -44,8 +44,7 @@ public class CardCharge {
         api.putParams("PBFPubKey",key.getPublicKey());
         api.putParams("transaction_reference", transaction_reference);
         api.putParams("otp", otp);
-       System.out.println("Succesful");
-  
+        System.out.println("Succesful");
        
         return this.apiConnection.connectAndQuery(api);
     }

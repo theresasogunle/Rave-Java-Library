@@ -78,9 +78,8 @@ public class Keys {
                    e.printStackTrace();
                }
                String public_key=key.PUBLIC_KEY;
-                 //System.out.println(public_key);
                  
-                 return public_key;
+               return public_key;
         
         }
      public String getSecretKey(){
