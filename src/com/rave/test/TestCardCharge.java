@@ -43,12 +43,18 @@ public class TestCardCharge {
        ch.transaction_reference="FLW-MOCK-XXXXXXXXXXXXXXXXXXXXXXXXXXXX";
     //  JSONObject validateCharge=ch.validateCardChargeWithPin();
        
+<<<<<<< HEAD
        //for visa and intl cards
        /*
        ch.authUrl="yourauthurl";
        ch.validateCardChargeVB();
                */
       System.out.println(charge);
+=======
+      // JSONObject validateCharge=ch.validateCardCharge("FLW-MOCK-d310263f5f73e51d01e6dab32c893679", "12345");
+       
+      //  System.out.println(validateCharge);
+>>>>>>> fedc6d2151a2f23234227b302155077bf8f274b4
       
     }
 }

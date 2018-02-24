@@ -2,11 +2,14 @@
 
 ### Class Name - AlternativePayment
 
+<<<<<<< HEAD
 #### Fields
     >txref - This is the merchant's unique transaction reference.
     
     >flwref - This is the payment gateway's unique reference.
     
+=======
+>>>>>>> fedc6d2151a2f23234227b302155077bf8f274b4
 #### Methods
 1. alternativePaymentCharge(String client)
 
@@ -18,7 +21,11 @@
 
     returns `JSONObject`
 
+<<<<<<< HEAD
 2. completeTransactionWithXrequery()
+=======
+2. completeTransactionWithXquery(String txref, String flwref)
+>>>>>>> fedc6d2151a2f23234227b302155077bf8f274b4
     
     To verify/requery transaction for ghana mobile money,kenya mpesa and nigerian ussd using your transaction reference
     
@@ -32,7 +39,11 @@
     
     returns `JSONObject`
     
+<<<<<<< HEAD
 3. completeTransactionRequery()
+=======
+3. completeTransactionRequery(String flw_ref)
+>>>>>>> fedc6d2151a2f23234227b302155077bf8f274b4
 
     To verify/requery transaction for ghana mobile money,kenya mpesa and nigerian ussd using your flwref
     
@@ -107,6 +118,7 @@ try{
    api.put("orderRef", "");
    
 }catch(Exception ex){}
+<<<<<<< HEAD
 JSONObject charge=ch.alternativePaymentCharge(encrypted_message);
 
 
@@ -118,6 +130,14 @@ JSONObject charge=ch.alternativePaymentCharge(encrypted_message);
 	 ch.completeTransactionWithXrequery();
        
    // System.out.println(charge);
+=======
+//  String encrypted_message= encryption.encryptParameters(api);
+JSONObject charge=ch.alternativePaymentCharge(encrypted_message);
+   
+// JSONObject validateCharge=ch.validateCardCharge("FLW-MOCK-d310263f5f73e51d01e6dab32c893679", "12345");
+   
+System.out.println(charge);
+>>>>>>> fedc6d2151a2f23234227b302155077bf8f274b4
 
 }
 ```

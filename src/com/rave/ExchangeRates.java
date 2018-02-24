@@ -24,7 +24,11 @@ public class ExchangeRates {
  * @return JSONObject
  */
      
+<<<<<<< HEAD
     public JSONObject forex(){
+=======
+    public JSONObject forex(String origin_currency,String destination_currency,String amount=""){
+>>>>>>> fedc6d2151a2f23234227b302155077bf8f274b4
         
       this.apiConnection = new ApiConnection(end.getForexEndPoint());
       ApiQuery api= new ApiQuery();

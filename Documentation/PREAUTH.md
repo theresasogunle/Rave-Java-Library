@@ -1,12 +1,18 @@
 ## PreAuthorization
 
 ### Class Name - Fees
+<<<<<<< HEAD
  >flwRef(ref) - This is the payment gateway's unique reference.
  >action - This is the action to be taken i.e. `refund` or `void`
 #### Fields
 
 #### Methods
 1. preAuthorizeCard(String client)
+=======
+
+#### Methods
+1. preAuthorizeCard(String encrypted_message)
+>>>>>>> fedc6d2151a2f23234227b302155077bf8f274b4
 
     >client - This is the encrypted client details gotten from the [encryption method](ENCRYPTION.md)
 
@@ -17,7 +23,11 @@
     
     returns `JSONObject`
     
+<<<<<<< HEAD
 3. refundOrVoid()
+=======
+3. refundOrVoid(String ref,String action)
+>>>>>>> fedc6d2151a2f23234227b302155077bf8f274b4
     >ref - This is the `flwRef` returned in the `capture response.`
     >action - This is the action to be taken i.e. `refund` or `void`
  
@@ -54,10 +64,16 @@ String encrypted_message= encryption.encryptParameters(api);
 
 
 JSONObject charge=ch.preAuthorizeCard(encrypted_message);
+<<<<<<< HEAD
 ch.flwRef=""FLW-MOCK-d310263f5f73e51d01e6dab32c893679";
 ch.action="refund";
 JSONObject capture=ch.capture();
 JSONObject refundOrVoid=ch.refundOrVoid();
+=======
+
+JSONObject capture=ch.capture("FLW-MOCK-d310263f5f73e51d01e6dab32c893679");
+JSONObject refundOrVoid=ch.refundOrVoid("FLW-MOCK-d310263f5f73e51d01e6dab32c893679","refund");
+>>>>>>> fedc6d2151a2f23234227b302155077bf8f274b4
 
 
 System.out.println(charge);

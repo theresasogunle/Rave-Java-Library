@@ -54,8 +54,12 @@ public class PreAuthorization {
       ApiQuery api= new ApiQuery();
     
       String secret_key="FLWSECK-c51891678d48c39eff3701ff686bdb69-X";
+<<<<<<< HEAD
      // String secret_key=key.getSecretKey();
       api.putParams("flwRef", flwref);
+=======
+      api.putParams("flwRef", flwRef);
+>>>>>>> fedc6d2151a2f23234227b302155077bf8f274b4
       api.putParams("SECKEY", secret_key);
       
     
