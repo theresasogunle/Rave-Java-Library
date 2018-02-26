@@ -5,6 +5,11 @@ Rave-Java-Library facilites quick and easy development and integration of Java b
 - **Tags:** rave, flutterwave, payment gateway, bank account, credit card, debit card, nigeria, kenya, ghana, international, mastercard, visa, KES, GHC, NGN,  Java.
 
 # Getting Started
+
+## Prerequisite
+> Signup for a test account [here](http://rave.frontendpwc.com/)
+> Signup for a live account [here](https://rave.flutterwave.com)
+
 ## Installation
 - Download Rave-Java-Library
 - Install [rave-java-1.0.jar](lib/rave-java-1.0.jar?raw=true), Located in the lib folder of this project. 
@@ -31,9 +36,6 @@ Rave-Java-Library facilites quick and easy development and integration of Java b
 - `SECRET_KEY` - Gotten From Your Rave Dashboard
 
 - Set to go 💪
-
-
-> You can signup for an account [here](https://rave.flutterwave.com)
 
 
 ## Sample Use
