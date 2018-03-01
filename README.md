@@ -13,11 +13,12 @@ Rave-Java-Library facilites quick and easy development and integration of Java b
 ## Installation
 - Download Rave-Java-Library
 - Install [rave-java-1.0.jar](lib/rave-java-1.0.jar?raw=true), Located in the lib folder of this project. 
+- Install the other needed library dependencies which are also contained in the [`Lib folder`](lib) in the [`Rave-Java-Library project`](lib)
+
+### How to Install Libraries
 >On Netbeans IDE: `Project properties -> Libraries -> Compile -> ADD JAR/folder -> Add Jar`
 
 >On Intelli J IDEA: `File > Project Structure -> Project Settings > Modules > Dependencies > "+" sign > JARs or directories`
-
-- The other needed dependencies are contained in the `Lib folder` in the [`Rave-Java-Library project`](lib)
 
 - Add a file to your root folder as `env.json` which will contain your `public key`, `secret key` and `environment`
 
