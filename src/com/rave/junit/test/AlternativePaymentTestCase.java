@@ -66,7 +66,7 @@ public class AlternativePaymentTestCase {
         .setEmail("sogunledolapo@gmail.com")
         .setIP("103.238.105.185")
         .setTxRef("MXX-90-49578")
-       .setPhonenumber("0908467482");
+       .setPhonenumber("08020000000");
       
        
   

@@ -3,23 +3,23 @@
 ### Class Name - AlternativePayment
 
 
-#### Fields
+#### Chaining Methods
 
->accountnumber
->accountbank
->currency
->country
->amount
->firstname
->lastname
->pin
->email
->IP
->txRef
->phonenumber
->orderRef
->network
->flwRef
+>setAccountnumber("0690000031") `Set the customers account number`
+>setAccountbank("044") `Set the bank shortcode`
+>setCurrency("NGN")  `Set the currency (defaults to NGN) (Optional)`
+>setCountry("NG") `Set the country (defaults to Nigeria) (Optional)`
+>setAmount("1000") `Set the amount`
+>setEmail("flamekeed@gmail.com")  `Set the customers email`
+>setPhonenumber("08020000000")  `Set the customers phone number`
+>setFirstname("Oluwole") `Set the customers first name`
+>setLastname("Adebiyi") `Set the customers last name`
+>setPin("3310") `Set The customers pin`
+>setIP("127.0.0.0")  `Set the IP address`
+>setTxRef("CA-GHHH-KLJH1234")  `Set the txref`
+>setOrderRef("CA-GHHH-KLJH1234") `Unique ref for the mpesa transaction to be provided by the merchant.`
+>setNetwork("MTN") `This is the customer's mobile money network provider.`
+>setFlwRef("FLW-MOCK-d310263f5f73e51d01e6dab32c893679") `This is the payment gateway's unique reference.`
 
 
 #### Methods
@@ -82,7 +82,7 @@ AlternativePayment ch=new AlternativePayment();
         .setEmail("sogunledolapo@gmail.com")
         .setIP("103.238.105.185")
         .setTxRef("MXX-90-49578")
-       .setPhonenumber("0908467482");
+       .setPhonenumber("08020000000");
      
       JSONObject chargegh=ch.chargeGhanaMobileMoney();
      
