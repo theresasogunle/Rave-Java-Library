@@ -26,14 +26,13 @@ public class TestAccountCharge {
             .setCurrency("NGN")
             .setLastname("Theresa")
             .setIP("1.3.4.4")
-            .setPayment_type("account")
             .setTxRef("MX-678DH")
             .setEmail("sogunledolapo@gmail.com");
           
           
           
            JSONObject result=ch.chargeAccount();
-           
+          // System.out.println(result);
 
         //validate
         ch.setTransaction_reference("ACHG-1520028650995");

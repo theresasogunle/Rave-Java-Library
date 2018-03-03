@@ -6,7 +6,6 @@
 package com.rave.test;
 
 import com.rave.Bank;
-import com.rave.CardCharge;
 import com.rave.Endpoints;
 import org.json.JSONException;
 

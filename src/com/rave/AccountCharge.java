@@ -27,7 +27,7 @@ public class AccountCharge {
     Encryption e=new Encryption();
     
     private String accountnumber,accountbank,currency,country,amount,email,phonenumber,firstname,lastname,IP,
-            txRef,payment_type,passcode,device_fingerprint;
+            txRef,passcode,device_fingerprint;
     
     private String transaction_reference;//to be called
     private String otp;//to be called
@@ -54,7 +54,7 @@ public class AccountCharge {
         json.put("passcode", this.getPasscode());
         json.put("email", this.getEmail());
         json.put("IP", this.getIP());
-        json.put("payment_type", this.getPayment_type());
+        json.put("payment_type", "account");
         json.put("txRef", this.getTxRef());
         json.put("device_fingerprint", this.getDevice_fingerprint());
 
@@ -278,21 +278,6 @@ public class AccountCharge {
      */
     public AccountCharge setTxRef(String txRef) {
         this.txRef = txRef;
-         return this;
-    }
-
-    /**
-     * @return the payment_type
-     */
-    public String getPayment_type() {
-        return payment_type;
-    }
-
-    /**
-     * @param payment_type the payment_type to set
-     */
-    public AccountCharge setPayment_type(String payment_type) {
-        this.payment_type = payment_type;
          return this;
     }
 

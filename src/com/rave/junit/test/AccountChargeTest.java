@@ -38,7 +38,6 @@ public class AccountChargeTest {
             .setCurrency("NGN")
             .setLastname("Theresa")
             .setIP("1.3.4.4")
-            .setPayment_type("account")
             .setTxRef("MX-678DH")
             .setEmail("sogunledolapo@gmail.com");
           

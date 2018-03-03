@@ -45,13 +45,13 @@ public class IntegrityChecksum {
        Object[] keys=payload.keySet().toArray();
        Arrays.sort(keys);
        String hashedPayload = "";
-       String hashString="";
+       
 
             for(int i=0;i<keys.length;i++){
                  Object key= keys[i];
                  hashedPayload+=payload.get(key);
             }
-                hashString  = hashedPayload + key.getSecretKey();
+              String  hashString  = hashedPayload + key.getSecretKey();
                 String hash_string="";
 
                 try{
