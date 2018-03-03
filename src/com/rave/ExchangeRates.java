@@ -54,8 +54,9 @@ public class ExchangeRates {
     /**
      * @param amount the amount to set
      */
-    public void setAmount(String amount) {
+    public ExchangeRates setAmount(String amount) {
         this.amount = amount;
+        return this;
     }
 
     /**
@@ -68,8 +69,9 @@ public class ExchangeRates {
     /**
      * @param origin_currency the origin_currency to set
      */
-    public void setOrigin_currency(String origin_currency) {
+    public ExchangeRates setOrigin_currency(String origin_currency) {
         this.origin_currency = origin_currency;
+        return this;
     }
 
     /**
@@ -82,7 +84,8 @@ public class ExchangeRates {
     /**
      * @param destination_currency the destination_currency to set
      */
-    public void setDestination_currency(String destination_currency) {
+    public ExchangeRates setDestination_currency(String destination_currency) {
         this.destination_currency = destination_currency;
+        return this;
     }
 }

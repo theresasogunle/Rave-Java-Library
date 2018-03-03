@@ -5,7 +5,6 @@
  */
 package com.rave.junit.test;
 
-import com.jayway.jsonpath.Configuration;
 import com.rave.AccountCharge;
 
 
@@ -16,7 +15,7 @@ import com.rave.Encryption;
 import org.json.JSONException;
 import org.json.JSONObject;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+
 import org.junit.Test;
 
 
@@ -32,19 +31,25 @@ public class AccountChargeTest {
       
     @Test  
     public void testAccountCharge() throws JSONException{  
-          ch.setAccountnumber("0690000031");
-            ch.setAccountbank("044");
-            ch.setAmount("1000");
-            ch.setCountry("NG");
-            ch.setCurrency("NGN");
-            ch.setLastname("Theresa");
-            ch.setIP("1.3.4.4");
-            ch.setPayment_type("account");
-            ch.setTxRef("MX-678DH");
-            ch.setEmail("sogunledolapo@gmail.com");
+          ch.setAccountnumber("0690000031")
+            .setAccountbank("044")
+            .setAmount("1000")
+            .setCountry("NG")
+            .setCurrency("NGN")
+            .setLastname("Theresa")
+            .setIP("1.3.4.4")
+            .setPayment_type("account")
+            .setTxRef("MX-678DH")
+            .setEmail("sogunledolapo@gmail.com");
           
           
-           JSONObject result=ch.chargeAccount();
+             JSONObject result=ch.chargeAccount();
+             assertEquals(result.get("status"),"success");
+           //polling
+            JSONObject poll=ch.chargeAccount(true);
+            assertEquals(poll.get("status"),"success");
+            
+          //  System.out.println(val);
           /*
            if(result.get("status").equals("success")){
             assertEquals(result.get("status"),"success");
@@ -58,35 +63,25 @@ public class AccountChargeTest {
            
       
     }
-    /*
-        @Test
-        public void verifyEncryption()throws JSONException{
-
-        Encryption e= new Encryption();
-        String encrypted_message= e.encryptParameters(json);
-
-        Object doc = Configuration.defaultConfiguration().jsonProvider().parse(json.toString());
-
-         assertTrue("expected client encrypted message", encrypted_message.equals(e.encryptParameters(json)));
-         assertEquals("expected client encrypted message",encrypted_message,e.encryptParameters(json));
-
-
-        }
-    */
+  
     @Test
     public void verifyAccountValidation()throws JSONException{ 
       
         
-        ch.setTransaction_reference("ACHG-1520028650995");
-        ch.setOtp("12345"); 
+        ch.setTransaction_reference("ACHG-1520028650995")
+          .setOtp("12345"); 
+        //for polling
+        JSONObject val=ch.validateAccountCharge(true);
+        //without polling
+        JSONObject validate=ch.validateAccountCharge();
+        
         /*
-        JSONObject response=ch.validateAccountCharge();
-       if(response.get("status").equals("success")){
-            assertEquals(response.get("status"),"success");
+       if(validate.get("status").equals("success")){
+            assertEquals(validate.get("status"),"success");
           //  System.out.println(response);
            }else{
            
-            assertEquals(response.get("status"),"error");
+            assertEquals(validate.get("status"),"error");
            //System.out.println("Validation not successful");
             //System.out.println(response);
            }

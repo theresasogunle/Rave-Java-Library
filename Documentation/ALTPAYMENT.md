@@ -4,7 +4,7 @@
 
 
 #### Fields
-<<<<<<< HEAD
+
 >accountnumber
 >accountbank
 >currency
@@ -20,12 +20,7 @@
 >orderRef
 >network
 >flwRef
-=======
->txref - This is the merchant's unique transaction reference.
 
->flwref - This is the payment gateway's unique reference.
-    
->>>>>>> 669b00a4d1f8550273617d15dbd518dbc8477d31
 
 #### Methods
 1.chargeKenyaMpesa ()
@@ -58,17 +53,17 @@ public static void main(String [] args) throws JSONException{
 JSONObject api=new JSONObject();
 Encryption encryption=new Encryption();
 AlternativePayment ch=new AlternativePayment();
- ch.setAccountnumber("0690000004");
-           ch.setAccountbank("044");
-           ch.setCurrency("NGN");
-           ch.setCountry("NG");
-           ch.setAmount("6000");
-           ch.setFirstname("pin");
-           ch.setLastname("pin");
-           ch.setPin("3310");
-           ch.setEmail("sogunledolapo@gmail.com");
-           ch.setIP("103.238.105.185");
-           ch.setTxRef("MXX-ASC-4578");      
+           ch.setAccountnumber("0690000004")
+             .setAccountbank("044")
+             .setCurrency("NGN")
+             .setCountry("NG")
+             .setAmount("6000")
+             .setFirstname("pin")
+             .setLastname("pin")
+             .setPin("3310")
+             .setEmail("sogunledolapo@gmail.com")
+             .setIP("103.238.105.185")
+             .setTxRef("MXX-ASC-4578");    
         
         
           JSONObject chargeussd=ch.chargeNigerianUssd();
@@ -76,40 +71,41 @@ AlternativePayment ch=new AlternativePayment();
 	  
 //for ghana mobile money
 
-      ch.setOrderRef("0690000");
-      ch.setNetwork("MTN");
-      ch.setCurrency("GHS");
-      ch.setCountry("GH");
-      ch.setAmount("4000");
-      ch.setFirstname("pin");
-      ch.setLastname("pin");
-      ch.setPin("3310");
-      ch.setEmail("sogunledolapo@gmail.com");
-      ch.setIP("103.238.105.185");
-      ch.setTxRef("MXX-90-49578");
-      ch.setPhonenumber("0908467482");
+     ch.setOrderRef("0690000")
+        .setNetwork("MTN")
+        .setCurrency("GHS")
+        .setCountry("GH")
+        .setAmount("4000")
+        .setFirstname("pin")
+        .setLastname("pin")
+        .setPin("3310")
+        .setEmail("sogunledolapo@gmail.com")
+        .setIP("103.238.105.185")
+        .setTxRef("MXX-90-49578")
+       .setPhonenumber("0908467482");
      
       JSONObject chargegh=ch.chargeGhanaMobileMoney();
      
      //for kenya mpesa
   
-       ch.setCurrency("KES");
-       ch.setCountry("KE");
-       ch.setAmount("6000");
-       ch.setFirstname("pin");
-       ch.setLastname("pin");
-       ch.setPin("3310");
-       ch.setEmail("sogunledolapo@gmail.com");
-       ch.setIP("103.238.105.185");
-       ch.setTxRef("MXX-ASC-4578");
-       ch.setOrderRef("y77yy");
-       ch.setPhonenumber("0903672978");
+      ch.setCurrency("KES")
+         .setCountry("KE")
+         .setAmount("6000")
+         .setFirstname("pin")
+         .setLastname("pin")
+         .setPin("3310")
+         .setEmail("sogunledolapo@gmail.com")
+         .setIP("103.238.105.185")
+         .setTxRef("MXX-ASC-4578")
+         .setOrderRef("y77yy")
+         .setPhonenumber("0903672978");
        
        JSONObject chargempesa=ch.chargeKenyaMpesa();
 	
 	//complete transaction
 	    Transaction t=new Transaction();
             t.setFlwref("FLW-MOCK-d310263f5f73e51d01e6dab32c893679");
+	       .setTxRef("");
             JSONObject response=  t.verifyTransactionRequery();
             JSONObject response=  t.verifyTransactionXrequery();
        

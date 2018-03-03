@@ -57,8 +57,9 @@ public class Transaction {
     /**
      * @param flwref the flwref to set
      */
-    public void setFlwref(String flwref) {
+    public Transaction setFlwref(String flwref) {
         this.flwref = flwref;
+        return this;
     }
 
     /**
@@ -71,8 +72,9 @@ public class Transaction {
     /**
      * @param txRef the txRef to set
      */
-    public void setTxRef(String txRef) {
+    public Transaction setTxRef(String txRef) {
         this.txRef = txRef;
+        return this;
     }
     
     

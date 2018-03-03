@@ -19,27 +19,30 @@ public class TestAccountCharge {
       
         
         AccountCharge ch=new AccountCharge();
-        
-            ch.setAccountnumber("0690000031");
-            ch.setAccountbank("044");
-            ch.setAmount("1000");
-            ch.setCountry("NG");
-            ch.setCurrency("NGN");
-            ch.setLastname("Theresa");
-            ch.setIP("1.3.4.4");
-            ch.setPayment_type("account");
-            ch.setTxRef("MX-678DH");
-            ch.setEmail("sogunledolapo@gmail.com");
+          ch.setAccountnumber("0690000031")
+            .setAccountbank("044")
+            .setAmount("1000")
+            .setCountry("NG")
+            .setCurrency("NGN")
+            .setLastname("Theresa")
+            .setIP("1.3.4.4")
+            .setPayment_type("account")
+            .setTxRef("MX-678DH")
+            .setEmail("sogunledolapo@gmail.com");
+          
           
           
            JSONObject result=ch.chargeAccount();
-       
+           
 
         //validate
         ch.setTransaction_reference("ACHG-1520028650995");
         ch.setOtp("12345"); 
+        //for polling
+        JSONObject polling=ch.validateAccountCharge(true);
+        System.out.println(polling);
+        //without polling
         JSONObject val=ch.validateAccountCharge();
-
         System.out.println(val);
     }
 }

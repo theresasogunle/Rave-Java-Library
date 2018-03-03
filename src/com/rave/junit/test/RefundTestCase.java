@@ -28,11 +28,11 @@ public class RefundTestCase {
       
         if(response.get("status").equals("success")){
             assertEquals(response.get("status"),"success");
-            System.out.println(response);
+          //  System.out.println(response);
            }else{
            
-        ///    assertEquals(response.get("status"),"error");
-            //System.out.println("Refund not successful");
+            assertEquals(response.get("status"),"error");
+           // System.out.println("Refund not successful");
          //   System.out.println(response);
            }
        

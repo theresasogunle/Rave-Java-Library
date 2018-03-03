@@ -31,8 +31,18 @@ device_fingerprint
    
     returns `JSONObject`
 
+2. chargeAccount(boolean polling)
 
-2. validateAccountCharge()
+    pooling=true
+
+    This charges client account when theres timeout.
+    
+    **Parameters**
+    
+   
+    returns `JSONObject`
+
+3. validateAccountCharge()
 
     
     This validates account charge
@@ -45,7 +55,20 @@ device_fingerprint
     
     returns `JSONObject`
     
+3. validateAccountCharge(boolean polling)
+
+    pooling=true
+
+    This validates account charge when theres timeout.
     
+    **Parameters**
+    
+    >transaction_reference - This is the transaction reference
+    
+    >otp
+    
+    returns `JSONObject`
+        
  
  
 #### Sample
@@ -55,33 +78,38 @@ device_fingerprint
 ```java
 
 
-AccountCharge ch=new AccountCharge();
 
 
 //account charge parameters
 
 
  AccountCharge ch=new AccountCharge();
-        
-            ch.setAccountnumber("0690000031");
-            ch.setAccountbank("044");
-            ch.setAmount("1000");
-            ch.setCountry("NG");
-            ch.setCurrency("NGN");
-            ch.setLastname("Theresa");
-            ch.setIP("1.3.4.4");
-            ch.setPayment_type("account");
-            ch.setTxRef("MX-678DH");
-            ch.setEmail("sogunledolapo@gmail.com");
-          
-          
-           JSONObject result=ch.chargeAccount();
-       
 
-        //validate
-        ch.setTransaction_reference("ACHG-1520028650995");
-        ch.setOtp("12345"); 
-        JSONObject val=ch.validateAccountCharge();
+         ch.setAccountnumber("0690000031")
+            .setAccountbank("044")
+            .setAmount("1000")
+            .setCountry("NG")
+            .setCurrency("NGN")
+            .setLastname("Theresa")
+            .setIP("1.3.4.4")
+            .setPayment_type("account")
+            .setTxRef("MX-678DH")
+            .setEmail("sogunledolapo@gmail.com");
+          
+          
+          //charge account normally
+           JSONObject result=ch.chargeAccount();
+           
+	   //polling
+            JSONObject poll=ch.chargeAccount(true);
+
+          //validate
+          ch.setTransaction_reference("ACHG-1520028650995");
+            .setOtp("12345"); 
+
+         JSONObject val=ch.validateAccountCharge();
+	 //for polling
+        JSONObject val=ch.validateAccountCharge(true);
 
         System.out.println(val);
 

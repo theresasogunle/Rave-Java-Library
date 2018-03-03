@@ -32,7 +32,7 @@ Rave-Java-Library facilites quick and easy development and integration of Java b
 }
 ```
 
-- `ENV` - Either `LIVE` or `TESTING`
+- `ENV` - Either `LIVE` or `STAGING`
 - `PUBLIC_KEY` - Gotten From Your Rave Dashboard
 - `SECRET_KEY` - Gotten From Your Rave Dashboard
 
@@ -66,26 +66,32 @@ public class Main {
 
     public static void main(String[] args)throws JSONException {
 	CardCharge ch=new CardCharge();
-       ch.setCardno("4187427415564246");
-       ch.setCvv("828");
-       ch.setCurrency("NGN");
-       ch.setCountry("NG");
-       ch.setAmount("9000");
-       ch.setExpiryyear("19");
-       ch.setExpirymonth("09");
-       ch.setEmail("sogunledolapo@gmail.com");
-       ch.setIP("103.238.105.185");
-       ch.setTxRef("MXX-ASC-4578");
-       ch.setDevice_fingerprint("69e6b7f0sb72037aa8428b70fbe03986c");
+        ch.setCardno("4187427415564246")
+          .setCvv("828")
+          .setCurrency("NGN")
+          .setCountry("NG")
+          .setAmount("9000")
+          .setExpiryyear("19")
+          .setExpirymonth("09")
+          .setEmail("sogunledolapo@gmail.com")
+          .setIP("103.238.105.185")
+          .setTxRef("MXX-ASC-4578")
+          .setDevice_fingerprint("69e6b7f0sb72037aa8428b70fbe03986c");
      
          //for master card and verve
-       ch.setPin("3310");
-       ch.setSuggested_auth("PIN");
-       JSONObject charge= ch.chargeMasterAndVerveCard();
+     
+           ch.setPin("3310")
+             .setSuggested_auth("PIN");
+             JSONObject charge= ch.chargeMasterAndVerveCard();
+            //if timeout
+            JSONObject poll=ch.chargeMasterAndVerveCard(true);
+   
        
        //for visa and intl cards
         ch.setRedirect_url("http://www.google.com");
         JSONObject chargevisa=ch.chargeVisaAndIntl();
+	  //if timeout, poll
+            JSONObject pollvisa=ch.chargeVisaAndIntl(true);
        
     }
 }
@@ -101,28 +107,32 @@ public class Main {
 
     public static void main(String[] args) throws JSONException{
       	   
-	    JSONObject json= new JSONObject();
+	  
             AccountCharge ch= new AccountCharge();
             
-            ch.setAccountnumber("0690000031");
-            ch.setAccountbank("044");
-            ch.setAmount("1000");
-            ch.setCountry("NG");
-            ch.setCurrency("NGN");
-            ch.setLastname("Theresa");
-            ch.setIP("1.3.4.4");
-            ch.setPayment_type("account");
-            ch.setTxRef("MX-678DH");
-            ch.setEmail("sogunledolapo@gmail.com");
-
-	      JSONObject result=ch.chargeAccount();
+          ch.setAccountnumber("0690000031")
+            .setAccountbank("044")
+            .setAmount("1000")
+            .setCountry("NG")
+            .setCurrency("NGN")
+            .setLastname("Theresa")
+            .setIP("1.3.4.4")
+            .setPayment_type("account")
+            .setTxRef("MX-678DH")
+            .setEmail("sogunledolapo@gmail.com");
           
+         JSONObject result=ch.chargeAccount();
+          //polling
+            JSONObject poll=ch.chargeAccount(true);
         System.out.println(result);
         //Validate The Charge
          //do not forget to set your fields
-        ch.setTransaction_reference("ACHG-1520028650995");
-        ch.setOtp("12345");
-        JSONObject val=ch.validateAccountCharge();
+        ch.setTransaction_reference("ACHG-1520028650995")
+          .setOtp("12345");
+        //for polling
+        JSONObject val=ch.validateAccountCharge(true);
+        //without polling
+        JSONObject validate=ch.validateAccountCharge());
     }
 }
 
@@ -143,7 +153,7 @@ The documentation for each classes and methods
 9. [Refund](Documentation/REFUND.md)
 10. [Transaction](Documentation/REFUND.md)
 11. [IntegrityChecksum](Documentation/CHECKSUM.md)
-12. Polling
+
 
 # Alternative Payment Methods
 ## Nigerian USSD- GTB and Zenith Bank

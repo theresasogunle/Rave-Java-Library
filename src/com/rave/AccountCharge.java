@@ -29,11 +29,6 @@ public class AccountCharge {
     private String accountnumber,accountbank,currency,country,amount,email,phonenumber,firstname,lastname,IP,
             txRef,payment_type,passcode,device_fingerprint;
     
-
-
-
-  
-      
     private String transaction_reference;//to be called
     private String otp;//to be called
  
@@ -45,13 +40,7 @@ public class AccountCharge {
     
         return b.getAllBanks();
     }
-
-    /**
-    *
-
-    * @return json
-    */   
-    public JSONObject chargeAccount() throws JSONException{
+    public JSONObject setJSON() throws JSONException{
         JSONObject json=new JSONObject();
         
         json.put("PBFPubKey",key.getPublicKey());
@@ -69,6 +58,22 @@ public class AccountCharge {
         json.put("txRef", this.getTxRef());
         json.put("device_fingerprint", this.getDevice_fingerprint());
 
+        
+        return json;
+   }
+     
+
+    /**
+    *
+
+    * @return json
+    */ 
+    
+    public JSONObject chargeAccount() throws JSONException{
+       
+        JSONObject json=setJSON();
+        
+        
         String message= json.toString();
         
         String encrypt_secret_key=e.getKey(key.getSecretKey());
@@ -79,6 +84,16 @@ public class AccountCharge {
         return ch.charge(client);
 
     }
+     public JSONObject chargeAccount(boolean polling) throws JSONException{
+       
+        JSONObject json=setJSON();
+        
+        Polling p=new Polling();
+        
+        return p.handleTimeoutCharge(json);
+
+    }
+     
 
      public JSONObject validateAccountCharge(){
 
@@ -95,43 +110,10 @@ public class AccountCharge {
         return this.apiConnection.connectAndQuery(api);
     }
 
-    //if timeout, start polling
-    public JSONObject handleTimeoutCharge()throws JSONException{
-      this.apiConnection = new ApiConnection(end.getChargeTimeoutEndpoint());
-      JSONObject json=new JSONObject();
-      
-       json.put("accountnumber",this.getAccountnumber());//expected result'
-       json.put("accountbank",this.getAccountbank());
-       json.put("currency", this.getCurrency());
-       json.put("country", this.getCountry());
-       json.put("amount", this.getAmount());
-       json.put("passcode", this.getPasscode());
-       json.put("email", this.getEmail());
-       json.put("IP", this.getIP());
-       json.put("txRef", this.getTxRef());
-       json.put("device_fingerprint", this.getDevice_fingerprint());
-       json.put("payment_type", this.getPayment_type());
-       json.put("firstname", this.getFirstname());
-       json.put("lastname", this.getLastname());
-      
-       
-      
-         String message= json.toString();
-        
-        String encrypt_secret_key=e.getKey(key.getSecretKey());
-        String client= encryptData(message,encrypt_secret_key);
-      
-        Charge ch=new Charge();
-        
-        return ch.charge(client);
-    }
-      public JSONObject handleTimeoutValidateCharge(){
-      this.apiConnection = new ApiConnection(end.getValidateChargeTimeoutEndpoint());
-        ApiQuery api=new ApiQuery();
-        api.putParams("PBFPubKey", key.getPublicKey());
-        api.putParams("transaction_reference", this.getTransaction_reference());
-        api.putParams("otp", this.getOtp()); 
-    return this.apiConnection.connectAndQuery(api);
+    
+      public JSONObject validateAccountCharge(boolean polling){
+      Polling p=new Polling();
+      return p.validateChargeTimeout(this.getTransaction_reference(),this.getOtp());
     }
 
     /**
@@ -144,8 +126,9 @@ public class AccountCharge {
     /**
      * @param accountnumber the accountnumber to set
      */
-    public void setAccountnumber(String accountnumber) {
+    public AccountCharge setAccountnumber(String accountnumber) {
         this.accountnumber = accountnumber;
+        return this;
     }
 
     /**
@@ -158,8 +141,9 @@ public class AccountCharge {
     /**
      * @param accountbank the accountbank to set
      */
-    public void setAccountbank(String accountbank) {
+    public AccountCharge setAccountbank(String accountbank) {
         this.accountbank = accountbank;
+         return this;
     }
 
     /**
@@ -172,8 +156,9 @@ public class AccountCharge {
     /**
      * @param currency the currency to set
      */
-    public void setCurrency(String currency) {
+    public AccountCharge setCurrency(String currency) {
         this.currency = currency;
+         return this;
     }
 
     /**
@@ -186,8 +171,9 @@ public class AccountCharge {
     /**
      * @param country the country to set
      */
-    public void setCountry(String country) {
+    public AccountCharge setCountry(String country) {
         this.country = country;
+         return this;
     }
 
     /**
@@ -200,8 +186,9 @@ public class AccountCharge {
     /**
      * @param amount the amount to set
      */
-    public void setAmount(String amount) {
+    public AccountCharge setAmount(String amount) {
         this.amount = amount;
+         return this;
     }
 
     /**
@@ -214,8 +201,9 @@ public class AccountCharge {
     /**
      * @param email the email to set
      */
-    public void setEmail(String email) {
+    public AccountCharge setEmail(String email) {
         this.email = email;
+         return this;
     }
 
     /**
@@ -228,8 +216,9 @@ public class AccountCharge {
     /**
      * @param phonenumber the phonenumber to set
      */
-    public void setPhonenumber(String phonenumber) {
+    public AccountCharge setPhonenumber(String phonenumber) {
         this.phonenumber = phonenumber;
+         return this;
     }
 
     /**
@@ -242,8 +231,9 @@ public class AccountCharge {
     /**
      * @param firstname the firstname to set
      */
-    public void setFirstname(String firstname) {
+    public AccountCharge setFirstname(String firstname) {
         this.firstname = firstname;
+         return this;
     }
 
     /**
@@ -256,8 +246,9 @@ public class AccountCharge {
     /**
      * @param lastname the lastname to set
      */
-    public void setLastname(String lastname) {
+    public AccountCharge setLastname(String lastname) {
         this.lastname = lastname;
+         return this;
     }
 
     /**
@@ -270,8 +261,9 @@ public class AccountCharge {
     /**
      * @param IP the IP to set
      */
-    public void setIP(String IP) {
+    public AccountCharge setIP(String IP) {
         this.IP = IP;
+         return this;
     }
 
     /**
@@ -284,8 +276,9 @@ public class AccountCharge {
     /**
      * @param txRef the txRef to set
      */
-    public void setTxRef(String txRef) {
+    public AccountCharge setTxRef(String txRef) {
         this.txRef = txRef;
+         return this;
     }
 
     /**
@@ -298,8 +291,9 @@ public class AccountCharge {
     /**
      * @param payment_type the payment_type to set
      */
-    public void setPayment_type(String payment_type) {
+    public AccountCharge setPayment_type(String payment_type) {
         this.payment_type = payment_type;
+         return this;
     }
 
     /**
@@ -312,8 +306,9 @@ public class AccountCharge {
     /**
      * @param passcode the passcode to set
      */
-    public void setPasscode(String passcode) {
+    public AccountCharge setPasscode(String passcode) {
         this.passcode = passcode;
+         return this;
     }
 
     /**
@@ -326,8 +321,9 @@ public class AccountCharge {
     /**
      * @param device_fingerprint the device_fingerprint to set
      */
-    public void setDevice_fingerprint(String device_fingerprint) {
+    public AccountCharge setDevice_fingerprint(String device_fingerprint) {
         this.device_fingerprint = device_fingerprint;
+         return this;
     }
 
     /**
@@ -340,8 +336,9 @@ public class AccountCharge {
     /**
      * @param transaction_reference the transaction_reference to set
      */
-    public void setTransaction_reference(String transaction_reference) {
+    public AccountCharge setTransaction_reference(String transaction_reference) {
         this.transaction_reference = transaction_reference;
+         return this;
     }
 
     /**
@@ -354,8 +351,9 @@ public class AccountCharge {
     /**
      * @param otp the otp to set
      */
-    public void setOtp(String otp) {
+    public AccountCharge setOtp(String otp) {
         this.otp = otp;
+         return this;
     }
     /**
 

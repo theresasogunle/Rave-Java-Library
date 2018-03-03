@@ -34,7 +34,7 @@ public class AlternativePayment {
     */
     
     // charge customers using nigerian USSD for GTB and Zenith Bank,Ghana mobile money and Kenya Mpesa
-   
+ 
      public JSONObject chargeNigerianUssd () throws JSONException{
         //getting charge endpoint
          JSONObject json=new JSONObject();
@@ -137,8 +137,9 @@ public class AlternativePayment {
     /**
      * @param accountnumber the accountnumber to set
      */
-    public void setAccountnumber(String accountnumber) {
+    public AlternativePayment setAccountnumber(String accountnumber) {
         this.accountnumber = accountnumber;
+        return this;
     }
 
     /**
@@ -151,8 +152,9 @@ public class AlternativePayment {
     /**
      * @param accountbank the accountbank to set
      */
-    public void setAccountbank(String accountbank) {
+    public AlternativePayment setAccountbank(String accountbank) {
         this.accountbank = accountbank;
+         return this;
     }
 
     /**
@@ -165,8 +167,9 @@ public class AlternativePayment {
     /**
      * @param currency the currency to set
      */
-    public void setCurrency(String currency) {
+    public AlternativePayment setCurrency(String currency) {
         this.currency = currency;
+         return this;
     }
 
     /**
@@ -179,8 +182,9 @@ public class AlternativePayment {
     /**
      * @param country the country to set
      */
-    public void setCountry(String country) {
+    public AlternativePayment setCountry(String country) {
         this.country = country;
+         return this;
     }
 
     /**
@@ -193,8 +197,9 @@ public class AlternativePayment {
     /**
      * @param amount the amount to set
      */
-    public void setAmount(String amount) {
+    public AlternativePayment setAmount(String amount) {
         this.amount = amount;
+         return this;
     }
 
     /**
@@ -207,8 +212,9 @@ public class AlternativePayment {
     /**
      * @param firstname the firstname to set
      */
-    public void setFirstname(String firstname) {
+    public AlternativePayment setFirstname(String firstname) {
         this.firstname = firstname;
+         return this;
     }
 
     /**
@@ -221,8 +227,9 @@ public class AlternativePayment {
     /**
      * @param lastname the lastname to set
      */
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public AlternativePayment setLastname(String lastname) {
+         this.lastname = lastname;
+         return this;
     }
 
     /**
@@ -235,8 +242,9 @@ public class AlternativePayment {
     /**
      * @param pin the pin to set
      */
-    public void setPin(String pin) {
+    public AlternativePayment setPin(String pin) {
         this.pin = pin;
+         return this;
     }
 
     /**
@@ -249,8 +257,9 @@ public class AlternativePayment {
     /**
      * @param email the email to set
      */
-    public void setEmail(String email) {
+    public AlternativePayment setEmail(String email) {
         this.email = email;
+         return this;
     }
 
     /**
@@ -263,8 +272,9 @@ public class AlternativePayment {
     /**
      * @param IP the IP to set
      */
-    public void setIP(String IP) {
+    public AlternativePayment setIP(String IP) {
         this.IP = IP;
+         return this;
     }
 
     /**
@@ -277,8 +287,9 @@ public class AlternativePayment {
     /**
      * @param txRef the txRef to set
      */
-    public void setTxRef(String txRef) {
+    public AlternativePayment setTxRef(String txRef) {
         this.txRef = txRef;
+         return this;
     }
 
     /**
@@ -291,8 +302,9 @@ public class AlternativePayment {
     /**
      * @param phonenumber the phonenumber to set
      */
-    public void setPhonenumber(String phonenumber) {
+    public AlternativePayment setPhonenumber(String phonenumber) {
         this.phonenumber = phonenumber;
+         return this;
     }
 
     /**
@@ -305,8 +317,9 @@ public class AlternativePayment {
     /**
      * @param orderRef the orderRef to set
      */
-    public void setOrderRef(String orderRef) {
+    public AlternativePayment setOrderRef(String orderRef) {
         this.orderRef = orderRef;
+         return this;
     }
 
     /**
@@ -319,8 +332,9 @@ public class AlternativePayment {
     /**
      * @param network the network to set
      */
-    public void setNetwork(String network) {
+    public AlternativePayment setNetwork(String network) {
         this.network = network;
+         return this;
     }
 
     /**
@@ -333,7 +347,8 @@ public class AlternativePayment {
     /**
      * @param flwRef the flwRef to set
      */
-    public void setFlwRef(String flwRef) {
+    public AlternativePayment setFlwRef(String flwRef) {
         this.flwRef = flwRef;
+         return this;
     }
 }

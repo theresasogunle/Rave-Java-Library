@@ -16,7 +16,8 @@ public class TestTransactionVerification {
     public static void main(String [] args){
    
        Transaction t=new Transaction();
-       t.setFlwref("FLW-MOCK-d310263f5f73e51d01e6dab32c893679");
+       t.setFlwref("FLW-MOCK-d310263f5f73e51d01e6dab32c893679")
+          .setTxRef("");
       JSONObject tt= t.verifyTransactionXrequery();
         System.out.println(t.verifyTransactionRequery());
        

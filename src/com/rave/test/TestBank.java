@@ -6,14 +6,20 @@
 package com.rave.test;
 
 import com.rave.Bank;
+import com.rave.CardCharge;
+import com.rave.Endpoints;
+import org.json.JSONException;
 
 /**
  *
  * @author Theresa
  */
 public class TestBank {
-    public static void main(String [] args){
+    public static void main(String [] args) throws JSONException{
+        Endpoints ed=new Endpoints();
         Bank b= new Bank();
-        System.out.println(b.getAllBanks());
+       System.out.println(b.getAllBanks());
+         
+       
     }
 }

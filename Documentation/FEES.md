@@ -46,15 +46,15 @@
 
 ```java
 
-Fees f=new Fees();
+Fees fee=new Fees();
 //set field values
-
- f.setAmount("5000");
-        f.setCurrency("NGN");
-        f.setCard6("123453");
+           fee.setAmount("500")
+              .setCard6("829222")
+              .setCurrency("NGN");
         
-System.out.println(rf.getFees());
-System.out.println(rf.getFeesForCard6());
+        
+System.out.println(fee.getFees());
+System.out.println(fee.getFeesForCard6());
 
 ```
 

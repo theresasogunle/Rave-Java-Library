@@ -26,34 +26,38 @@ public class CardChargeTestCase {
        
     @Test
     public void testCardCharge() throws JSONException{
-       ch.setCardno("4187427415564246");
-       ch.setCvv("828");
-       ch.setCurrency("NGN");
-       ch.setCountry("NG");
-       ch.setAmount("9000");
-       ch.setExpiryyear("19");
-       ch.setExpirymonth("09");
-       ch.setEmail("sogunledolapo@gmail.com");
-       ch.setIP("103.238.105.185");
-       ch.setTxRef("MXX-ASC-4578");
-       ch.setDevice_fingerprint("69e6b7f0sb72037aa8428b70fbe03986c");
-     
-      
-         //for master card and verve
-       ch.setPin("3310");
-       ch.setSuggested_auth("PIN");
-       JSONObject charge= ch.chargeMasterAndVerveCard();
-       
+       ch.setCardno("4187427415564246")
+          .setCvv("828")
+          .setCurrency("NGN")
+          .setCountry("NG")
+          .setAmount("9000")
+          .setExpiryyear("19")
+          .setExpirymonth("09")
+          .setEmail("sogunledolapo@gmail.com")
+          .setIP("103.238.105.185")
+          .setTxRef("MXX-ASC-4578")
+          .setDevice_fingerprint("69e6b7f0sb72037aa8428b70fbe03986c");
+       //for master card and verve
+           ch.setPin("3310")
+             .setSuggested_auth("PIN");
+             JSONObject charge= ch.chargeMasterAndVerveCard();
+            //if timeout
+            JSONObject poll=ch.chargeMasterAndVerveCard(true);
+   
        //for visa and intl cards
-        ch.setRedirect_url("http://www.google.com");
-        JSONObject chargevisa=ch.chargeVisaAndIntl();
+            ch.setRedirect_url("http://www.google.com");
+            JSONObject chargevisa=ch.chargeVisaAndIntl();
+            //if timeout, poll
+            JSONObject pollvisa=ch.chargeVisaAndIntl(true);
+           
         //UNCOMMENT TO TEST
         /*
         if(chargevisa.getString("status").equals("success")){
-        assertEquals(charge.get("status"),"success");
-       // System.out.println(charge);
+        assertEquals(chargevisa.get("status"),"success");
+         System.out.println(chargevisa);
         }else
-       assertEquals(charge.get("status"),"error");
+         assertEquals(chargevisa.get("status"),"error");
+        System.out.println(chargevisa);
      */
     }
     
@@ -61,9 +65,12 @@ public class CardChargeTestCase {
     @Test
     public void verifyCardValidation()throws JSONException{
       
-         ch.setOtp("12345");
-         ch.setTransaction_reference("FLW-MOCK-75dd012dc6c6b58807d69d0e89432e9f");
-         JSONObject validateCharge=ch.validateCardCharge();
+          //validate
+            ch.setOtp("12345");
+            ch.setTransaction_reference("FLW-MOCK-XXXXXXXXXXXXXXXXXXXXXXX");
+            JSONObject validateCharge=ch.validateCardCharge();
+            //if timeout, poll
+            JSONObject validatepoll=ch.validateCardCharge(true);
      /*
          
         if(validateCharge.get("status").equals("success")){

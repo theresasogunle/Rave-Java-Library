@@ -9,6 +9,7 @@ import com.rave.AlternativePayment;
 import com.rave.Transaction;
 import org.json.JSONException;
 import org.json.JSONObject;
+import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 /**
@@ -24,17 +25,18 @@ public class AlternativePaymentTestCase {
         AlternativePayment ch=new AlternativePayment();
         /*
                //available for only zenith and GTB
-           ch.setAccountnumber("0690000004");
-           ch.setAccountbank("044");
-           ch.setCurrency("NGN");
-           ch.setCountry("NG");
-           ch.setAmount("6000");
-           ch.setFirstname("pin");
-           ch.setLastname("pin");
-           ch.setPin("3310");
-           ch.setEmail("sogunledolapo@gmail.com");
-           ch.setIP("103.238.105.185");
-          ch.setTxRef("MXX-ASC-4578");
+            ch.setAccountnumber("0690000004")
+             .setAccountbank("044")
+             .setCurrency("NGN")
+             .setCountry("NG")
+             .setAmount("6000")
+             .setFirstname("pin")
+             .setLastname("pin")
+             .setPin("3310")
+             .setEmail("sogunledolapo@gmail.com")
+             .setIP("103.238.105.185")
+             .setTxRef("MXX-ASC-4578");
+
 */
 
 
@@ -44,6 +46,7 @@ public class AlternativePaymentTestCase {
         
            // JSONObject chargeussd=ch.chargeNigerianUssd();
             //System.out.println(chargeussd);
+         //assertEquals(chargeussd.get("status"),"success");
         //complete transaction
             //  Transaction t=new Transaction();
             // t.setFlwref("FLW-MOCK-d310263f5f73e51d01e6dab32c893679");
@@ -52,18 +55,18 @@ public class AlternativePaymentTestCase {
     //for ghana mobile money
        /*
   
-      ch.setOrderRef("0690000");
-      ch.setNetwork("MTN");
-      ch.setCurrency("GHS");
-      ch.setCountry("GH");
-      ch.setAmount("4000");
-      ch.setFirstname("pin");
-      ch.setLastname("pin");
-      ch.setPin("3310");
-      ch.setEmail("sogunledolapo@gmail.com");
-      ch.setIP("103.238.105.185");
-      ch.setTxRef("MXX-90-49578");
-      ch.setPhonenumber("0908467482");
+       ch.setOrderRef("0690000")
+        .setNetwork("MTN")
+        .setCurrency("GHS")
+        .setCountry("GH")
+        .setAmount("4000")
+        .setFirstname("pin")
+        .setLastname("pin")
+        .setPin("3310")
+        .setEmail("sogunledolapo@gmail.com")
+        .setIP("103.238.105.185")
+        .setTxRef("MXX-90-49578")
+       .setPhonenumber("0908467482");
       
        
   
@@ -75,22 +78,22 @@ public class AlternativePaymentTestCase {
           
   
        
-       ch.setCurrency("KES");
-       ch.setCountry("KE");
-       ch.setAmount("6000");
-       ch.setFirstname("pin");
-       ch.setLastname("pin");
-       ch.setPin("3310");
-       ch.setEmail("sogunledolapo@gmail.com");
-       ch.setIP("103.238.105.185");
-       ch.setTxRef("MXX-ASC-4578");
-       ch.setOrderRef("y77yy");
-       ch.setPhonenumber("0903672978");
+       ch.setCurrency("KES")
+         .setCountry("KE")
+         .setAmount("6000")
+         .setFirstname("pin")
+         .setLastname("pin")
+         .setPin("3310")
+         .setEmail("sogunledolapo@gmail.com")
+         .setIP("103.238.105.185")
+         .setTxRef("MXX-ASC-4578")
+         .setOrderRef("y77yy")
+         .setPhonenumber("0903672978");
        
     
    
     JSONObject chargempesa=ch.chargeKenyaMpesa();
-    
+     assertEquals(chargempesa.get("status"),"success");
       //  System.out.println(chargempesa);
        
    

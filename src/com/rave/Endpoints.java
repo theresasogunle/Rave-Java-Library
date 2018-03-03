@@ -31,6 +31,7 @@ public class Endpoints {
       public static String REFUNDVOID_ENDPOINT;
       public static String CHARGE_TIMEOUT_ENDPOINT;
       public static String VALIDATE_CHARGE_TIMEOUT_ENDPOINT;
+      public static String IP_ENDPOINT;
       
      
       void init(){
@@ -40,13 +41,8 @@ public class Endpoints {
             url=live_url;
           
           }
-          else if(key.getEnvironment().equalsIgnoreCase("testing")) {
+          else {
           url=staging_url;
-          }
-          else{
-              url=null;
-              JOptionPane.showMessageDialog(null, "Enter either 'testing' or 'live' in env.json file", "ERROR", JOptionPane.ERROR_MESSAGE);
-          
           }
          
        BANK_ENDPOINT= url+"/flwv3-pug/getpaidx/api/flwpbf-banks.js?json=1";
@@ -63,11 +59,17 @@ public class Endpoints {
         REFUNDVOID_ENDPOINT=url+"flwv3-pug/getpaidx/api/refundorvoid";
         CHARGE_TIMEOUT_ENDPOINT=url+"flwv3-pug/getpaidx/api/charge?use_polling=1";
         VALIDATE_CHARGE_TIMEOUT_ENDPOINT=url+"flwv3-pug/getpaidx/api/validatecharge?use_polling=1";
+        IP_ENDPOINT="http://bot.whatismyipaddress.com";
       }
       
      public String getBankEndPoint(){
          init();
          return BANK_ENDPOINT;
+     
+     }
+      public String getIPEndPoint(){
+         init();
+         return IP_ENDPOINT;
      
      }
      public String getChargeEndPoint(){

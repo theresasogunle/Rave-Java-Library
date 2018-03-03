@@ -24,7 +24,7 @@ import org.junit.runners.Suite;
   PreAuthTestCase.class,
   TransactionVerificationTestCase.class,
   AlternativePaymentTestCase.class,
-  PollingTestCase.class
+ 
         
 })
 public class JUnitTestSuite {

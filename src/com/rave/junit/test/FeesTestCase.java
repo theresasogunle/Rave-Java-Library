@@ -19,14 +19,13 @@ public class FeesTestCase {
     @Test
     public void Test() throws JSONException{
     
-        Fees f= new Fees();
-        f.setAmount("5000");
-        f.setCurrency("NGN");
-        f.setCard6("123453");
-        
-        JSONObject response=f.getFees();
-        JSONObject response2=f.getFeesForCard6();
-        assertEquals(response.get("status"),"success");
+        Fees fee= new Fees();
+          fee.setAmount("500")
+              .setCard6("829222")
+              .setCurrency("NGN");
+        JSONObject response=fee.getFees();
+        JSONObject response2=fee.getFeesForCard6();
+       assertEquals(response.get("status"),"success");
         
         
 

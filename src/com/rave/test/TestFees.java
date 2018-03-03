@@ -16,9 +16,9 @@ public class TestFees {
     public static void main(String[] args){
 
         Fees fee=new Fees();
-        fee.setAmount("500");
-        fee.setCard6("829222");
-        fee.setCurrency("NGN");
+           fee.setAmount("500")
+              .setCard6("829222")
+              .setCurrency("NGN");
         
         //System.out.println(fee.getFees());
         //System.out.println(fee.getFeesForCard6());
