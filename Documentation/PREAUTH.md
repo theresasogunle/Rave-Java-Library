@@ -4,6 +4,7 @@
 
  
 #### Fields
+<<<<<<< HEAD
 >cardno
 >cvv
 >expirymonth
@@ -24,6 +25,11 @@
 >charge_type
 >flwRef(ref) - This is the payment gateway's unique reference.
 >action - This is the action to be taken i.e. `refund` or `void`
+=======
+ >flwRef(ref) - This is the payment gateway's unique reference.
+ 
+ >action - This is the action to be taken i.e. `refund` or `void`
+>>>>>>> 669b00a4d1f8550273617d15dbd518dbc8477d31
 #### Methods
 1. preAuthorizeCard()
 
@@ -40,6 +46,7 @@
 3. refundOrVoid()
 
     >ref - This is the `flwRef` returned in the `capture response.`
+    
     >action - This is the action to be taken i.e. `refund` or `void`
  
  

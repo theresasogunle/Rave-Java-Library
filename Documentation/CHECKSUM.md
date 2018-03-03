@@ -1,11 +1,12 @@
-## Bank
+## IntegrityChecksum
 
 ### Class Name - IntegrityChecksum
 
-#### Methods
+#### Method
 1. integrityChecksum(HashMap payload)
-   see (https://flutterwavedevelopers.readme.io/docs/checksum).
-    returns `String`(hashed)
+  - returns `String`(hashed)
+#### Note see (https://flutterwavedevelopers.readme.io/docs/checksum).
+ 
  
 #### Sample
 

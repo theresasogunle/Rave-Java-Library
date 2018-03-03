@@ -5,16 +5,22 @@ Rave-Java-Library facilites quick and easy development and integration of Java b
 - **Tags:** rave, flutterwave, payment gateway, bank account, credit card, debit card, nigeria, kenya, ghana, international, mastercard, visa, KES, GHC, NGN,  Java.
 
 # Getting Started
+
+## Prerequisite
+> Signup for a test account [here](http://rave.frontendpwc.com/)
+> Signup for a live account [here](https://rave.flutterwave.com)
+
 ## Installation
 - Download Rave-Java-Library
-- Install RaveJava.jar, Located in the lib folder of this project. 
+- Install [rave-java-1.0.jar](lib/rave-java-1.0.jar?raw=true), Located in the lib folder of this project. 
+- Install the other needed library dependencies which are also contained in the [`Lib folder`](lib) in the [`Rave-Java-Library project`](lib)
+
+### How to Install Libraries
 >On Netbeans IDE: `Project properties -> Libraries -> Compile -> ADD JAR/folder -> Add Jar`
 
 >On Intelli J IDEA: `File > Project Structure -> Project Settings > Modules > Dependencies > "+" sign > JARs or directories`
 
-- The other needed dependencies are contained in the Lib folder in the Rave-Java-Library project
-
-- Add a file to your root folder as env.json which will contain your public key, secret key and environment
+- Add a file to your root folder as `env.json` which will contain your `public key`, `secret key` and `environment`
 
 ```json
 {
@@ -26,14 +32,11 @@ Rave-Java-Library facilites quick and easy development and integration of Java b
 }
 ```
 
-- `ENV_KEY` - Either `LIVE` or `TESTING`
+- `ENV` - Either `LIVE` or `TESTING`
 - `PUBLIC_KEY` - Gotten From Your Rave Dashboard
 - `SECRET_KEY` - Gotten From Your Rave Dashboard
 
 - Set to go 💪
-
-
-> You can signup for an account [here](https://rave.flutterwave.com)
 
 
 ## Sample Use
@@ -139,6 +142,7 @@ The documentation for each classes and methods
 8. [PreAuthorization](Documentation/PREAUTH.md)
 9. [Refund](Documentation/REFUND.md)
 10. [Transaction](Documentation/REFUND.md)
+11. [IntegrityChecksum](Documentation/CHECKSUM.md)
 
 # Alternative Payment Methods
 ## Nigerian USSD- GTB and Zenith Bank

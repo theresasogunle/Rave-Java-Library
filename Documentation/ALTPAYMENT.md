@@ -4,6 +4,7 @@
 
 
 #### Fields
+<<<<<<< HEAD
 >accountnumber
 >accountbank
 >currency
@@ -19,6 +20,12 @@
 >orderRef
 >network
 >flwRef
+=======
+>txref - This is the merchant's unique transaction reference.
+
+>flwref - This is the payment gateway's unique reference.
+    
+>>>>>>> 669b00a4d1f8550273617d15dbd518dbc8477d31
 
 #### Methods
 1.chargeKenyaMpesa ()
