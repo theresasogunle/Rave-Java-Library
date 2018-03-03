@@ -3,27 +3,27 @@
 ### Class Name - CardCharge
 
 
-#### Fields
->cardno
->cvv
->expirymonth
->expiryyear
->currency
->country
->pin
->suggested_auth
->amount
->email
->phonenumber
->firstname
->lastname
->IP
->txRef
->redirect_url
->device_fingerprint
->charge_type
->transaction_reference(flwref) - This is the transaction reference
->otp
+#### Chaining Methods
+>setCardno("4187427415564246") `set the card number`
+>setCvv("828") `Set the CVV`
+>setExpirymonth("09") `set the expiry month`
+>setExpiryyear("19") `set the expiry year`
+>setCurrency("NGN")  `Set the currency (defaults to NGN) (Optional)`
+>setCountry("NG") `Set the country (defaults to Nigeria) (Optional)`
+>setPin("3310") `Set The customers pin`
+>setSuggested_auth("PIN") `sets the suggested auth`
+>setAmount("1000") `Set the amount`
+>setEmail("flamekeed@gmail.com")  `Set the customers email`
+>setPhonenumber("08020000000")  `Set the customers phone number`
+>setFirstname("Oluwole") `Set the customers first name`
+>setLastname("Adebiyi") `Set the customers last name`
+>setIP("127.0.0.0")  `Set the IP address`
+>setTxRef("CA-GHHH-KLJH1234")  `Set the txref`
+>setRedirect_url("http://www.google.com")   `Set the redirect url`
+>setDevice_fingerprint("GFHGJGU$#%$RGUHU_<GGDGHFG") `set the device finger print(Optional)`
+>setCharge_type("preauth") `sets the charge type`
+>setTransaction_reference("ACHG-1520028650995") `This is the unique reference/ flwRef, unique to the particular transaction being carried out. It is generated for every transaction. This can be retrieved from the account charge response`
+>setOtp("12345") `set the customers otp`
 
 #### Methods
 
