@@ -4,123 +4,107 @@
 
 
 #### Fields
-    >txref - This is the merchant's unique transaction reference.
-    
-    >flwref - This is the payment gateway's unique reference.
-    
+>accountnumber
+>accountbank
+>currency
+>country
+>amount
+>firstname
+>lastname
+>pin
+>email
+>IP
+>txRef
+>phonenumber
+>orderRef
+>network
+>flwRef
 
 #### Methods
-1. alternativePaymentCharge(String client)
+1.chargeKenyaMpesa ()
 
-    This charges charge customers using nigerian USSD for GTB and Zenith Bank,Ghana mobile money and Kenya Mpesa
-
-    **Parameters**
-    
-    >client - This is the encrypted client details gotten from the [encryption method](ENCRYPTION.md)
+    This charges charge customers using Kenya Mpesa
 
     returns `JSONObject`
 
+2. chargeGhanaMobileMoney()
 
-2. completeTransactionWithXrequery()
-    
-    To verify/requery transaction for ghana mobile money,kenya mpesa and nigerian ussd using your transaction reference
-    
-    **Parameters**
-    
-    >txref - This is the merchant's unique transaction reference.
-    
-    >flwref - This is the payment gateway's unique reference.
-    
-    * You can use either `txref` or `flwref` or both
+    This charges charge customers using Ghana mobile money
     
     returns `JSONObject`
-    
 
-3. completeTransactionRequery()
+3. chargeNigerianUssd()
 
-    To verify/requery transaction for ghana mobile money,kenya mpesa and nigerian ussd using your flwref
-    
-    **Parameters**
-    
-    >flwref - This is the payment gateway's unique reference.
-    
+    This charges charge customers using nigerian USSD for GTB and Zenith Bank
+
+    returns `JSONObject`
+
 
 #### Sample
 
 - To use this method you have to encrypt first and pass the encrypted message in the paremter
 
 ```java
-public static void main(String [] args){
+public static void main(String [] args) throws JSONException{
 //for Nigerian ussd
 //card charge
 JSONObject api=new JSONObject();
 Encryption encryption=new Encryption();
 AlternativePayment ch=new AlternativePayment();
-try{
-       //available for only zenith and GTB
-   api.put("accountnumber", "0690000004");
-   api.put("accountbank", "044");
-   api.put("currency", "NGN");
-   api.put("country", "NG");
-   api.put("amount", "6000");
-   api.put("firstname", "pin");
-   api.put("lastname", "pin");
-   api.put("pin", "3310");
-   api.put("email", "sogunledolapo@gmail.com");
-   api.put("IP", "103.238.105.185");
-   api.put("txRef", "MXX-ASC-4578");
-   api.put("payment_type", "ussd");
-   
-   
-}catch(Exception ex){}
-String encrypted_message= encryption.encryptParameters(api);
+ ch.setAccountnumber("0690000004");
+           ch.setAccountbank("044");
+           ch.setCurrency("NGN");
+           ch.setCountry("NG");
+           ch.setAmount("6000");
+           ch.setFirstname("pin");
+           ch.setLastname("pin");
+           ch.setPin("3310");
+           ch.setEmail("sogunledolapo@gmail.com");
+           ch.setIP("103.238.105.185");
+           ch.setTxRef("MXX-ASC-4578");      
+        
+        
+          JSONObject chargeussd=ch.chargeNigerianUssd();
+	  System.out.println(chargeussd);
+	  
 //for ghana mobile money
-   
-try{
-   api.put("orderRef", "0690000004");
-   api.put("network", "MTN");
-   api.put("currency", "NGN");
-   api.put("country", "NG");
-   api.put("amount", "6000");
-   api.put("firstname", "pin");
-   api.put("lastname", "pin");
-   api.put("pin", "3310");
-   api.put("email", "sogunledolapo@gmail.com");
-   api.put("IP", "103.238.105.185");
-   api.put("txRef", "MXX-ASC-4578");
-   api.put("payment_type", "mobilemoneygh");
-   api.put("is_mobile_money_gh", "1");
-   
-}catch(Exception ex){}
-//  String encrypted_message= encryption.encryptParameters(api);
+
+      ch.setOrderRef("0690000");
+      ch.setNetwork("MTN");
+      ch.setCurrency("GHS");
+      ch.setCountry("GH");
+      ch.setAmount("4000");
+      ch.setFirstname("pin");
+      ch.setLastname("pin");
+      ch.setPin("3310");
+      ch.setEmail("sogunledolapo@gmail.com");
+      ch.setIP("103.238.105.185");
+      ch.setTxRef("MXX-90-49578");
+      ch.setPhonenumber("0908467482");
+     
+      JSONObject chargegh=ch.chargeGhanaMobileMoney();
      
      //for kenya mpesa
-try{
-   
-   api.put("currency", "NGN");
-   api.put("country", "NG");
-   api.put("amount", "6000");
-   api.put("firstname", "pin");
-   api.put("lastname", "pin");
-   api.put("pin", "3310");
-   api.put("email", "sogunledolapo@gmail.com");
-   api.put("IP", "103.238.105.185");
-   api.put("txRef", "MXX-ASC-4578");
-   api.put("payment_type", "mpesa");
-   api.put("is_mpesa", "1");
-   api.put("orderRef", "");
-   
-}catch(Exception ex){}
-
-JSONObject charge=ch.alternativePaymentCharge(encrypted_message);
-
-
+  
+       ch.setCurrency("KES");
+       ch.setCountry("KE");
+       ch.setAmount("6000");
+       ch.setFirstname("pin");
+       ch.setLastname("pin");
+       ch.setPin("3310");
+       ch.setEmail("sogunledolapo@gmail.com");
+       ch.setIP("103.238.105.185");
+       ch.setTxRef("MXX-ASC-4578");
+       ch.setOrderRef("y77yy");
+       ch.setPhonenumber("0903672978");
+       
+       JSONObject chargempesa=ch.chargeKenyaMpesa();
 	
-	JSONObject charge=ch.alternativePaymentCharge(encrypted_message);
-       //verify transaction
-	 ch.flwref="FLW-MOCK-d310263f5f73e51d01e6dab32c893679";
-	 ch.completeTransactionRequery();
-	 ch.completeTransactionWithXrequery();
+	//complete transaction
+	    Transaction t=new Transaction();
+            t.setFlwref("FLW-MOCK-d310263f5f73e51d01e6dab32c893679");
+            JSONObject response=  t.verifyTransactionRequery();
+            JSONObject response=  t.verifyTransactionXrequery();
        
    // System.out.println(charge);
 

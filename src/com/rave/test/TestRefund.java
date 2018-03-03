@@ -15,8 +15,8 @@ import org.json.JSONObject;
 public class TestRefund {
     public static void main(String[] args){
         Refund rf=new Refund();
-
-        rf.ref="FLW-MOCK-d310263f5f73e51d01e6dab32c893679";
+        rf.setRef("FLW-MOCK-d310263f5f73e51d01e6dab32c893679");
+       
         System.out.println(rf.refund());
 
     }

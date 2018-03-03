@@ -27,9 +27,10 @@
 ```java
   Transaction t=new Transaction();
 
-  t.flw_ref="FLW-MOCK-d310263f5f73e51d01e6dab32c893679";
-  JSONObject tt= t.verifyTransactionRequery();
+       t.setFlwref("FLW-MOCK-d310263f5f73e51d01e6dab32c893679");
+        JSONObject response=  t.verifyTransactionRequery();
+	JSONObject tt= t.verifyTransactionXrequery();
 
-  System.out.println(tt);
+     System.out.println(tt);
 ```
 

@@ -24,7 +24,8 @@
 ```java
 Refund rf=new Refund();
 
-rf.ref="FLW-MOCK-d310263f5f73e51d01e6dab32c893679";
+ rf.setRef("FLW-MOCK-dcd2cd407f37649b04eb1342247e0bf6");
+        
 System.out.println(rf.refund());
 
 ```

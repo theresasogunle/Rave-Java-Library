@@ -5,8 +5,8 @@
  */
 package com.rave.test;
 
-import com.rave.Encryption;
 import com.rave.PreAuthorization;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
@@ -14,42 +14,44 @@ import org.json.JSONObject;
  * @author Theresa
  */
 public class TestPreAuth {
-    public static void main(String[] args){
-     JSONObject api=new JSONObject();
-       Encryption encryption=new Encryption();
+    public static void main(String[] args) throws JSONException{
+     
        PreAuthorization ch=new PreAuthorization();
        
        //card charge
-       try{
+      
        
-        api.put("cardno", "5438898014560229");
-        api.put("charge_type","preauth");
-        api.put("cvv", "812");
-        api.put("expirymonth", "08");
-        api.put("expiryyear","20");
-        api.put( "currency", "NGN");
-        api.put("country", "NG");
-        api.put("amount", "100");
-        api.put("email", "user@example.com");
-        api.put("phonenumber", "08056552980");
-        api.put("firstname", "user");
-        api.put("lastname", "example");
-        api.put("IP", "40.198.14");
-        api.put("txRef", "MXX-ASC-4578");
-        api.put("redirect_url", "https://rave-web.herokuapp.com/receivepayment");
-        api.put("device_fingerprint", "69e6b7f0b72037aa8428b70fbe03986c");
-       
-       }catch(Exception ex){}
-       String encrypted_message= encryption.encryptParameters(api);
+        ch.setCardno("5438898014560229");
+        ch.setCharge_type("preauth");
+        ch.setCvv("812");
+        ch.setExpirymonth("08");
+        ch.setExpiryyear("20");
+        ch.setCurrency("NGN");
+        ch.setCountry("NG");
+        ch.setAmount("100");
+        ch.setEmail("user@example.com");
+        ch.setPhonenumber("08056552980");
+        ch.setFirstname("user");
+        ch.setLastname("example");
+        ch.setIP("40.198.14");
+        ch.setTxRef("MXX-ASC-4578");
+        ch.setRedirect_url("https://rave-web.herokuapp.com/receivepayment");
+        ch.setDevice_fingerprint("69e6b7f0b72037aa8428b70fbe03986c"); 
        
        
-       JSONObject charge=ch.preAuthorizeCard(encrypted_message);
-       ch.flwref="FLW-MOCK-d310263f5f73e51d01e6dab32c893679";
-       ch.action="refund";
-       ch.capture();
-       ch.refundOrVoid();
+             JSONObject response=ch.preAuthorizeCard();
+        
        
+            ch.setFlwref("FLW-MOCK-d310263f5f73e51d01e6dab32c893679");
+            ch.setAction("refund");
+            JSONObject capture=  ch.capture();
+            JSONObject refund= ch.refundOrVoid();
+            
+            //System.out.println(capture);
+            //System.out.println(refund);
+            //System.out.println(response);
        
-       System.out.println(charge);
+           
+           
     } 
 }

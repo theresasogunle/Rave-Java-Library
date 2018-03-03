@@ -34,11 +34,10 @@ public class ApiConnection {
      */
     public ApiConnection(String url) {
        this.url = url;
-       
        this.enforceTlsV1point2();
+    
     }
-
-       private void enforceTlsV1point2() {
+    private void enforceTlsV1point2() {
         try {
             SSLContext sslContext = SSLContexts.custom()
                     .useTLS()
@@ -60,6 +59,7 @@ public class ApiConnection {
         }
     }
 
+     
     /**
      * Connects to and queries Flutterwave API with POST
      *
@@ -73,6 +73,8 @@ public class ApiConnection {
                     .header("Authorization", "Bearer ")
                     .fields(query.getParams())
                     .asJson();
+            
+           
             
             try{
             return queryForResponse.getBody().getObject();
@@ -119,6 +121,20 @@ public class ApiConnection {
                     .asJson();
             
             return queryForResponse.getBody();
+           
+        } catch (UnirestException e) {
+            System.out.println("Cant query at this time!");e.printStackTrace();
+        }
+        return null;
+    }
+     public JSONObject connectAndQueryWithGetObj() {
+        try {
+            HttpResponse<JsonNode> queryForResponse = Unirest.get(url)
+                    .header("content-type", "application/json")
+                    .header("Authorization", "Bearer ")
+                    .asJson();
+            
+            return queryForResponse.getBody().getObject();
            
         } catch (UnirestException e) {
             System.out.println("Cant query at this time!");e.printStackTrace();

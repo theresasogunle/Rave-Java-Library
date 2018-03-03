@@ -4,18 +4,31 @@
 
 
 #### Fields
->transaction_reference( This is the 'flwRef')
+>accountnumber
+>accountbank
+>currency
+>country
+>amount
+>email
+>phonenumber
+>firstname
+>lastname
+>IP
+>txRef
+>payment_type
+>passcode
+device_fingerprint
+>transaction_reference
 >otp
 
 #### Methods
-1. chargeAccount(String client)
+1. chargeAccount()
 
     This charges the clients account
 
     **Parameters**
     
-    >client - This is the encrypted client details gotten from the [encryption method](ENCRYPTION.md)
-
+   
     returns `JSONObject`
 
 
@@ -40,39 +53,37 @@
 - To use this method you have to encrypt first and pass the encrypted message in the paremter
 
 ```java
-JSONObject api=new JSONObject();
-Encryption encryption=new Encryption();
+
+
 AccountCharge ch=new AccountCharge();
 
 
 //account charge parameters
 
 
-try{
-api.put("accountnumber", "0690000004");
-api.put("accountbank", "044");
-api.put("currency", "NGN");
-api.put("country", "NG");
-api.put("amount", "6000");
-api.put("firstname", "pin");
-api.put("lastname", "pin");
-api.put("pin", "3310");
-api.put("email", "flamekeed@gmail.com");
-api.put("IP", "103.238.105.185");
-api.put("txRef", "MXX-ASC-4578");
-api.put("payment_type", "account");
+ AccountCharge ch=new AccountCharge();
+        
+            ch.setAccountnumber("0690000031");
+            ch.setAccountbank("044");
+            ch.setAmount("1000");
+            ch.setCountry("NG");
+            ch.setCurrency("NGN");
+            ch.setLastname("Theresa");
+            ch.setIP("1.3.4.4");
+            ch.setPayment_type("account");
+            ch.setTxRef("MX-678DH");
+            ch.setEmail("sogunledolapo@gmail.com");
+          
+          
+           JSONObject result=ch.chargeAccount();
+       
 
-}catch(Exception ex){}
-
-//encrypting parameters
-String encrypted_message= encryption.encryptParameters(api);
-//charge account
-JSONObject res=ch.chargeAccount(encrypted_message);
-//to validate account charge
-  	ch.otp="12345";
-        ch.transaction_reference="ACHG-1519428047882";
+        //validate
+        ch.setTransaction_reference("ACHG-1520028650995");
+        ch.setOtp("12345"); 
         JSONObject val=ch.validateAccountCharge();
 
+        System.out.println(val);
 
 ```
 

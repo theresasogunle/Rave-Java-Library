@@ -19,6 +19,7 @@ public class Charge {
     ApiConnection apiConnection;
     Endpoints ed= new Endpoints();
     Keys key= new Keys();
+    
 /**
  *
  * @param client
@@ -42,6 +43,7 @@ public class Charge {
         
         return this.apiConnection.connectAndQuery(api);
     }
+     
    
     
    

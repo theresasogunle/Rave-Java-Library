@@ -18,16 +18,18 @@ public class Fees {
     Keys key= new Keys();
     Endpoints end= new Endpoints();
 
-    public String amount,currency,card6;
+    private String amount;
+    private String currency;
+    private String card6;
     
     public JSONObject getFees(){   
 
       this.apiConnection = new ApiConnection(end.getFeesEndPoint());
 
       ApiQuery api= new ApiQuery();
-      api.putParams("amount", amount);
+      api.putParams("amount", this.getAmount());
       api.putParams("PBFPubKey", key.getPublicKey());
-      api.putParams("currency", currency);
+      api.putParams("currency", this.getCurrency());
       api.putParams("ptype",2);
 
 
@@ -42,12 +44,54 @@ public class Fees {
       this.apiConnection = new ApiConnection(end.getFeesEndPoint());
 
       ApiQuery api= new ApiQuery();
-      api.putParams("amount", amount);
+      api.putParams("amount", this.getAmount());
       api.putParams("PBFPubKey", key.getPublicKey());
-      api.putParams("currency", currency);
+      api.putParams("currency", this.getCurrency());
       api.putParams("ptype",2);
-      api.putParams("card6", card6);
+      api.putParams("card6", this.getCard6());
 
       return this.apiConnection.connectAndQuery(api);
+    }
+
+    /**
+     * @return the amount
+     */
+    public String getAmount() {
+        return amount;
+    }
+
+    /**
+     * @param amount the amount to set
+     */
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
+
+    /**
+     * @return the currency
+     */
+    public String getCurrency() {
+        return currency;
+    }
+
+    /**
+     * @param currency the currency to set
+     */
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
+    /**
+     * @return the card6
+     */
+    public String getCard6() {
+        return card6;
+    }
+
+    /**
+     * @param card6 the card6 to set
+     */
+    public void setCard6(String card6) {
+        this.card6 = card6;
     }
 }

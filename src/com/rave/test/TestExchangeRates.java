@@ -17,9 +17,9 @@ public class TestExchangeRates {
 
       
         ExchangeRates e=new ExchangeRates();
-        e.amount="500";
-        e.destination_currency="USD";
-        e.origin_currency="NGN";
+        e.setAmount("500");
+        e.setDestination_currency("USD");
+        e.setOrigin_currency("NGN");
         System.out.println( e.forex());
 
     

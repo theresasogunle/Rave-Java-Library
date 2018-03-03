@@ -41,12 +41,13 @@
 
 ```java
 
-Fees fee=new Fees();
+Fees f=new Fees();
 //set field values
-fee.currency="NGN";
-fee.amount="5000";
-fee.card6="674893";
 
+ f.setAmount("5000");
+        f.setCurrency("NGN");
+        f.setCard6("123453");
+        
 System.out.println(rf.getFees());
 System.out.println(rf.getFeesForCard6());
 

@@ -4,71 +4,109 @@
 
 
 #### Fields
-	 >transaction_reference(flwref) - This is the transaction reference
-    
-    	>otp
+>cardno
+>cvv
+>expirymonth
+>expiryyear
+>currency
+>country
+>pin
+>suggested_auth
+>amount
+>email
+>phonenumber
+>firstname
+>lastname
+>IP
+>txRef
+>redirect_url
+>device_fingerprint
+>charge_type
+>transaction_reference(flwref) - This is the transaction reference
+>otp
 
 #### Methods
-1. chargeCard(String client)
+1. chargeCard()
 
     This charges the clients visa,mastercard,intl and verve cards
 
-    **Parameters**
-    
-    >client - This is the encrypted client details gotten from the [encryption method](ENCRYPTION.md)
+    returns `JSONObject`
+
+2.  chargeMasterAndVerveCard()
+
+    This charges the clients using mastercard and verve cards
+
 
     returns `JSONObject`
 
-2. validateCardCharge(String transaction_reference, String otp)
+3.  chargeVisaAndIntl()
+
+    This charges the clients using local visa cards and intl cards
+
+
+    returns `JSONObject`
+
+4.  validateCardCharge()
     
-    This validates account charge
-    
-    **Parameters**
-    
-    >transaction_reference - This is the transaction reference
-    
-    >otp
+    This validates card charge for mastercards and verve cards
     
     returns `JSONObject`
+
+5.   validateCardChargeVB()
     
+    This validates card charge for visa cards and intl cards
     
- 
+    returns `JSONObject`   
+    
+6.   handleTimeoutCharge()
+    
+    for polling timeouts, alternative is by using the Polling class
+    
+    returns `JSONObject`   
+
+7. handleTimeoutValidateCharge()
+    
+    for polling timeouts, alternative is by using the Polling class
+    
+    returns `JSONObject`        
  
 #### Sample
 
-- To use this method you have to encrypt first and pass the encrypted message in the paremter
-
+- To use this method you have to set the fields needed and the charge accordingly
 ```java
-JSONObject api=new JSONObject();
-Encryption encryption=new Encryption();
+
 CardCharge ch=new CardCharge();
-
+public static void main(String[] args) throws JSONException{
 //card charge
-try{
-api.put("cardno", "5438898014560229");
-api.put("cvv", "789");
-api.put("currency", "NGN");
-api.put("country", "NG");
-api.put("amount", "6000");
-api.put("expiryyear", "19");
-api.put("expirymonth", "09");
-api.put("suggested_auth", "pin");
-api.put("pin", "3310");
-api.put("email", "sogunledolapo@gmail.com");
-api.put("IP", "103.238.105.185");
-api.put("txRef", "MXX-ASC-4578");
-api.put("device_fingerprint", "69e6b7f0sb72037aa8428b70fbe03986c");
+ ch.setCardno("4187427415564246");
+       ch.setCvv("828");
+       ch.setCurrency("NGN");
+       ch.setCountry("NG");
+       ch.setAmount("9000");
+       ch.setExpiryyear("19");
+       ch.setExpirymonth("09");
+       ch.setEmail("sogunledolapo@gmail.com");
+       ch.setIP("103.238.105.185");
+       ch.setTxRef("MXX-ASC-4578");
+       ch.setDevice_fingerprint("69e6b7f0sb72037aa8428b70fbe03986c");
+     
+      
+         //for master card and verve
+       ch.setPin("3310");
+       ch.setSuggested_auth("PIN");
+       JSONObject charge= ch.chargeMasterAndVerveCard();
+       
+       //for visa and intl cards
+        ch.setRedirect_url("http://www.google.com");
+        JSONObject chargevisa=ch.chargeVisaAndIntl();
 
-}catch(Exception ex){}
-String encrypted_message= encryption.encryptParameters(api);
+	//validate
+         ch.setOtp("12345");
+         ch.setTransaction_reference("FLW-MOCK-75dd012dc6c6b58807d69d0e89432e9f");
+         JSONObject validateCharge=ch.validateCardCharge();
 
-
-// JSONObject charge=ch.chargeCard(encrypted_message);
-
-   ch.transaction_reference="FLW-MOCK-XXXXXXXXXXXXXXXXXXXXXXXXXXXX";
-   ch.otp="123456";
-// JSONObject validateCharge=ch.validateCardCharge();
-
-//  System.out.println(validateCharge);
+	 ch.setAuthUrl("");
+        ch.validateCardChargeVB();
+}
 ```
 

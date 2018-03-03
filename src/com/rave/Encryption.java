@@ -23,6 +23,8 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import org.json.JSONException;
 import org.json.JSONObject;
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
 public class Encryption {
     private String key;
@@ -89,11 +91,14 @@ public class Encryption {
     * @param api(JSON object)
     * @return String
     */
-    public String encryptParameters(JSONObject api){
+    
+    public String encryptParameters(JSONObject api) {
            
         try{
             api.put("PBFPubKey",keys.getPublicKey());
         }catch(Exception ex){}
+        
+      
         
         String message= api.toString();
         
@@ -105,7 +110,6 @@ public class Encryption {
 
     }
 
-    //for test
 
     public String encryptParametersPreAuth(JSONObject api){
            
@@ -120,7 +124,7 @@ public class Encryption {
         String encrypt_secret_key=getKey("FLWSECK-c51891678d48c39eff3701ff686bdb69-X");
         String encrypted_message= encryptData(message,encrypt_secret_key);
 
-
+      
         return encrypted_message;
 
     }

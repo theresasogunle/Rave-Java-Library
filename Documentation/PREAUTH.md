@@ -4,23 +4,41 @@
 
  
 #### Fields
- >flwRef(ref) - This is the payment gateway's unique reference.
- >action - This is the action to be taken i.e. `refund` or `void`
+>cardno
+>cvv
+>expirymonth
+>expiryyear
+>currency
+>country
+>pin
+>suggested_auth
+>amount
+>email
+>phonenumber
+>firstname
+>lastname
+>IP
+>txRef
+>redirect_url
+>device_fingerprint
+>charge_type
+>flwRef(ref) - This is the payment gateway's unique reference.
+>action - This is the action to be taken i.e. `refund` or `void`
 #### Methods
-1. preAuthorizeCard(String client)
+1. preAuthorizeCard()
 
-    >client - This is the encrypted client details gotten from the [encryption method](ENCRYPTION.md)
+   
 
     returns `JSONObject`
     
-2. capture(String flwRef)
+2. capture()
     >flwRef - This is the payment gateway's unique reference.
     
     returns `JSONObject`
     
 
 3. refundOrVoid()
-=======
+
     >ref - This is the `flwRef` returned in the `capture response.`
     >action - This is the action to be taken i.e. `refund` or `void`
  
@@ -28,42 +46,34 @@
 #### Sample
 
 ```java
-JSONObject api=new JSONObject();
-Encryption encryption=new Encryption();
+
 PreAuthorization ch=new PreAuthorization();
 
 //card charge
-try{
-
-    api.put("cardno", "5438898014560229");
-    api.put("charge_type","preauth");
-    api.put("cvv", "812");
-    api.put("expirymonth", "08");
-    api.put("expiryyear","20");
-    api.put( "currency", "NGN");
-    api.put("country", "NG");
-    api.put("amount", "100");
-    api.put("email", "user@example.com");
-    api.put("phonenumber", "08056552980");
-    api.put("firstname", "user");
-    api.put("lastname", "example");
-    api.put("IP", "40.198.14");
-    api.put("txRef", "MXX-ASC-4578");
-    api.put("redirect_url", "https://rave-web.herokuapp.com/receivepayment");
-    api.put("device_fingerprint", "69e6b7f0b72037aa8428b70fbe03986c");
-
-}catch(Exception ex){}
-String encrypted_message= encryption.encryptParameters(api);
-
-
-JSONObject charge=ch.preAuthorizeCard(encrypted_message);
-
-ch.flwRef=""FLW-MOCK-d310263f5f73e51d01e6dab32c893679";
-ch.action="refund";
-JSONObject capture=ch.capture();
-JSONObject refundOrVoid=ch.refundOrVoid();
-
-
-System.out.println(charge);
+  ch.setCharge_type("preauth");
+        ch.setCvv("812");
+        ch.setExpirymonth("08");
+        ch.setExpiryyear("20");
+        ch.setCurrency("NGN");
+        ch.setCountry("NG");
+        ch.setAmount("100");
+        ch.setEmail("user@example.com");
+        ch.setPhonenumber("08056552980");
+        ch.setFirstname("user");
+        ch.setLastname("example");
+        ch.setIP("40.198.14");
+        ch.setTxRef("MXX-ASC-4578");
+        ch.setRedirect_url("https://rave-web.herokuapp.com/receivepayment");
+        ch.setDevice_fingerprint("69e6b7f0b72037aa8428b70fbe03986c"); 
+       
+       
+        JSONObject response=ch.preAuthorizeCard();
+        
+       
+            ch.setFlwref("FLW-MOCK-d310263f5f73e51d01e6dab32c893679");
+            ch.setAction("refund");
+            JSONObject capture=  ch.capture();
+            JSONObject refund= ch.refundOrVoid();
+       
 ```
 

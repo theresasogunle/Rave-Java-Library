@@ -5,6 +5,7 @@
  */
 package com.rave.test;
 import com.rave.*;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
@@ -12,44 +13,34 @@ import org.json.JSONObject;
  * @author Theresa
  */
 public class TestCardCharge {
-    public static void main(String [] args){
-       JSONObject api=new JSONObject();
-       Encryption encryption=new Encryption();
-       CardCharge ch=new CardCharge();
+    public static void main(String [] args)throws JSONException{
+        CardCharge ch=new CardCharge();
+          ch.setCardno("4187427415564246");
+       ch.setCvv("828");
+       ch.setCurrency("NGN");
+       ch.setCountry("NG");
+       ch.setAmount("9000");
+       ch.setExpiryyear("19");
+       ch.setExpirymonth("09");
+       ch.setEmail("sogunledolapo@gmail.com");
+       ch.setIP("103.238.105.185");
+       ch.setTxRef("MXX-ASC-4578");
+       ch.setDevice_fingerprint("69e6b7f0sb72037aa8428b70fbe03986c");
+     
+      
+         //for master card and verve
+       ch.setPin("3310");
+       ch.setSuggested_auth("PIN");
+       JSONObject charge= ch.chargeMasterAndVerveCard();
        
-       //card charge
-       try{
-       api.put("cardno", "4187427415564246");
-       api.put("cvv", "828");
-       api.put("currency", "NGN");
-       api.put("country", "NG");
-       api.put("amount", "6000");
-       api.put("expiryyear", "19");
-       api.put("expirymonth", "09");
-      // api.put("suggested_auth", "pin");
-     //  api.put("pin", "3310");
-       api.put("redirect_url", "http://www.google.com");
-       api.put("email", "sogunledolapo@gmail.com");
-       api.put("IP", "103.238.105.185");
-       api.put("txRef", "MXX-ASC-4578");
-       api.put("device_fingerprint", "69e6b7f0sb72037aa8428b70fbe03986c");
-       
-       }catch(Exception ex){}
-       String encrypted_message= encryption.encryptParameters(api);
-       
-       
-      JSONObject charge=ch.chargeCard(encrypted_message);
-       ch.otp="12345";
-       ch.transaction_reference="FLW-MOCK-XXXXXXXXXXXXXXXXXXXXXXXXXXXX";
-    //  JSONObject validateCharge=ch.validateCardChargeWithPin();
-       
-
        //for visa and intl cards
-       /*
-       ch.authUrl="yourauthurl";
-       ch.validateCardChargeVB();
-               */
-      System.out.println(charge);
+        ch.setRedirect_url("http://www.google.com");
+        JSONObject chargevisa=ch.chargeVisaAndIntl();
+
+          ch.setOtp("12345");
+         ch.setTransaction_reference("FLW-MOCK-XXXXXXXXXXXXXXXXXXXXXXX");
+         JSONObject validateCharge=ch.validateCardCharge();
+     
 
       
     }

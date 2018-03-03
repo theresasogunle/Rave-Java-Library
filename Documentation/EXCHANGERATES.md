@@ -23,12 +23,11 @@
 ```java
 ExchangeRates e=new ExchangeRates();
 
-e.origin_currency="NGN";
-e.destination_currency="USD";
-e.amount="500";
+        e.setAmount("500");
+        e.setDestination_currency("USD");
+        e.setOrigin_currency("NGN");
 System.out.println(e.forex());
-=======
-System.out.println(e.forex("NGN", "USD", "300"));
+
 
 ```
 

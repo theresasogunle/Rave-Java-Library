@@ -54,41 +54,36 @@ public class Main {
 }
 ```
 
-- Rave Encryption
+- Rave Card Charge
 ```java
 import com.rave.Encryption;
 import org.json.JSONObject;
 
 public class Main {
 
-    public static void main(String[] args) {
-        // Create a JSONObject Object to store your parameters
-        JSONObject api=new JSONObject();
-        
-        // Instantiate the Encryption Class
-        Encryption encryption=new Encryption();
-
-        //Put in the parameters according to the documentation
-        try{
-            api.put("accountnumber", "0690000004");
-            api.put("accountbank", "044");
-            api.put("currency", "NGN");
-            api.put("country", "NG");
-            api.put("amount", "6000");
-            api.put("firstname", "pin");
-            api.put("lastname", "pin");
-            api.put("pin", "3310");
-            api.put("email", "flamekeed@gmail.com");
-            api.put("IP", "103.238.105.185");
-            api.put("txRef", "MXX-ASC-4578");
-            api.put("payment_type", "account");
-
-        }catch(Exception ex){}
-        
-        //Pass the object and encrypt with the encryptParameters(api) method
-        String encrypted_message= encryption.encryptParameters(api);
-        
-        System.out.println(encrypted_message);
+    public static void main(String[] args)throws JSONException {
+	CardCharge ch=new CardCharge();
+       ch.setCardno("4187427415564246");
+       ch.setCvv("828");
+       ch.setCurrency("NGN");
+       ch.setCountry("NG");
+       ch.setAmount("9000");
+       ch.setExpiryyear("19");
+       ch.setExpirymonth("09");
+       ch.setEmail("sogunledolapo@gmail.com");
+       ch.setIP("103.238.105.185");
+       ch.setTxRef("MXX-ASC-4578");
+       ch.setDevice_fingerprint("69e6b7f0sb72037aa8428b70fbe03986c");
+     
+         //for master card and verve
+       ch.setPin("3310");
+       ch.setSuggested_auth("PIN");
+       JSONObject charge= ch.chargeMasterAndVerveCard();
+       
+       //for visa and intl cards
+        ch.setRedirect_url("http://www.google.com");
+        JSONObject chargevisa=ch.chargeVisaAndIntl();
+       
     }
 }
 ```
@@ -101,44 +96,29 @@ import org.json.JSONObject;
 
 public class Main {
 
-    public static void main(String[] args) {
-        //Encryption first
-        
-        // Create a JSONObject Object to store your parameters
-        JSONObject api = new JSONObject();
-        // Instantiate the Encryption Class
-        Encryption encryption = new Encryption();
-        // Instantiate the AccountCharge Class
-        AccountCharge ch = new AccountCharge();
+    public static void main(String[] args) throws JSONException{
+      	   
+	    JSONObject json= new JSONObject();
+            AccountCharge ch= new AccountCharge();
+            
+            ch.setAccountnumber("0690000031");
+            ch.setAccountbank("044");
+            ch.setAmount("1000");
+            ch.setCountry("NG");
+            ch.setCurrency("NGN");
+            ch.setLastname("Theresa");
+            ch.setIP("1.3.4.4");
+            ch.setPayment_type("account");
+            ch.setTxRef("MX-678DH");
+            ch.setEmail("sogunledolapo@gmail.com");
 
-        //Put in the parameters according to the documentation
-        try{
-            api.put("accountnumber", "0690000004");
-            api.put("accountbank", "044");
-            api.put("currency", "NGN");
-            api.put("country", "NG");
-            api.put("amount", "6000");
-            api.put("firstname", "pin");
-            api.put("lastname", "pin");
-            api.put("pin", "3310");
-            api.put("email", "sogunledolapo@gmail.com");
-            api.put("IP", "103.238.105.185");
-            api.put("txRef", "MXX-ASC-4578");
-            api.put("payment_type", "account");
-
-        }catch(Exception ex){}
-        
-        //Encrypt Parameters
-        String encrypted_message= encryption.encryptParameters(api);
-
-        //Charge Account
-        JSONObject res=ch.chargeAccount(encrypted_message);
-        
-        System.out.println(res);
+	      JSONObject result=ch.chargeAccount();
+          
+        System.out.println(result);
         //Validate The Charge
          //do not forget to set your fields
-        ch.otp="12345";
-        ch.transaction_reference="ACHG-1519428047882";
+        ch.setTransaction_reference("ACHG-1520028650995");
+        ch.setOtp("12345");
         JSONObject val=ch.validateAccountCharge();
     }
 }

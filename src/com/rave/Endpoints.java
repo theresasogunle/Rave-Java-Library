@@ -29,6 +29,8 @@ public class Endpoints {
       public static String VERIFY_XREQUERY_ENDPOINT;
       public static String CAPTURE_ENDPOINT;
       public static String REFUNDVOID_ENDPOINT;
+      public static String CHARGE_TIMEOUT_ENDPOINT;
+      public static String VALIDATE_CHARGE_TIMEOUT_ENDPOINT;
       
      
       void init(){
@@ -59,7 +61,8 @@ public class Endpoints {
        VERIFY_XREQUERY_ENDPOINT=url+"flwv3-pug/getpaidx/api/xrequery";
         CAPTURE_ENDPOINT=url+"flwv3-pug/getpaidx/api/capture";
         REFUNDVOID_ENDPOINT=url+"flwv3-pug/getpaidx/api/refundorvoid";
-        
+        CHARGE_TIMEOUT_ENDPOINT=url+"flwv3-pug/getpaidx/api/charge?use_polling=1";
+        VALIDATE_CHARGE_TIMEOUT_ENDPOINT=url+"flwv3-pug/getpaidx/api/validatecharge?use_polling=1";
       }
       
      public String getBankEndPoint(){
@@ -112,6 +115,17 @@ public class Endpoints {
          return  REFUNDVOID_ENDPOINT;
      
      }
+      public String getChargeTimeoutEndpoint(){
+         init();
+         return CHARGE_TIMEOUT_ENDPOINT;
+     
+     }
+        public String getValidateChargeTimeoutEndpoint(){
+         init();
+         return VALIDATE_CHARGE_TIMEOUT_ENDPOINT;
+     
+     }
+      
        
     
       
