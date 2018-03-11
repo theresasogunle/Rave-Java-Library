@@ -7,7 +7,6 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import java.io.FileNotFoundException;
 import org.json.JSONObject;
-
 import java.io.IOException;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
@@ -127,123 +126,6 @@ public class ApiConnection {
         }
         return null;
     }
-     public JSONObject connectAndQueryWithGetObj() {
-        try {
-            HttpResponse<JsonNode> queryForResponse = Unirest.get(url)
-                    .header("content-type", "application/json")
-                    .asJson();
-            
-            return queryForResponse.getBody().getObject();
-           
-        } catch (UnirestException e) {
-            System.out.println("Cant query at this time!");e.printStackTrace();
-        }
-        return null;
-    }
-  public JsonNode connectAndQueryWithPost() {
-        try {
-            HttpResponse<JsonNode> queryForResponse = Unirest.post(url)
-                    .header("content-type", "application/json")
-                    .header("Authorization", "Bearer " )
-                    .asJson();
-            
-            return queryForResponse.getBody();
-           
-        } catch (UnirestException e) {
-            System.out.println("Cant query at this time!");e.printStackTrace();
-        }
-        return null;
-    }
-
-    /**
-     * Used to send a GET request to the Flutterwave API
-     *
-     * @param query - APIQuery containing parameters to send
-     * @return - JSONObject containing API response
-     */
-    public JSONObject connectAndQueryWithGet(ApiQuery query) {
-        try {
-            HttpResponse<JsonNode> queryForResponse = Unirest.get(url)
-                    .header("Accept", "application/json")
-                    .header("Authorization", "Bearer " )
-                    .queryString(query.getParams())
-                    .asJson();
-            return queryForResponse.getBody().getObject();
-        } catch (UnirestException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    /**
-     * Used to send a GET request to the Flutterwave API
-     *
-     * @param query - HashMap containing parameters to send
-     * @return - JSONObject containing API response
-     */
-    public JSONObject connectAndQueryWithGet(HashMap<String, Object> query) {
-        try {
-            HttpResponse<JsonNode> queryForResponse = Unirest.get(url)
-                    .header("Accept", "application/json")
-                    .header("Authorization", "Bearer " )
-                    .queryString(query)
-                    .asJson();
-            return queryForResponse.getBody().getObject();
-        } catch (UnirestException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    /**
-     * Used to send a PUT request to the Flutterwave API
-     *
-     * @param query - APIQuery containing parameters to send
-     * @return - JSONObject containing API response
-     */
-    public JSONObject connectAndQueryWithPut(ApiQuery query) {
-        try {
-            HttpResponse<JsonNode> queryForResponse = Unirest.put(url)
-                    .header("Accept", "application/json")
-                    .header("Authorization", "Bearer " )
-                    .fields(query.getParams())
-                    .asJson();
-            return queryForResponse.getBody().getObject();
-        } catch (UnirestException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    /**
-     * Used to send a PUT request to the Flutterwave API
-     *
-     * @param query - HashMap containing parameters to send
-     * @return - JSONObject containing API response
-     */
-    public JSONObject connectAndQueryWithPut(HashMap<String, Object> query) {
-        try {
-            HttpResponse<JsonNode> queryForResponse = Unirest.get(url)
-                    .header("Accept", "application/json")
-                    .header("Authorization", "Bearer " )
-                    .queryString(query)
-                    .asJson();
-            return queryForResponse.getBody().getObject();
-        } catch (UnirestException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    /**
-     * shut down the apiConnection
-     */
-    public static void shutDown() {
-        try {
-            Unirest.shutdown();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+    
 
 }

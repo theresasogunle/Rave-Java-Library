@@ -31,17 +31,17 @@ public class TestAccountCharge {
           
           
           
-           JSONObject result=ch.chargeAccount();
-          // System.out.println(result);
+       JSONObject result=ch.chargeAccount();
+      System.out.println(result);
 
         //validate
-        ch.setTransaction_reference("ACHG-1520028650995");
-        ch.setOtp("12345"); 
+     //   ch.setTransaction_reference("ACHG-1520795373963");
+       // ch.setOtp("12345"); 
         //for polling
-        JSONObject polling=ch.validateAccountCharge(true);
-        System.out.println(polling);
+      //  JSONObject polling=ch.validateAccountCharge(true);
+       // System.out.println(polling);
         //without polling
-        JSONObject val=ch.validateAccountCharge();
-        System.out.println(val);
+  //  JSONObject val=ch.validateAccountCharge();
+    //  System.out.println(val);
     }
 }

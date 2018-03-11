@@ -42,31 +42,7 @@ public class Keys {
         }catch(Exception e){System.out.println("Cant get keys");}
     }
 
-    /**
-     * Used to set  secret key
-     *
-     * @param key
-     */
-    protected void setSECRET_KEY(String key) {
-        this.SECRET_KEY = key;
-    }
 
-    
-   
-    /**
-     * Used to set public key
-     *
-     * @param key
-     */
-    protected void setPUBLIC_KEY(String key) {
-        this.PUBLIC_KEY = key;
-    }
-
-    /**
-     * Used to get  public key
-     *
-     * @return
-     */
     
          public String getPublicKey(){
         Keys key= new Keys();
@@ -111,6 +87,8 @@ public class Keys {
             String envv=key.env;
         return envv;
     }
+    
+    
 
     
 }

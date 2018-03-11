@@ -43,6 +43,19 @@ public class Charge {
         
         return this.apiConnection.connectAndQuery(api);
     }
+    public JSONObject validateCharge(String transaction_reference, String otp){
+    
+       this.apiConnection = new ApiConnection(ed.getValidateChargeEndPoint());
+      
+        ApiQuery api=new ApiQuery();
+        
+        api.putParams("PBFPubKey",key.getPublicKey());
+        api.putParams("transaction_reference", transaction_reference);
+    
+        api.putParams("otp", otp);
+
+        return this.apiConnection.connectAndQuery(api);
+    }
      
    
     

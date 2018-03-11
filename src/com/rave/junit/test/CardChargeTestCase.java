@@ -67,7 +67,7 @@ public class CardChargeTestCase {
       
           //validate
             ch.setOtp("12345");
-            ch.setTransaction_reference("FLW-MOCK-XXXXXXXXXXXXXXXXXXXXXXX");
+            ch.setTransactionreference("FLW-MOCK-XXXXXXXXXXXXXXXXXXXXXXX");
             JSONObject validateCharge=ch.validateCardCharge();
             //if timeout, poll
             JSONObject validatepoll=ch.validateCardCharge(true);

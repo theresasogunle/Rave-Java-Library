@@ -29,23 +29,27 @@ public class TestCardCharge {
      
       
         //for master card and verve
-           ch.setPin("3310")
-             .setSuggested_auth("PIN");
-             JSONObject charge= ch.chargeMasterAndVerveCard();
+         //  ch.setPin("3310")
+         //    .setSuggested_auth("PIN");
+            // JSONObject charge= ch.chargeMasterAndVerveCard();
+         //    System.out.println(charge);
             //if timeout
-            JSONObject poll=ch.chargeMasterAndVerveCard(true);
+         //   JSONObject poll=ch.chargeMasterAndVerveCard(true);
    
        //for visa and intl cards
-            ch.setRedirect_url("http://www.google.com");
-            JSONObject chargevisa=ch.chargeVisaAndIntl();
+          //  ch.setRedirect_url("http://www.google.com");
+           //JSONObject chargevisa=ch.chargeVisaAndIntl();
+          // System.out.println(chargevisa);
             //if timeout, poll
-            JSONObject pollvisa=ch.chargeVisaAndIntl(true);
+            //JSONObject pollvisa=ch.chargeVisaAndIntl(true);
             //validate
-            ch.setOtp("12345");
-            ch.setTransaction_reference("FLW-MOCK-XXXXXXXXXXXXXXXXXXXXXXX");
-            JSONObject validateCharge=ch.validateCardCharge();
+           ch.setOtp("12345");
+           ch.setTransactionreference("FLW-MOCK-9d8197a1ca6152d762b0b068a80f536b");
+          // ch.setTransactionreference("FLW-MOCK-9d8197a1ca6152d762b0b068a80f536b");
+          JSONObject validateCharge=ch.validateCardCharge();
+          System.out.println(validateCharge);
             //if timeout, poll
-            JSONObject validatepoll=ch.validateCardCharge(true);
+          //  JSONObject validatepoll=ch.validateCardCharge(true);
         
      
 

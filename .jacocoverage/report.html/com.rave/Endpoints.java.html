@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Endpoints.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;RaveJava&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">com.rave</a> &gt; <span class="el_source">Endpoints.java</span></div><h1>Endpoints.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.rave;
+
+import java.io.FileNotFoundException;
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author Theresa
+ */
+<span class="fc" id="L15">public class Endpoints {</span>
+<span class="fc" id="L16">       Keys key= new Keys();</span>
+<span class="fc" id="L17">      String staging_url=&quot;http://flw-pms-dev.eu-west-1.elasticbeanstalk.com/&quot;;</span>
+<span class="fc" id="L18">      String live_url=&quot;https://api.ravepay.co/&quot;;</span>
+      String  url;
+      public  String BANK_ENDPOINT;
+      public static String CARD_CHARGE_ENDPOINT;
+      public static String CARD_VALIDATE_ENDPOINT;
+      public static String TIMEOUT_ENDPOINT;
+      public static String POLL_ENDPOINT;
+      public static String FEES_ENDPOINT;
+      public static String REFUND_ENDPOINT;
+      public static String FOREX_ENDPOINT;
+      public static String VERIFY_TRANSACTION_ENDPOINT;
+      public static String VERIFY_XREQUERY_ENDPOINT;
+      public static String CAPTURE_ENDPOINT;
+      public static String REFUNDVOID_ENDPOINT;
+      public static String CHARGE_TIMEOUT_ENDPOINT;
+      public static String VALIDATE_CHARGE_TIMEOUT_ENDPOINT;
+      public static String IP_ENDPOINT;
+      
+     
+      void init(){
+      
+<span class="pc bpc" id="L39" title="1 of 2 branches missed.">          if(key.getEnvironment().equalsIgnoreCase(&quot;live&quot;)){</span>
+           
+<span class="nc" id="L41">            url=live_url;</span>
+          
+          }
+          else {
+<span class="fc" id="L45">          url=staging_url;</span>
+          }
+         
+<span class="fc" id="L48">       BANK_ENDPOINT= url+&quot;/flwv3-pug/getpaidx/api/flwpbf-banks.js?json=1&quot;;</span>
+<span class="fc" id="L49">       CARD_CHARGE_ENDPOINT =url+&quot;/flwv3-pug/getpaidx/api/charge&quot;;</span>
+<span class="fc" id="L50">       CARD_VALIDATE_ENDPOINT = url+&quot;flwv3-pug/getpaidx/api/validatecharge&quot;;</span>
+<span class="fc" id="L51">       TIMEOUT_ENDPOINT=url+&quot;flwv3-pug/getpaidx/api/charge?use_polling=1&quot;;</span>
+<span class="fc" id="L52">       POLL_ENDPOINT=url+&quot;flwv3-pug/getpaidx/api/requests/RCORE_CHREQ_3FC28781846AD8E1C598&quot;;</span>
+<span class="fc" id="L53">        FEES_ENDPOINT=url+&quot;flwv3-pug/getpaidx/api/fee&quot;;</span>
+<span class="fc" id="L54">       REFUND_ENDPOINT=url+&quot;gpx/merchant/transactions/refund&quot;;</span>
+<span class="fc" id="L55">       FOREX_ENDPOINT=url+&quot;/flwv3-pug/getpaidx/api/forex&quot;;</span>
+<span class="fc" id="L56">       VERIFY_TRANSACTION_ENDPOINT=url+&quot;flwv3-pug/getpaidx/api/verify&quot;;</span>
+<span class="fc" id="L57">       VERIFY_XREQUERY_ENDPOINT=url+&quot;flwv3-pug/getpaidx/api/xrequery&quot;;</span>
+<span class="fc" id="L58">        CAPTURE_ENDPOINT=url+&quot;flwv3-pug/getpaidx/api/capture&quot;;</span>
+<span class="fc" id="L59">        REFUNDVOID_ENDPOINT=url+&quot;flwv3-pug/getpaidx/api/refundorvoid&quot;;</span>
+<span class="fc" id="L60">        CHARGE_TIMEOUT_ENDPOINT=url+&quot;flwv3-pug/getpaidx/api/charge?use_polling=1&quot;;</span>
+<span class="fc" id="L61">        VALIDATE_CHARGE_TIMEOUT_ENDPOINT=url+&quot;flwv3-pug/getpaidx/api/validatecharge?use_polling=1&quot;;</span>
+<span class="fc" id="L62">        IP_ENDPOINT=&quot;http://bot.whatismyipaddress.com&quot;;</span>
+<span class="fc" id="L63">      }</span>
+      
+     public String getBankEndPoint(){
+<span class="fc" id="L66">         init();</span>
+<span class="fc" id="L67">         return BANK_ENDPOINT;</span>
+     
+     }
+      public String getIPEndPoint(){
+<span class="nc" id="L71">         init();</span>
+<span class="nc" id="L72">         return IP_ENDPOINT;</span>
+     
+     }
+     public String getChargeEndPoint(){
+<span class="fc" id="L76">         init();</span>
+<span class="fc" id="L77">         return CARD_CHARGE_ENDPOINT;</span>
+     
+     }
+     public String getValidateChargeEndPoint(){
+<span class="fc" id="L81">         init();</span>
+<span class="fc" id="L82">         return CARD_VALIDATE_ENDPOINT;</span>
+     
+     }
+     public String getFeesEndPoint(){
+<span class="fc" id="L86">         init();</span>
+<span class="fc" id="L87">         return FEES_ENDPOINT;</span>
+     
+     }
+     public String getRefundEndPoint(){
+<span class="fc" id="L91">         init();</span>
+<span class="fc" id="L92">         return REFUND_ENDPOINT;</span>
+     
+     }
+     public String getForexEndPoint(){
+<span class="fc" id="L96">         init();</span>
+<span class="fc" id="L97">         return FOREX_ENDPOINT;</span>
+     
+     }
+     public String getVerifyEndPoint(){
+<span class="fc" id="L101">         init();</span>
+<span class="fc" id="L102">         return VERIFY_TRANSACTION_ENDPOINT;</span>
+     
+     }
+     public String getVerifyXrequeryEndPoint(){
+<span class="nc" id="L106">         init();</span>
+<span class="nc" id="L107">         return VERIFY_XREQUERY_ENDPOINT;</span>
+     
+     }
+     public String getCaptureEndPoint(){
+<span class="fc" id="L111">         init();</span>
+<span class="fc" id="L112">         return CAPTURE_ENDPOINT;</span>
+     
+     }
+     public String getRefundOrVoidEndPoint(){
+<span class="fc" id="L116">         init();</span>
+<span class="fc" id="L117">         return  REFUNDVOID_ENDPOINT;</span>
+     
+     }
+      public String getChargeTimeoutEndpoint(){
+<span class="fc" id="L121">         init();</span>
+<span class="fc" id="L122">         return CHARGE_TIMEOUT_ENDPOINT;</span>
+     
+     }
+        public String getValidateChargeTimeoutEndpoint(){
+<span class="fc" id="L126">         init();</span>
+<span class="fc" id="L127">         return VALIDATE_CHARGE_TIMEOUT_ENDPOINT;</span>
+     
+     }
+      
+       
+    
+      
+      
+      
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

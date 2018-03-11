@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Charge.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;RaveJava&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">com.rave</a> &gt; <span class="el_source">Charge.java</span></div><h1>Charge.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.rave;
+
+
+import org.json.JSONObject;
+
+
+
+/**
+ *
+ * @author Theresa
+ */
+<span class="fc" id="L17">public class Charge {</span>
+    
+    ApiConnection apiConnection;
+<span class="fc" id="L20">    Endpoints ed= new Endpoints();</span>
+<span class="fc" id="L21">    Keys key= new Keys();</span>
+    
+/**
+ *
+ * @param client
+ * @return JSONObject
+ */
+    
+    //for all charges
+    public JSONObject charge(String client){
+<span class="fc" id="L31">        this.apiConnection = new ApiConnection(ed.getChargeEndPoint());</span>
+          
+<span class="fc" id="L33">       String alg=&quot;3DES-24&quot;;</span>
+     
+<span class="fc" id="L35">        ApiQuery api=new ApiQuery();</span>
+        
+<span class="fc" id="L37">        api.putParams(&quot;PBFPubKey&quot;, key.getPublicKey());</span>
+
+<span class="fc" id="L39">        api.putParams(&quot;client&quot;, client);</span>
+
+<span class="fc" id="L41">        api.putParams(&quot;alg&quot;, alg);</span>
+      
+        
+<span class="fc" id="L44">        return this.apiConnection.connectAndQuery(api);</span>
+    }
+    public JSONObject validateCharge(String transaction_reference, String otp){
+    
+<span class="fc" id="L48">       this.apiConnection = new ApiConnection(ed.getValidateChargeEndPoint());</span>
+      
+<span class="fc" id="L50">        ApiQuery api=new ApiQuery();</span>
+        
+<span class="fc" id="L52">        api.putParams(&quot;PBFPubKey&quot;,key.getPublicKey());</span>
+<span class="fc" id="L53">        api.putParams(&quot;transaction_reference&quot;, transaction_reference);</span>
+    
+<span class="fc" id="L55">        api.putParams(&quot;otp&quot;, otp);</span>
+
+<span class="fc" id="L57">        return this.apiConnection.connectAndQuery(api);</span>
+    }
+     
+   
+    
+   
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Refund.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;RaveJava&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">com.rave</a> &gt; <span class="el_source">Refund.java</span></div><h1>Refund.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.rave;
+
+import java.io.FileNotFoundException;
+import org.json.JSONObject;
+
+/**
+ *
+ * @author Theresa
+ */
+<span class="fc" id="L15">public class Refund {</span>
+    private ApiConnection apiConnection;
+<span class="fc" id="L17">    private Keys key= new Keys();</span>
+<span class="fc" id="L18">    Endpoints end= new Endpoints();</span>
+   private String ref;
+
+    public JSONObject refund(){
+<span class="fc" id="L22">        this.apiConnection = new ApiConnection(end.getRefundEndPoint());</span>
+<span class="fc" id="L23">        ApiQuery api= new ApiQuery();</span>
+
+<span class="fc" id="L25">        api.putParams(&quot;ref&quot;, this.getRef());</span>
+<span class="fc" id="L26">        api.putParams(&quot;seckey&quot;, key.getSecretKey());</span>
+
+
+<span class="fc" id="L29">        return this.apiConnection.connectAndQuery(api);</span>
+    }
+
+    /**
+     * @return the ref
+     */
+    public String getRef() {
+<span class="fc" id="L36">        return ref;</span>
+    }
+
+    /**
+     * @param ref the ref to set
+     */
+    public void setRef(String ref) {
+<span class="fc" id="L43">        this.ref = ref;</span>
+<span class="fc" id="L44">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

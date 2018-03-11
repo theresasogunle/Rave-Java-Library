@@ -34,12 +34,7 @@ public class AccountCharge {
  
    
     
-    public JsonNode getAllBanks(){   
- 
-        Bank b=new Bank();
-    
-        return b.getAllBanks();
-    }
+   
     public JSONObject setJSON() throws JSONException{
         JSONObject json=new JSONObject();
         
@@ -96,18 +91,8 @@ public class AccountCharge {
      
 
      public JSONObject validateAccountCharge(){
-
-     
-        this.apiConnection = new ApiConnection(end.getValidateChargeEndPoint());
-      
-        ApiQuery api=new ApiQuery();
-        
-        api.putParams("PBFPubKey",key.getPublicKey());
-        api.putParams("transaction_reference", this.getTransaction_reference() );
-   //  
-        api.putParams("otp", this.getOtp());
-
-        return this.apiConnection.connectAndQuery(api);
+      Charge vcharge= new Charge();
+     return vcharge.validateCharge(this.getTransaction_reference(), this.getOtp());
     }
 
     

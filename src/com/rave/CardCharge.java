@@ -33,7 +33,7 @@ public class CardCharge {
     
 
 
-   private String transaction_reference,otp, authUrl;
+   private String transactionreference,otp, authUrl;
     /**
     *
 
@@ -127,22 +127,16 @@ public class CardCharge {
     */
 
     public JSONObject validateCardCharge(){
-        this.apiConnection = new ApiConnection(ed.getValidateChargeEndPoint());
+        Charge vch= new Charge();
 
-        ApiQuery api=new ApiQuery();
-
-        api.putParams("PBFPubKey",key.getPublicKey());
-        api.putParams("transaction_reference",this.getTransaction_reference());
-        api.putParams("otp", this.getOtp());
-
-        return this.apiConnection.connectAndQuery(api);
+        return vch.validateCharge(this.getTransactionreference(), this.getOtp());
     }
     //if timeout
     public JSONObject validateCardCharge(boolean polling){
        
         Polling p=new Polling();
         
-        return p.validateChargeTimeout(this.getTransaction_reference(), this.getOtp());
+        return p.validateChargeTimeout(this.getTransactionreference(), this.getOtp());
     }
     
     /*
@@ -451,15 +445,15 @@ public class CardCharge {
     /**
      * @return the transaction_reference
      */
-    public String getTransaction_reference() {
-        return transaction_reference;
+    public String getTransactionreference() {
+        return transactionreference;
     }
 
     /**
      * @param transaction_reference the transaction_reference to set
      */
-    public CardCharge setTransaction_reference(String transaction_reference) {
-        this.transaction_reference = transaction_reference;
+    public CardCharge setTransactionreference(String transaction_reference) {
+        this.transactionreference= transaction_reference;
         
         return this;
     }
