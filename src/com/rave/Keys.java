@@ -44,23 +44,29 @@ public class Keys {
 
 
     
-         public String getPublicKey()throws FileNotFoundException{
+         public String getPublicKey(){
         Keys keys= new Keys();
 
-              
+               try {
                    keys.initializeKeys();
-              
+               } catch (FileNotFoundException e) {
+                   System.out.print("Required Keys.json file could not be found.");
+                   e.printStackTrace();
+               }
                String public_key=keys.PUBLIC_KEY;
                  
                return public_key;
         
         }
-     public String getSecretKey() throws FileNotFoundException{
+     public String getSecretKey(){
         Keys key= new Keys();
 
-             
+               try {
                    key.initializeKeys();
-              
+               } catch (FileNotFoundException e) {
+                   System.out.print("Required Keys.json file could not be found.");
+                   e.printStackTrace();
+               }
                String secret_key=key.SECRET_KEY;
                //  System.out.println(public_key);
                  
@@ -70,11 +76,14 @@ public class Keys {
     protected void setEnvironment(String env){
     this.env=env;
     }
-    protected String getEnvironment() throws FileNotFoundException{
+    protected String getEnvironment() {
         Keys k= new Keys();
-         
+         try {
             k.initializeKeys();
-      
+        } catch (FileNotFoundException e) {
+            System.out.print("Required Keys.json file could not be found.");
+            e.printStackTrace();
+        }
             String envv=k.env;
         return envv;
     }

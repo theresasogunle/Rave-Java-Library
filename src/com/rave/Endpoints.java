@@ -34,7 +34,7 @@ public class Endpoints {
       public static String IP_ENDPOINT;
       
      
-      void init()throws FileNotFoundException{
+      void init(){
       
           if(key.getEnvironment().equalsIgnoreCase("live")){
            
@@ -62,67 +62,67 @@ public class Endpoints {
         IP_ENDPOINT="http://bot.whatismyipaddress.com";
       }
       
-     public String getBankEndPoint()throws FileNotFoundException{
+     public String getBankEndPoint(){
          init();
          return BANK_ENDPOINT;
      
      }
-      public String getIPEndPoint()throws FileNotFoundException{
+      public String getIPEndPoint(){
          init();
          return IP_ENDPOINT;
      
      }
-     public String getChargeEndPoint()throws FileNotFoundException{
+     public String getChargeEndPoint(){
          init();
          return CARD_CHARGE_ENDPOINT;
      
      }
-     public String getValidateChargeEndPoint()throws FileNotFoundException{
+     public String getValidateChargeEndPoint(){
          init();
          return CARD_VALIDATE_ENDPOINT;
      
      }
-     public String getFeesEndPoint()throws FileNotFoundException{
+     public String getFeesEndPoint(){
          init();
          return FEES_ENDPOINT;
      
      }
-     public String getRefundEndPoint()throws FileNotFoundException{
+     public String getRefundEndPoint(){
          init();
          return REFUND_ENDPOINT;
      
      }
-     public String getForexEndPoint()throws FileNotFoundException{
+     public String getForexEndPoint(){
          init();
          return FOREX_ENDPOINT;
      
      }
-     public String getVerifyEndPoint()throws FileNotFoundException{
+     public String getVerifyEndPoint(){
          init();
          return VERIFY_TRANSACTION_ENDPOINT;
      
      }
-     public String getVerifyXrequeryEndPoint()throws FileNotFoundException{
+     public String getVerifyXrequeryEndPoint(){
          init();
          return VERIFY_XREQUERY_ENDPOINT;
      
      }
-     public String getCaptureEndPoint() throws FileNotFoundException{
+     public String getCaptureEndPoint(){
          init();
          return CAPTURE_ENDPOINT;
      
      }
-     public String getRefundOrVoidEndPoint()throws FileNotFoundException{
+     public String getRefundOrVoidEndPoint(){
          init();
          return  REFUNDVOID_ENDPOINT;
      
      }
-      public String getChargeTimeoutEndpoint()throws FileNotFoundException{
+      public String getChargeTimeoutEndpoint(){
          init();
          return CHARGE_TIMEOUT_ENDPOINT;
      
      }
-        public String getValidateChargeTimeoutEndpoint()throws FileNotFoundException{
+        public String getValidateChargeTimeoutEndpoint(){
          init();
          return VALIDATE_CHARGE_TIMEOUT_ENDPOINT;
      
