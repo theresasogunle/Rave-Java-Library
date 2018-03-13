@@ -1,4 +1,5 @@
-﻿# Flutterwave Rave (Rave-Java-Library)
+[![Coverage Status](https://coveralls.io/repos/github/theresasogunle/Rave-Java-Library/badge.svg?branch=master)](https://coveralls.io/github/theresasogunle/Rave-Java-Library?branch=master)
+# Flutterwave Rave (Rave-Java-Library)
 Rave-Java-Library facilitates quick and easy development and integration of Java based applications with the Flutterwave API.
 - **Contributors:** **Theresa Sogunle**, Oluwole Adebiyi (KingFlamez)
 - **Tags:** rave, flutterwave, payment gateway, bank account, credit card, debit card, nigeria, kenya, ghana, international, mastercard, visa, KES, GHC, NGN,  Java.
