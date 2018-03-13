@@ -43,15 +43,11 @@ public class Polling {
         return this.apiConnection.connectAndQuery(api);
     }
     public JSONObject validateChargeTimeout(String transaction_reference,String otp){
-        this.apiConnection = new ApiConnection(ed.getValidateChargeTimeoutEndpoint());
+       
 
-        ApiQuery api=new ApiQuery();
+       Charge vc= new Charge();
 
-        api.putParams("PBFPubKey",key.getPublicKey());
-        api.putParams("transaction_reference",transaction_reference);
-        api.putParams("otp",  otp);
-
-        return this.apiConnection.connectAndQuery(api);
+        return vc.validateCharge(transaction_reference, otp);
     }
     
 
