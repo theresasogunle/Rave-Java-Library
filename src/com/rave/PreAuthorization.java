@@ -23,9 +23,9 @@ public class PreAuthorization {
     private String flwref;
     private String action;
   Keys key=new Keys();
-  private String cardno,cvv,expirymonth,expiryyear,currency,country,
-      amount,email,phonenumber,firstname,lastname,IP,txRef,redirect_url,device_fingerprint,
-            charge_type;
+  private String cardno,cvv,expirymonth,expiryyear,currency,country;
+  private String  amount,email,phonenumber,firstname,lastname,IP;
+  private String txRef,redirect_url,device_fingerprint,charge_type;
   /*
   NB: For Preauth payment please use the keys below:
 | Public Key | FLWPUBK-8cd258c49f38e05292e5472b2b15906e-X |

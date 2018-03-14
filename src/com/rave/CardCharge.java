@@ -24,9 +24,10 @@ public class CardCharge {
     ApiConnection apiConnection;
     Keys key=new Keys();
     Encryption e=new Encryption();
-    private String cardno,cvv,expirymonth,expiryyear,currency,country,pin,suggested_auth,
-      amount,email,phonenumber,firstname,lastname,txRef,redirect_url,device_fingerprint,IP,
-            charge_type;
+    private String cardno,cvv,expirymonth,expiryyear,currency,country;
+    private String  pin,suggested_auth, amount,email,phonenumber;
+    private String   firstname,lastname,txRef,redirect_url,device_fingerprint;
+    private String   IP, charge_type;
     private String transactionreference,otp, authUrl;
     /**
     *

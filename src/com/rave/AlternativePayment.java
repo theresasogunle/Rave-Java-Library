@@ -23,8 +23,9 @@ public class AlternativePayment {
    Encryption e=new Encryption();
    Keys key=new Keys();
    
-   private String accountnumber,accountbank,currency,country,amount,firstname,lastname,
-           pin,email,IP,txRef,phonenumber,orderRef,network,flwRef;
+    private String accountnumber,accountbank,currency,country;
+    private String amount,firstname,lastname,network,flwRef;
+    private String pin,email,IP,txRef,phonenumber,orderRef;
 
 
     /**

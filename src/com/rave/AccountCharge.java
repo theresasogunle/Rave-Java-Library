@@ -22,12 +22,13 @@ import org.json.JSONObject;
 public class AccountCharge {
     
     
-    final    private Keys key = new Keys();
+     private final Keys key = new Keys();
   
     Encryption e=new Encryption();
     
-    private String accountnumber,accountbank,currency,country,amount,email,phonenumber,firstname,lastname,IP,
-            txRef,passcode,device_fingerprint;
+    private String accountnumber,accountbank,currency,country;
+    private String  amount,email,phonenumber,firstname,lastname;
+    private String   IP, txRef,passcode,device_fingerprint;
     
     private String transaction_reference;//to be called
     private String otp;//to be called

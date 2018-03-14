@@ -19,8 +19,9 @@ import java.util.HashMap;
 public class IntegrityChecksum {
       
         Keys key=new Keys();
-    private String amount, payment_method,custom_description,custom_logo,country,currency,
-           customer_email, customer_lastname,customer_firstname,customer_phone,txref;
+    private String amount, payment_method,custom_description;
+    private String custom_logo,country,currency,customer_email; 
+    private String customer_lastname,customer_firstname,customer_phone,txref;
      /**
     *
     * 
