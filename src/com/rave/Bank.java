@@ -6,7 +6,7 @@
 package com.rave;
 
 import com.mashape.unirest.http.JsonNode;
-import org.json.JSONObject;
+
 
 /**
  *
@@ -15,6 +15,12 @@ import org.json.JSONObject;
 public class Bank {
     private ApiConnection apiConnection;
     Endpoints ed= new Endpoints();
+     /**
+    *
+    * 
+    * @return JsonNode
+    * 
+    */
     
     public JsonNode getAllBanks(){
         this.apiConnection = new ApiConnection(ed.getBankEndPoint());

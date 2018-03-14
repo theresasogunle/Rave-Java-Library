@@ -21,6 +21,12 @@ public class Fees {
     private String amount;
     private String currency;
     private String card6;
+     /**
+    *
+    * 
+    * @return JSONObject
+    * 
+    */
     
     public JSONObject getFees(){   
 

@@ -5,13 +5,13 @@ import java.util.HashMap;
 
 public class ApiQuery {
 
-    private HashMap<String, Object> queryMap;
+   final private HashMap<String, Object> queryMap;
 
     /**
      * Initializes a new query map
      */
     public ApiQuery() {
-        this.queryMap = new HashMap<String, Object>();
+        this.queryMap = new HashMap<>();
     }
 
     /**

@@ -5,7 +5,7 @@
  */
 package com.rave;
 
-import com.mashape.unirest.http.JsonNode;
+
 import static com.rave.Encryption.encryptData;
 
 import org.json.JSONException;
@@ -21,9 +21,9 @@ import org.json.JSONObject;
  */
 public class AccountCharge {
     
-    private ApiConnection apiConnection;
-    private Keys key = new Keys();
-    private Endpoints end= new Endpoints();
+    
+    final    private Keys key = new Keys();
+  
     Encryption e=new Encryption();
     
     private String accountnumber,accountbank,currency,country,amount,email,phonenumber,firstname,lastname,IP,
@@ -34,7 +34,10 @@ public class AccountCharge {
  
    
     
-   
+     /**
+     * @return the JSONObject
+     * @throws JSONException
+     */
     public JSONObject setJSON() throws JSONException{
         JSONObject json=new JSONObject();
         
@@ -59,10 +62,9 @@ public class AccountCharge {
      
 
     /**
-    *
-
-    * @return json
-    */ 
+     * @return the JSONObject
+     * @throws JSONException
+     */
     
     public JSONObject chargeAccount() throws JSONException{
        
@@ -71,7 +73,7 @@ public class AccountCharge {
         
         String message= json.toString();
         
-        String encrypt_secret_key=e.getKey(key.getSecretKey());
+        String encrypt_secret_key=Encryption.getKey(key.getSecretKey());
         String client= encryptData(message,encrypt_secret_key);
 
         Charge ch=new Charge();
@@ -79,6 +81,11 @@ public class AccountCharge {
         return ch.charge(client);
 
     }
+      /**
+     * @param polling
+     * @return JSONObjcet
+     * @throws JSONException
+     */
      public JSONObject chargeAccount(boolean polling) throws JSONException{
        
         JSONObject json=setJSON();
@@ -88,13 +95,20 @@ public class AccountCharge {
         return p.handleTimeoutCharge(json);
 
     }
-     
+       /**
+     * @return JSONObject
+     *
+     */
 
      public JSONObject validateAccountCharge(){
       Charge vcharge= new Charge();
      return vcharge.validateCharge(this.getTransaction_reference(), this.getOtp());
     }
-
+/**
+     * @return JSONObject
+     * @param polling
+     *
+     */
     
       public JSONObject validateAccountCharge(boolean polling){
       Polling p=new Polling();
@@ -110,6 +124,7 @@ public class AccountCharge {
 
     /**
      * @param accountnumber the accountnumber to set
+     * @return AccountCharge
      */
     public AccountCharge setAccountnumber(String accountnumber) {
         this.accountnumber = accountnumber;
@@ -125,6 +140,7 @@ public class AccountCharge {
 
     /**
      * @param accountbank the accountbank to set
+     * @return AccountCharge
      */
     public AccountCharge setAccountbank(String accountbank) {
         this.accountbank = accountbank;
@@ -140,6 +156,7 @@ public class AccountCharge {
 
     /**
      * @param currency the currency to set
+     * @return AccountCharge
      */
     public AccountCharge setCurrency(String currency) {
         this.currency = currency;
@@ -155,6 +172,7 @@ public class AccountCharge {
 
     /**
      * @param country the country to set
+     * @return AccountCharge
      */
     public AccountCharge setCountry(String country) {
         this.country = country;
@@ -170,6 +188,7 @@ public class AccountCharge {
 
     /**
      * @param amount the amount to set
+     * @return AccountCharge
      */
     public AccountCharge setAmount(String amount) {
         this.amount = amount;
@@ -185,6 +204,7 @@ public class AccountCharge {
 
     /**
      * @param email the email to set
+     * @return AccountCharge
      */
     public AccountCharge setEmail(String email) {
         this.email = email;
@@ -200,6 +220,7 @@ public class AccountCharge {
 
     /**
      * @param phonenumber the phonenumber to set
+     * @return AccountCharge
      */
     public AccountCharge setPhonenumber(String phonenumber) {
         this.phonenumber = phonenumber;
@@ -215,6 +236,7 @@ public class AccountCharge {
 
     /**
      * @param firstname the firstname to set
+     * @return AccountCharge
      */
     public AccountCharge setFirstname(String firstname) {
         this.firstname = firstname;
@@ -230,6 +252,7 @@ public class AccountCharge {
 
     /**
      * @param lastname the lastname to set
+     * @return AccountCharge
      */
     public AccountCharge setLastname(String lastname) {
         this.lastname = lastname;
@@ -245,6 +268,7 @@ public class AccountCharge {
 
     /**
      * @param IP the IP to set
+     * @return AccountCharge
      */
     public AccountCharge setIP(String IP) {
         this.IP = IP;
@@ -260,6 +284,7 @@ public class AccountCharge {
 
     /**
      * @param txRef the txRef to set
+     * @return AccountCharge
      */
     public AccountCharge setTxRef(String txRef) {
         this.txRef = txRef;
@@ -275,6 +300,7 @@ public class AccountCharge {
 
     /**
      * @param passcode the passcode to set
+     * @return AccountCharge
      */
     public AccountCharge setPasscode(String passcode) {
         this.passcode = passcode;
@@ -290,6 +316,7 @@ public class AccountCharge {
 
     /**
      * @param device_fingerprint the device_fingerprint to set
+     * @return AccountCharge
      */
     public AccountCharge setDevice_fingerprint(String device_fingerprint) {
         this.device_fingerprint = device_fingerprint;
@@ -305,6 +332,7 @@ public class AccountCharge {
 
     /**
      * @param transaction_reference the transaction_reference to set
+     * @return AccountCharge
      */
     public AccountCharge setTransaction_reference(String transaction_reference) {
         this.transaction_reference = transaction_reference;
@@ -320,18 +348,11 @@ public class AccountCharge {
 
     /**
      * @param otp the otp to set
+     * @return AccountCharge
      */
     public AccountCharge setOtp(String otp) {
         this.otp = otp;
          return this;
     }
-    /**
-
-    * 
-    * @return JSONObject
-    */
-   
-    
-   
-    
+ 
 }

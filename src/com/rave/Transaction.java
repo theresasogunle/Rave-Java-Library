@@ -14,12 +14,15 @@ import org.json.JSONObject;
  */
 public class Transaction {
     ApiConnection apiConnection;
-    private Keys key=new Keys();
+    final  private Keys key=new Keys();
     Endpoints end= new Endpoints();
    private String  flwref, txRef;
     
     //requery all failed transactions
-
+/**
+     * @return JSONObject
+     * 
+     */
     public JSONObject verifyTransactionRequery(){   
 
       this.apiConnection = new ApiConnection(end.getVerifyEndPoint());
@@ -31,7 +34,10 @@ public class Transaction {
       return this.apiConnection.connectAndQuery(api);
     }
     
-
+/**
+     * @return JSONObject
+     * 
+     */
     public JSONObject verifyTransactionXrequery(){   
      
       this.apiConnection = new ApiConnection(end.getVerifyXrequeryEndPoint());
@@ -56,6 +62,7 @@ public class Transaction {
 
     /**
      * @param flwref the flwref to set
+     * @return Transaction
      */
     public Transaction setFlwref(String flwref) {
         this.flwref = flwref;
@@ -71,6 +78,7 @@ public class Transaction {
 
     /**
      * @param txRef the txRef to set
+     * @return Transaction
      */
     public Transaction setTxRef(String txRef) {
         this.txRef = txRef;

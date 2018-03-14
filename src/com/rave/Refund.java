@@ -5,7 +5,7 @@
  */
 package com.rave;
 
-import java.io.FileNotFoundException;
+
 import org.json.JSONObject;
 
 /**
@@ -14,10 +14,13 @@ import org.json.JSONObject;
  */
 public class Refund {
     private ApiConnection apiConnection;
-    private Keys key= new Keys();
+    final  private Keys key= new Keys();
     Endpoints end= new Endpoints();
    private String ref;
-
+    /**
+     * @return JSONObject
+     *
+     */
     public JSONObject refund(){
         this.apiConnection = new ApiConnection(end.getRefundEndPoint());
         ApiQuery api= new ApiQuery();

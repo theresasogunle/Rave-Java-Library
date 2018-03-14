@@ -28,10 +28,9 @@ public class AlternativePayment {
 
 
     /**
-    *
-    * @param client
-    * @return JSONObject
-    */
+     * @return the JSONObject
+     * @throws JSONException
+     */
     
     // charge customers using nigerian USSD for GTB and Zenith Bank,Ghana mobile money and Kenya Mpesa
  
@@ -54,7 +53,7 @@ public class AlternativePayment {
            
            String message= json.toString();
         
-        String encrypt_secret_key=e.getKey(key.getSecretKey());
+        String encrypt_secret_key=Encryption.getKey(key.getSecretKey());
         String client= encryptData(message,encrypt_secret_key);
 
         Charge ch=new Charge();
@@ -62,6 +61,13 @@ public class AlternativePayment {
         return ch.charge(client);
 
     }
+      /**
+    *
+    * 
+    * @return JSONObject
+    * @throws JSONException
+    */
+    
      public JSONObject chargeGhanaMobileMoney () throws JSONException{
         //getting charge endpoint
          JSONObject json=new JSONObject();
@@ -82,7 +88,7 @@ public class AlternativePayment {
            
       String message= json.toString();
         
-        String encrypt_secret_key=e.getKey(key.getSecretKey());
+        String encrypt_secret_key=Encryption.getKey(key.getSecretKey());
         String client= encryptData(message,encrypt_secret_key);
 
         Charge ch=new Charge();
@@ -90,6 +96,13 @@ public class AlternativePayment {
         return ch.charge(client);
 
     }
+      /**
+    *
+    * 
+    * @return JSONObject
+    * @throws JSONException
+    */
+    
       public JSONObject chargeKenyaMpesa () throws JSONException{
         //getting charge endpoint
           JSONObject json=new JSONObject();
@@ -108,7 +121,7 @@ public class AlternativePayment {
        json.put("is_mpesa", "1");
          String message= json.toString();
         
-        String encrypt_secret_key=e.getKey(key.getSecretKey());
+        String encrypt_secret_key=Encryption.getKey(key.getSecretKey());
         String client= encryptData(message,encrypt_secret_key);
 
         Charge ch=new Charge();
@@ -116,16 +129,6 @@ public class AlternativePayment {
         return ch.charge(client); 
 
     }
-
-    /**
-    *
-    * @param txref
-    * @param flwref
-    * @return JSONObject
-    */ 
-    //to requery transaction for ghana mobile money,kenya mpesa and nigerian ussd using xquery
-
- 
 
     /**
      * @return the accountnumber
@@ -136,6 +139,7 @@ public class AlternativePayment {
 
     /**
      * @param accountnumber the accountnumber to set
+     * @return AlternativePayment
      */
     public AlternativePayment setAccountnumber(String accountnumber) {
         this.accountnumber = accountnumber;
@@ -151,6 +155,7 @@ public class AlternativePayment {
 
     /**
      * @param accountbank the accountbank to set
+     * @return AlternativePayment
      */
     public AlternativePayment setAccountbank(String accountbank) {
         this.accountbank = accountbank;
@@ -166,6 +171,7 @@ public class AlternativePayment {
 
     /**
      * @param currency the currency to set
+     * @return AlternativePayment
      */
     public AlternativePayment setCurrency(String currency) {
         this.currency = currency;
@@ -181,6 +187,7 @@ public class AlternativePayment {
 
     /**
      * @param country the country to set
+     * @return AlternativePayment
      */
     public AlternativePayment setCountry(String country) {
         this.country = country;
@@ -196,6 +203,7 @@ public class AlternativePayment {
 
     /**
      * @param amount the amount to set
+     * @return AlternativePayment
      */
     public AlternativePayment setAmount(String amount) {
         this.amount = amount;
@@ -211,6 +219,7 @@ public class AlternativePayment {
 
     /**
      * @param firstname the firstname to set
+     * @return AlternativePayment
      */
     public AlternativePayment setFirstname(String firstname) {
         this.firstname = firstname;
@@ -226,6 +235,7 @@ public class AlternativePayment {
 
     /**
      * @param lastname the lastname to set
+     * @return AlternativePayment
      */
     public AlternativePayment setLastname(String lastname) {
          this.lastname = lastname;
@@ -241,6 +251,7 @@ public class AlternativePayment {
 
     /**
      * @param pin the pin to set
+     * @return AlternativePayment
      */
     public AlternativePayment setPin(String pin) {
         this.pin = pin;
@@ -249,6 +260,7 @@ public class AlternativePayment {
 
     /**
      * @return the email
+     * 
      */
     public String getEmail() {
         return email;
@@ -256,6 +268,7 @@ public class AlternativePayment {
 
     /**
      * @param email the email to set
+     * @return AlternativePayment
      */
     public AlternativePayment setEmail(String email) {
         this.email = email;
@@ -271,6 +284,7 @@ public class AlternativePayment {
 
     /**
      * @param IP the IP to set
+     * @return AlternativePayment
      */
     public AlternativePayment setIP(String IP) {
         this.IP = IP;
@@ -286,6 +300,7 @@ public class AlternativePayment {
 
     /**
      * @param txRef the txRef to set
+     * @return AlternativePayment
      */
     public AlternativePayment setTxRef(String txRef) {
         this.txRef = txRef;
@@ -301,6 +316,7 @@ public class AlternativePayment {
 
     /**
      * @param phonenumber the phonenumber to set
+     * @return AlternativePayment
      */
     public AlternativePayment setPhonenumber(String phonenumber) {
         this.phonenumber = phonenumber;
@@ -316,6 +332,7 @@ public class AlternativePayment {
 
     /**
      * @param orderRef the orderRef to set
+     * @return AlternativePayment
      */
     public AlternativePayment setOrderRef(String orderRef) {
         this.orderRef = orderRef;
@@ -331,6 +348,7 @@ public class AlternativePayment {
 
     /**
      * @param network the network to set
+     * @return AlternativePayment
      */
     public AlternativePayment setNetwork(String network) {
         this.network = network;
@@ -346,6 +364,7 @@ public class AlternativePayment {
 
     /**
      * @param flwRef the flwRef to set
+     * @return AlternativePayment
      */
     public AlternativePayment setFlwRef(String flwRef) {
         this.flwRef = flwRef;

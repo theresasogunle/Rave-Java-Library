@@ -25,6 +25,10 @@ public class CardChargeTestCase {
        CardCharge ch=new CardCharge();
        
     @Test
+    /**
+     * 
+     * @throws JSONException
+     */
     public void testCardCharge() throws JSONException{
        ch.setCardno("4187427415564246")
           .setCvv("828")
@@ -63,7 +67,11 @@ public class CardChargeTestCase {
     
     
     @Test
-    public void verifyCardValidation()throws JSONException{
+    /**
+     * @return JSONObject
+     * @throws Exception
+     */
+    public void verifyCardValidation()throws Exception{
       
           //validate
             ch.setOtp("12345");

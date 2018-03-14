@@ -27,21 +27,14 @@ public class CardCharge {
     private String cardno,cvv,expirymonth,expiryyear,currency,country,pin,suggested_auth,
       amount,email,phonenumber,firstname,lastname,txRef,redirect_url,device_fingerprint,IP,
             charge_type;
-    
-    
-   
-    
-
-
-   private String transactionreference,otp, authUrl;
+    private String transactionreference,otp, authUrl;
     /**
     *
-
-    * @param client
+    * 
     * @return JSONObject
+    * @throws JSONException
     */
-    
-   public JSONObject setJSON() throws JSONException{
+     public JSONObject setJSON() throws JSONException{
         JSONObject json=new JSONObject();
         
         json.put("cardno", this.getCardno());
@@ -65,6 +58,12 @@ public class CardCharge {
         return json;
    }
      
+     /**
+    *
+    * 
+    * @return JSONObject
+    * @throws JSONException
+    */
     
     public JSONObject chargeMasterAndVerveCard() throws JSONException{
         JSONObject json= setJSON();
@@ -84,6 +83,13 @@ public class CardCharge {
         return ch.charge(client);  
     
     }
+     /**
+    *
+    * @return JSONObject
+    * @throws JSONException
+    * @param polling
+    */
+    
     public JSONObject chargeMasterAndVerveCard(boolean polling) throws JSONException{
         JSONObject json= setJSON();
         
@@ -95,6 +101,12 @@ public class CardCharge {
         return p.handleTimeoutCharge(json);
     
     }
+     /**
+    *
+    * @return JSONObject
+    * @throws JSONException
+    */
+    
     public JSONObject chargeVisaAndIntl() throws JSONException{
         JSONObject json= setJSON();
         json.put("PBFPubKey",key.getPublicKey());
@@ -110,6 +122,13 @@ public class CardCharge {
         return ch.charge(client); 
     
     }
+     /**
+    *
+    * @return JSONObject
+    * @throws JSONException
+    * @param polling
+    */
+    
       public JSONObject chargeVisaAndIntl(boolean polling) throws JSONException{
         JSONObject json= setJSON();
         json.put("PBFPubKey",key.getPublicKey());
@@ -121,17 +140,25 @@ public class CardCharge {
     }
     
 
-    /*
-    if AuthMode::"PIN"
-    @params transaction reference(flwRef),OTP 
+     /**
+    *
+    * 
+    * @return JSONObject
+    * 
     */
-
+    
     public JSONObject validateCardCharge(){
         Charge vch= new Charge();
 
         return vch.validateCharge(this.getTransactionreference(), this.getOtp());
     }
-    //if timeout
+     /**
+    *
+    * 
+    * @return JSONObject
+    * @param polling
+    */
+    
     public JSONObject validateCardCharge(boolean polling){
        
         Polling p=new Polling();
@@ -139,17 +166,20 @@ public class CardCharge {
         return p.validateChargeTimeout(this.getTransactionreference(), this.getOtp());
     }
     
-    /*
-    if AuthMode::"VBSECURE"or "AVS_VBVSECURECODE"
-    @params authUrl This requires that you copy the authurl returned in the response
-    and paste it in the argument and it opens a small window for card validation
+  //  if AuthMode::"VBSECURE"or "AVS_VBVSECURECODE"and paste it in the argument and it opens a small window for card validation
+      /**
+    *
+    * 
+    * 
+    * @throws Exception
+    * 
     */
-    public void validateCardChargeVB(){
+    public void validateCardChargeVB() throws Exception{
      
       if (Desktop.isDesktopSupported()) {
-          try{
+         
     Desktop.getDesktop().browse(new URI(this.getAuthUrl()));
-          }catch(Exception e){}
+         
             }
     }
    
@@ -163,6 +193,7 @@ public class CardCharge {
 
     /**
      * @param cardno the cardno to set
+     *  @return CardCharge
      */
     public CardCharge setCardno(String cardno) {
         this.cardno = cardno;
@@ -179,6 +210,7 @@ public class CardCharge {
 
     /**
      * @param cvv the cvv to set
+     * @return CardCharge
      */
     public CardCharge setCvv(String cvv) {
         this.cvv = cvv;
@@ -195,6 +227,7 @@ public class CardCharge {
 
     /**
      * @param expirymonth the expirymonth to set
+     *  @return CardCharge
      */
     public CardCharge setExpirymonth(String expirymonth) {
         this.expirymonth = expirymonth;
@@ -211,6 +244,7 @@ public class CardCharge {
 
     /**
      * @param expiryyear the expiryyear to set
+     *  @return CardCharge
      */
     public CardCharge setExpiryyear(String expiryyear) {
         this.expiryyear = expiryyear;
@@ -227,6 +261,7 @@ public class CardCharge {
 
     /**
      * @param currency the currency to set
+     *  @return CardCharge
      */
     public CardCharge setCurrency(String currency) {
         this.currency = currency;
@@ -243,6 +278,7 @@ public class CardCharge {
 
     /**
      * @param country the country to set
+     *  @return CardCharge
      */
     public CardCharge setCountry(String country) {
         this.country = country;
@@ -259,6 +295,7 @@ public class CardCharge {
 
     /**
      * @param pin the pin to set
+     *  @return CardCharge
      */
     public CardCharge setPin(String pin) {
         this.pin = pin;
@@ -275,6 +312,7 @@ public class CardCharge {
 
     /**
      * @param suggested_auth the suggested_auth to set
+     *  @return CardCharge
      */
     public CardCharge setSuggested_auth(String suggested_auth) {
         this.suggested_auth = suggested_auth;
@@ -291,6 +329,7 @@ public class CardCharge {
 
     /**
      * @param amount the amount to set
+     *  @return CardCharge
      */
     public CardCharge setAmount(String amount) {
         this.amount = amount;
@@ -307,6 +346,7 @@ public class CardCharge {
 
     /**
      * @param email the email to set
+     *  @return CardCharge
      */
     public CardCharge setEmail(String email) {
         this.email = email;
@@ -323,6 +363,7 @@ public class CardCharge {
 
     /**
      * @param phonenumber the phonenumber to set
+     *  @return CardCharge
      */
     public CardCharge setPhonenumber(String phonenumber) {
         this.phonenumber = phonenumber;
@@ -339,6 +380,7 @@ public class CardCharge {
 
     /**
      * @param firstname the firstname to set
+     *  @return CardCharge
      */
     public CardCharge setFirstname(String firstname) {
         this.firstname = firstname;
@@ -355,6 +397,7 @@ public class CardCharge {
 
     /**
      * @param lastname the lastname to set
+     *  @return CardCharge
      */
     public CardCharge setLastname(String lastname) {
         this.lastname = lastname;
@@ -371,6 +414,7 @@ public class CardCharge {
 
     /**
      * @param IP the IP to set
+     *  @return CardCharge
      */
     public CardCharge setIP(String IP) {
         this.IP = IP;
@@ -387,6 +431,7 @@ public class CardCharge {
 
     /**
      * @param txRef the txRef to set
+     *  @return CardCharge
      */
     public CardCharge setTxRef(String txRef) {
         this.txRef = txRef;
@@ -403,6 +448,7 @@ public class CardCharge {
 
     /**
      * @param redirect_url the redirect_url to set
+     *  @return CardCharge
      */
     public CardCharge setRedirect_url(String redirect_url) {
         this.redirect_url = redirect_url;
@@ -419,6 +465,7 @@ public class CardCharge {
 
     /**
      * @param device_fingerprint the device_fingerprint to set
+     *  @return CardCharge
      */
     public CardCharge setDevice_fingerprint(String device_fingerprint) {
         this.device_fingerprint = device_fingerprint;
@@ -435,6 +482,7 @@ public class CardCharge {
 
     /**
      * @param charge_type the charge_type to set
+     *  @return CardCharge
      */
     public CardCharge setCharge_type(String charge_type) {
         this.charge_type = charge_type;
@@ -451,6 +499,7 @@ public class CardCharge {
 
     /**
      * @param transaction_reference the transaction_reference to set
+     *  @return CardCharge
      */
     public CardCharge setTransactionreference(String transaction_reference) {
         this.transactionreference= transaction_reference;
@@ -467,6 +516,7 @@ public class CardCharge {
 
     /**
      * @param otp the otp to set
+     *  @return CardCharge
      */
     public CardCharge setOtp(String otp) {
         this.otp = otp;
@@ -483,6 +533,7 @@ public class CardCharge {
 
     /**
      * @param authUrl the authUrl to set
+     *  @return CardCharge
      */
     public CardCharge setAuthUrl(String authUrl) {
         this.authUrl = authUrl;

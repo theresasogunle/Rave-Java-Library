@@ -4,34 +4,33 @@
  * and open the template in the editor.
  */
 package com.rave;
-import java.io.FileNotFoundException;
+
 import java.io.UnsupportedEncodingException;
+import java.security.InvalidKeyException;
 import java.security.MessageDigest;
 import java.util.Arrays;
 import java.security.NoSuchAlgorithmException;
-
-
+import java.util.Base64;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
+import org.json.JSONObject;
 /**
  *
  * @author Theresa
  */
-import java.util.Base64;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.crypto.Cipher;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.SecretKeySpec;
-import org.json.JSONException;
-import org.json.JSONObject;
-import static org.junit.Assert.assertEquals;
-import org.junit.Test;
+
 
 public class Encryption {
-    private String key;
-    private ApiConnection apiConnection;
+   
+   
     Keys keys= new Keys();
-    String cardno,currency,country,cvv,amount,expiryyear, expirymonth,suggested_auth, pin, email,  IP,txRef,device_fingerprint,redirectUrl;
-      
+   
         
     // Method to turn bytes in hex
     public static String toHexStr(byte[] bytes){
@@ -57,9 +56,7 @@ public class Encryption {
             System.arraycopy(subSeedKey.getBytes(), 0, combineArray, 0, 12);
             System.arraycopy(subHashString, subHashString.length - 12, combineArray, 12, 12);
             return new String(combineArray);
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getGlobal().log(Level.SEVERE, null, ex);
-        } catch (UnsupportedEncodingException ex) {
+        } catch (NoSuchAlgorithmException | UnsupportedEncodingException ex) {
             Logger.getGlobal().log(Level.SEVERE, null, ex);
         }
         return null;
@@ -78,9 +75,9 @@ public class Encryption {
             final byte[] cipherText = cipher.doFinal(plainTextBytes);
             return Base64.getEncoder().encodeToString(cipherText);
 
-        } catch (Exception e) {
+        } catch (UnsupportedEncodingException | NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException | IllegalBlockSizeException | BadPaddingException e) {
 
-            e.printStackTrace();
+          
             return "";
         }
         
@@ -109,7 +106,14 @@ public class Encryption {
         return encrypted_message;
 
     }
-
+ /**
+    *
+    * 
+    * @return String
+    * @param api 
+    * 
+    */
+    
 
     public String encryptParametersPreAuth(JSONObject api){
            

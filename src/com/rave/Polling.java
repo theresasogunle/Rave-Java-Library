@@ -15,18 +15,24 @@ import org.json.JSONObject;
  */
 public class Polling {
           ApiConnection apiConnection;
-          private Endpoints ed=new Endpoints();
+      final private Endpoints ed=new Endpoints();
           Encryption e=new Encryption();
           Keys key=new Keys();
   
   
     //if timeout, start polling
+     /**
+     * 
+     *@param json
+     * @throws JSONException
+     * @return JSONObject
+     */
     public JSONObject handleTimeoutCharge(JSONObject json)throws JSONException{
       this.apiConnection = new ApiConnection(ed.getChargeTimeoutEndpoint());
       
         String message= json.toString();
         
-        String encrypt_secret_key=e.getKey(key.getSecretKey());
+        String encrypt_secret_key=Encryption.getKey(key.getSecretKey());
         String client= encryptData(message,encrypt_secret_key);
       
         String alg="3DES-24";
@@ -42,6 +48,12 @@ public class Polling {
         
         return this.apiConnection.connectAndQuery(api);
     }
+     /**
+     * 
+     * @param transaction_reference
+     * @param otp 
+     * @return String
+     */
     public JSONObject validateChargeTimeout(String transaction_reference,String otp){
        
 

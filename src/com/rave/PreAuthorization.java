@@ -34,6 +34,10 @@ public class PreAuthorization {
     Preauth payments is based on approval per merchant,
   and is not open to accounts except approval to use these payment method is given.
   */
+  /**
+     * @return JSONObject
+     * @throws JSONException
+     */
   public JSONObject setJSON()throws JSONException{
       JSONObject json= new JSONObject();
        String public_key="FLWPUBK-8cd258c49f38e05292e5472b2b15906e-X ";
@@ -58,6 +62,10 @@ public class PreAuthorization {
         return json;
   
   }
+   /**
+     * @return JSONObject
+     * @throws JSONException
+     */
    public JSONObject preAuthorizeCard()throws JSONException{
        
       this.apiConnection = new ApiConnection(end.getChargeEndPoint());
@@ -75,7 +83,7 @@ public class PreAuthorization {
          String message= json.toString();
          String secret_key="FLWSECK-c51891678d48c39eff3701ff686bdb69-X";
          
-        String encrypt_secret_key=e.getKey(secret_key);
+        String encrypt_secret_key=Encryption.getKey(secret_key);
         String client= encryptData(message,encrypt_secret_key);
        String alg="3DES-24";
        
@@ -89,7 +97,9 @@ public class PreAuthorization {
        
           return this.apiConnection.connectAndQuery(api);
    }
-   
+    /**
+     * @return the JSONObject
+     */
    public JSONObject capture(){
       this.apiConnection = new ApiConnection(end.getCaptureEndPoint());
       ApiQuery api= new ApiQuery();
@@ -103,19 +113,22 @@ public class PreAuthorization {
     
       return this.apiConnection.connectAndQuery(api);
    }
+    /**
+     * @return JSONObject
+     */
    
-   public JSONObject refundOrVoid(){
-   this.apiConnection = new ApiConnection(end.getRefundOrVoidEndPoint());
-    ApiQuery api= new ApiQuery();
-     String secret_key="FLWSECK-c51891678d48c39eff3701ff686bdb69-X";
-     // String secret_key=key.getSecretKey();
-      api.putParams("ref", this.getFlwref());
-      api.putParams("action", this.getAction());
-      api.putParams("SECKEY", secret_key);
-    
-      return this.apiConnection.connectAndQuery(api);
-   
-   }
+        public JSONObject refundOrVoid(){
+        this.apiConnection = new ApiConnection(end.getRefundOrVoidEndPoint());
+        ApiQuery api= new ApiQuery();
+        String secret_key="FLWSECK-c51891678d48c39eff3701ff686bdb69-X";
+          // String secret_key=key.getSecretKey();
+        api.putParams("ref", this.getFlwref());
+        api.putParams("action", this.getAction());
+        api.putParams("SECKEY", secret_key);
+
+        return this.apiConnection.connectAndQuery(api);
+
+        }
 
     /**
      * @return the flwref
@@ -126,6 +139,7 @@ public class PreAuthorization {
 
     /**
      * @param flwref the flwref to set
+     * @return PreAuthorization
      */
     public PreAuthorization setFlwref(String flwref) {
         this.flwref = flwref;
@@ -141,6 +155,7 @@ public class PreAuthorization {
 
     /**
      * @param action the action to set
+     * @return PreAuthorization
      */
     public PreAuthorization setAction(String action) {
         this.action = action;
@@ -156,6 +171,7 @@ public class PreAuthorization {
 
     /**
      * @param cardno the cardno to set
+     * @return PreAuthorization
      */
     public PreAuthorization setCardno(String cardno) {
         this.cardno = cardno;
@@ -171,6 +187,7 @@ public class PreAuthorization {
 
     /**
      * @param cvv the cvv to set
+     * @return PreAuthorization
      */
     public PreAuthorization setCvv(String cvv) {
         this.cvv = cvv;
@@ -186,6 +203,7 @@ public class PreAuthorization {
 
     /**
      * @param expirymonth the expirymonth to set
+     * @return PreAuthorization
      */
     public PreAuthorization setExpirymonth(String expirymonth) {
         this.expirymonth = expirymonth;
@@ -201,6 +219,7 @@ public class PreAuthorization {
 
     /**
      * @param expiryyear the expiryyear to set
+     * @return PreAuthorization
      */
     public PreAuthorization setExpiryyear(String expiryyear) {
         this.expiryyear = expiryyear;
@@ -216,6 +235,7 @@ public class PreAuthorization {
 
     /**
      * @param currency the currency to set
+     * @return PreAuthorization
      */
     public PreAuthorization setCurrency(String currency) {
         this.currency = currency;
@@ -231,6 +251,7 @@ public class PreAuthorization {
 
     /**
      * @param country the country to set
+     * @return PreAuthorization
      */
     public PreAuthorization setCountry(String country) {
         this.country = country;
@@ -246,6 +267,7 @@ public class PreAuthorization {
 
     /**
      * @param amount the amount to set
+     * @return PreAuthorization
      */
     public PreAuthorization setAmount(String amount) {
         this.amount = amount;
@@ -261,6 +283,7 @@ public class PreAuthorization {
 
     /**
      * @param email the email to set
+     * @return PreAuthorization
      */
     public PreAuthorization setEmail(String email) {
         this.email = email;
@@ -276,6 +299,7 @@ public class PreAuthorization {
 
     /**
      * @param phonenumber the phonenumber to set
+     * @return PreAuthorization
      */
     public PreAuthorization setPhonenumber(String phonenumber) {
         this.phonenumber = phonenumber;
@@ -291,6 +315,7 @@ public class PreAuthorization {
 
     /**
      * @param firstname the firstname to set
+     * @return PreAuthorization
      */
     public PreAuthorization setFirstname(String firstname) {
         this.firstname = firstname;
@@ -306,6 +331,7 @@ public class PreAuthorization {
 
     /**
      * @param lastname the lastname to set
+     * @return PreAuthorization
      */
     public PreAuthorization setLastname(String lastname) {
         this.lastname = lastname;
@@ -321,6 +347,7 @@ public class PreAuthorization {
 
     /**
      * @param IP the IP to set
+     * @return PreAuthorization
      */
     public PreAuthorization setIP(String IP) {
         this.IP = IP;
@@ -336,6 +363,7 @@ public class PreAuthorization {
 
     /**
      * @param txRef the txRef to set
+     * @return PreAuthorization
      */
     public PreAuthorization setTxRef(String txRef) {
         this.txRef = txRef;
@@ -351,6 +379,7 @@ public class PreAuthorization {
 
     /**
      * @param redirect_url the redirect_url to set
+     * @return PreAuthorization
      */
     public PreAuthorization setRedirect_url(String redirect_url) {
         this.redirect_url = redirect_url;
@@ -366,6 +395,7 @@ public class PreAuthorization {
 
     /**
      * @param device_fingerprint the device_fingerprint to set
+     * @return PreAuthorization
      */
     public PreAuthorization setDevice_fingerprint(String device_fingerprint) {
         this.device_fingerprint = device_fingerprint;
@@ -381,6 +411,7 @@ public class PreAuthorization {
 
     /**
      * @param charge_type the charge_type to set
+     * @return PreAuthorization
      */
     public PreAuthorization setCharge_type(String charge_type) {
         this.charge_type = charge_type;

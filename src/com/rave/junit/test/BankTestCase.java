@@ -21,6 +21,7 @@ public class BankTestCase {
     
     Bank b=new Bank();
     JsonNode response=b.getAllBanks();
+    assertEquals(("status"),"success");
       
    // System.out.println(response);
     

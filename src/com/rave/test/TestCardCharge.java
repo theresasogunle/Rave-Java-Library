@@ -31,8 +31,8 @@ public class TestCardCharge {
         //for master card and verve
          //  ch.setPin("3310")
          //    .setSuggested_auth("PIN");
-            // JSONObject charge= ch.chargeMasterAndVerveCard();
-         //    System.out.println(charge);
+            JSONObject charge= ch.chargeMasterAndVerveCard();
+             System.out.println(charge);
             //if timeout
          //   JSONObject poll=ch.chargeMasterAndVerveCard(true);
    

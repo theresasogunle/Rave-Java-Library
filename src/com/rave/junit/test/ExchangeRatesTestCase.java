@@ -16,6 +16,7 @@ import org.junit.Test;
  * @author Theresa
  */
 public class ExchangeRatesTestCase {
+    
     @Test
     public void test() throws JSONException{
     

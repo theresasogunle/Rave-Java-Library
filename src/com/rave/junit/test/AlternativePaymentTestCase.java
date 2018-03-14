@@ -17,13 +17,15 @@ import org.junit.Test;
  * @author Theresa
  */
 public class AlternativePaymentTestCase {
-    
+    /**
+     * 
+     * @throws JSONException
+     */
     @Test
     public void test() throws JSONException{
-        
-       
+   
         AlternativePayment ch=new AlternativePayment();
-        /*
+        
                //available for only zenith and GTB
             ch.setAccountnumber("0690000004")
              .setAccountbank("044")
@@ -37,23 +39,16 @@ public class AlternativePaymentTestCase {
              .setIP("103.238.105.185")
              .setTxRef("MXX-ASC-4578");
 
-*/
-
-
-        
-        
-        
-        
-           // JSONObject chargeussd=ch.chargeNigerianUssd();
-            //System.out.println(chargeussd);
-         //assertEquals(chargeussd.get("status"),"success");
+            JSONObject chargeussd=ch.chargeNigerianUssd();
+           System.out.println(chargeussd);
+         assertEquals(chargeussd.get("status"),"success");
         //complete transaction
-            //  Transaction t=new Transaction();
+              Transaction t=new Transaction();
             // t.setFlwref("FLW-MOCK-d310263f5f73e51d01e6dab32c893679");
           // System.out.println( t.verifyTransactionRequery());
     
     //for ghana mobile money
-       /*
+       
   
        ch.setOrderRef("0690000")
         .setNetwork("MTN")
@@ -73,7 +68,7 @@ public class AlternativePaymentTestCase {
     //  String encrypted_message= encryption.encryptParameters(api);
           JSONObject chargegh=ch.chargeGhanaMobileMoney();
           System.out.println(chargegh);
-        */
+        
          //for kenya mpesa
           
   
