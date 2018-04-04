@@ -13,10 +13,10 @@ Rave-Java-Library facilitates quick and easy development and integration of Java
 > Signup for a test account [here](http://rave.frontendpwc.com/)
 > Signup for a live account [here](https://rave.flutterwave.com)
 
-## Installation
-- Download Rave-Java-Library
-- Install [rave-java-1.0.jar](lib/rave-java-1.0.jar?raw=true), Located in the lib folder of this project. 
-- Install the other needed library dependencies which are also contained in the [`Lib folder`](lib) in the [`Rave-Java-Library project`](lib)
+## Installation (Jar file)
+> Skip this installation if you want to use maven
+- Download latest Rave-Java-Library jar file from the [releases tab](https://github.com/theresasogunle/Rave-Java-Library/releases)
+- Install it and the other needed library dependencies which are contained in the [`Lib folder`](lib) in the [`Rave-Java-Library project`](lib)
 
 ### How to Install Libraries
 >On Netbeans IDE: `Project properties -> Libraries -> Compile -> ADD JAR/folder -> Add Jar`
@@ -41,6 +41,33 @@ Rave-Java-Library facilitates quick and easy development and integration of Java
 
 - Set to go 💪
 
+## Installation (Maven)
+
+`mvn install` to build 
+### To use as library,add this to your pom.xml file
+```xml
+<dependencies>
+ <dependency>
+  <groupId>com.github.theresasogunle</groupId>
+  <artifactId>Rave</artifactId>
+  <version>1.0</version>
+  <type>pom</type>
+</dependency>
+</dependencies>
+```
+
+### Gradle 
+
+```bash
+compile 'com.github.theresasogunle:Rave:1.0'
+```
+
+### Ivy
+```xml
+<dependency org='com.github.theresasogunle' name='Rave' rev='1.0'>
+  <artifact name='Rave' ext='pom' ></artifact>
+</dependency>
+```
 
 ## Sample Use
 
