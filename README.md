@@ -59,9 +59,12 @@ Rave-Java-Library facilitates quick and easy development and integration of Java
 ```
 
 ### Gradle 
-
-```bash
-compile 'com.github.theresasogunle:Rave:1.0'
+```java
+repositories {
+    maven {
+        url  "https://dl.bintray.com/theresasogunle/Rave" 
+    }
+}
 ```
 
 ### Ivy
@@ -70,6 +73,7 @@ compile 'com.github.theresasogunle:Rave:1.0'
   <artifact name='Rave' ext='pom' ></artifact>
 </dependency>
 ```
+> Visit [https://bintray.com/theresasogunle/Rave/Rave](https://bintray.com/theresasogunle/Rave/Rave) for more info
 
 ## Sample Use
 
