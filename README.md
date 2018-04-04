@@ -11,12 +11,14 @@ Rave-Java-Library facilitates quick and easy development and integration of Java
 
 ## Prerequisite
 > Signup for a test account [here](http://rave.frontendpwc.com/)
+
 > Signup for a live account [here](https://rave.flutterwave.com)
 
 ## Installation (Jar file)
-> Skip this installation if you want to use maven
+> Skip this installation if you want to use [maven, gradle or ivy](#installation-maven)
+
 - Download latest Rave-Java-Library jar file from the [releases tab](https://github.com/theresasogunle/Rave-Java-Library/releases)
-- Install it and the other needed library dependencies which are contained in the [`Lib folder`](lib) in the [`Rave-Java-Library project`](lib)
+- Install it and the other needed library dependencies which are contained in the `lib.zip` in the [releases tab](https://github.com/theresasogunle/Rave-Java-Library/releases)
 
 ### How to Install Libraries
 >On Netbeans IDE: `Project properties -> Libraries -> Compile -> ADD JAR/folder -> Add Jar`
