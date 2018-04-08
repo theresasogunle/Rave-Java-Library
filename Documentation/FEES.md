@@ -45,7 +45,9 @@
 #### Sample
 
 ```java
-
+        RaveConstant.PUBLIC_KEY="FLWPUBK-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-X";
+        RaveConstant.SECRET_KEY="FLWSECK-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-X";
+        RaveConstant.ENVIRONMENT=Environment.STAGING; //or live
 Fees fee=new Fees();
 //set field values
            fee.setAmount("500")

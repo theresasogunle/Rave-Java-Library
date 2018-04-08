@@ -12,6 +12,8 @@
 #### Sample
 
 ```java
+
+        RaveConstant.ENVIRONMENT=Environment.STAGING;
 Bank b= new Bank();
 System.out.println(b.getAllBanks());
 ```

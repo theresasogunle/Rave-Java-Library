@@ -67,6 +67,9 @@
 
 
  AccountCharge ch=new AccountCharge();
+        RaveConstant.PUBLIC_KEY="FLWPUBK-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-X";
+        RaveConstant.SECRET_KEY="FLWSECK-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-X";
+        RaveConstant.ENVIRONMENT=Environment.STAGING; //or live
 
          ch.setAccountnumber("0690000031")
             .setAccountbank("044")

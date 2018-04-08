@@ -53,6 +53,9 @@
 #### Sample
 
 ```java
+        RaveConstant.PUBLIC_KEY="FLWPUBK-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-X";
+        RaveConstant.SECRET_KEY="FLWSECK-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-X";
+        RaveConstant.ENVIRONMENT=Environment.STAGING; //or live
 
 PreAuthorization ch=new PreAuthorization();
 

@@ -23,6 +23,10 @@
 #### Sample
 
 ```java
+        RaveConstant.PUBLIC_KEY="FLWPUBK-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-X";
+        RaveConstant.SECRET_KEY="FLWSECK-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-X";
+        RaveConstant.ENVIRONMENT=Environment.STAGING; //or live
+
 ExchangeRates e=new ExchangeRates();
         e.setAmount("500")
          .setDestination_currency("USD")

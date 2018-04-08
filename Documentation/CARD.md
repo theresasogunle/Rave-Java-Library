@@ -78,9 +78,12 @@
 
 - To use this method you have to set the fields needed and the charge accordingly
 ```java
+        RaveConstant.PUBLIC_KEY="FLWPUBK-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-X";
+        RaveConstant.SECRET_KEY="FLWSECK-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-X";
+        RaveConstant.ENVIRONMENT=Environment.STAGING; //or live
 
-CardCharge ch=new CardCharge();
-        ch.setCardno("4187427415564246")
+CardCharge payload=new CardCharge();
+   payload.setCardno("4187427415564246")
           .setCvv("828")
           .setCurrency("NGN")
           .setCountry("NG")
@@ -94,28 +97,28 @@ CardCharge ch=new CardCharge();
     
         
         //for master card and verve
-           ch.setPin("3310")
+      payload.setPin("3310")
              .setSuggested_auth("PIN");
              JSONObject charge= ch.chargeMasterAndVerveCard();
             //if timeout
             JSONObject poll=ch.chargeMasterAndVerveCard(true);
    
        //for visa and intl cards
-            ch.setRedirect_url("http://www.google.com");
-            JSONObject chargevisa=ch.chargeVisaAndIntl();
+            payload.setRedirect_url("http://www.google.com");
+            JSONObject chargevisa=payload.chargeVisaAndIntl();
             //if timeout, poll
-            JSONObject pollvisa=ch.chargeVisaAndIntl(true);
+            JSONObject pollvisa=payload.chargeVisaAndIntl(true);
 
 	//validate
-         ch.setOtp("12345")
-           .setTransaction_reference("FLW-MOCK-75dd012dc6c6b58807d69d0e89432e9f");
+         payload.setOtp("12345")
+                .setTransaction_reference("FLW-MOCK-75dd012dc6c6b58807d69d0e89432e9f");
 
-         JSONObject validateCharge=ch.validateCardCharge();
+         JSONObject validateCharge=payload.validateCardCharge();
 	 //if timeout, poll
-            JSONObject validatepoll=ch.validateCardCharge(true);
+            JSONObject validatepoll=payload.validateCardCharge(true);
 
-	ch.setAuthUrl("");
-        ch.validateCardChargeVB();
+	payload.setAuthUrl("");
+        payload.validateCardChargeVB();
 
 ```
 

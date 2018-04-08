@@ -33,7 +33,9 @@
 ```java
 JSONObject api=new JSONObject();
 Encryption encryption=new Encryption();
-
+        RaveConstant.PUBLIC_KEY="FLWPUBK-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-X";
+        RaveConstant.SECRET_KEY="FLWSECK-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-X";
+        RaveConstant.ENVIRONMENT=Environment.STAGING; //or live
 //card charge
 try{
 api.put("accountnumber", "0690000004");

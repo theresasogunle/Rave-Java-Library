@@ -48,12 +48,16 @@
 
 ```java
 public static void main(String [] args) throws JSONException{
+	//rave constants
+        RaveConstant.PUBLIC_KEY="FLWPUBK-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-X";
+        RaveConstant.SECRET_KEY="FLWSECK-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-X";
+        RaveConstant.ENVIRONMENT=Environment.STAGING;
 //for Nigerian ussd
 //card charge
 JSONObject api=new JSONObject();
 Encryption encryption=new Encryption();
 AlternativePayment ch=new AlternativePayment();
-           ch.setAccountnumber("0690000004")
+      ch.setAccountnumber("0690000004")
              .setAccountbank("044")
              .setCurrency("NGN")
              .setCountry("NG")
@@ -71,7 +75,7 @@ AlternativePayment ch=new AlternativePayment();
 	  
 //for ghana mobile money
 
-     ch.setOrderRef("0690000")
+ payload.setOrderRef("0690000")
         .setNetwork("MTN")
         .setCurrency("GHS")
         .setCountry("GH")
@@ -88,7 +92,7 @@ AlternativePayment ch=new AlternativePayment();
      
      //for kenya mpesa
   
-      ch.setCurrency("KES")
+  payload.setCurrency("KES")
          .setCountry("KE")
          .setAmount("6000")
          .setFirstname("pin")

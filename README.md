@@ -1,4 +1,4 @@
-[![Coverage Status](https://coveralls.io/repos/github/theresasogunle/Rave-Java-Library/badge.svg)](https://coveralls.io/github/theresasogunle/Rave-Java-Library)
+﻿[![Coverage Status](https://coveralls.io/repos/github/theresasogunle/Rave-Java-Library/badge.svg)](https://coveralls.io/github/theresasogunle/Rave-Java-Library)
 [![Maintainability](https://api.codeclimate.com/v1/badges/540ffe707c495f483166/maintainability)](https://codeclimate.com/github/theresasogunle/Rave-Java-Library/maintainability)
 [![Build Status](https://scrutinizer-ci.com/g/theresasogunle/Rave-Java-Library/badges/build.png?b=master)](https://scrutinizer-ci.com/g/theresasogunle/Rave-Java-Library/build-status/master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/theresasogunle/Rave-Java-Library/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/theresasogunle/Rave-Java-Library/?branch=master)
@@ -15,7 +15,6 @@ Rave-Java-Library facilitates quick and easy development and integration of Java
 > Signup for a live account [here](https://rave.flutterwave.com)
 
 ## Installation (Jar file)
-> Skip this installation if you want to use [maven, gradle or ivy](#installation-maven)
 
 - Download latest Rave-Java-Library jar file from the [releases tab](https://github.com/theresasogunle/Rave-Java-Library/releases)
 - Install it and the other needed library dependencies which are contained in the `lib.zip` in the [releases tab](https://github.com/theresasogunle/Rave-Java-Library/releases)
@@ -25,55 +24,9 @@ Rave-Java-Library facilitates quick and easy development and integration of Java
 
 >On Intelli J IDEA: `File > Project Structure -> Project Settings > Modules > Dependencies > "+" sign > JARs or directories`
 
-- Add a file to your root folder as `env.json` which will contain your `public key`, `secret key` and `environment`
-
-```json
-{
-    "API_KEYS": {
-      "ENV": "LIVE",
-      "PUBLIC_KEY": "FLWPUBK-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-X",
-      "SECRET_KEY": "FLWSECK-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-X"
-    }
-}
-```
-
-- `ENV` - Either `LIVE` or `STAGING`
-- `PUBLIC_KEY` - Gotten From Your Rave Dashboard
-- `SECRET_KEY` - Gotten From Your Rave Dashboard
+>On Android Studio: Add the rave to your libs folder, right click on it and add as a library
 
 - Set to go 💪
-
-## Installation (Maven)
-
-`mvn install` to build 
-### To use as library,add this to your pom.xml file
-```xml
-<dependencies>
- <dependency>
-  <groupId>com.github.theresasogunle</groupId>
-  <artifactId>Rave</artifactId>
-  <version>1.0</version>
-  <type>pom</type>
-</dependency>
-</dependencies>
-```
-
-### Gradle 
-```java
-repositories {
-    maven {
-        url  "https://dl.bintray.com/theresasogunle/Rave" 
-    }
-}
-```
-
-### Ivy
-```xml
-<dependency org='com.github.theresasogunle' name='Rave' rev='1.0'>
-  <artifact name='Rave' ext='pom' ></artifact>
-</dependency>
-```
-> Visit [https://bintray.com/theresasogunle/Rave/Rave](https://bintray.com/theresasogunle/Rave/Rave) for more info
 
 ## Sample Use
 
@@ -85,6 +38,9 @@ import com.rave.Bank;
 public class Main {
 
     public static void main(String[] args) {
+	//rave constants
+        RaveConstant.ENVIRONMENT=Environment.STAGING; //or live
+
         // Create a bank Object
         Bank B = new Bank();
         // Print all banks with getAllBanks() method
@@ -101,6 +57,11 @@ import org.json.JSONObject;
 public class Main {
 
     public static void main(String[] args)throws JSONException {
+	//rave constants
+        RaveConstant.PUBLIC_KEY="FLWPUBK-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-X";
+        RaveConstant.SECRET_KEY="FLWSECK-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-X";
+        RaveConstant.ENVIRONMENT=Environment.STAGING; //or live
+
 	CardCharge ch=new CardCharge();
         ch.setCardno("4187427415564246")
           .setCvv("828")
@@ -142,7 +103,11 @@ import org.json.JSONObject;
 public class Main {
 
     public static void main(String[] args) throws JSONException{
-      	   
+      	   //rave constants
+        RaveConstant.PUBLIC_KEY="FLWPUBK-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-X";
+        RaveConstant.SECRET_KEY="FLWSECK-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-X";
+        RaveConstant.ENVIRONMENT=Environment.STAGING; //or live
+
 	  
             AccountCharge ch= new AccountCharge();
             
@@ -190,24 +155,6 @@ The documentation for each classes and methods
 10. [Transaction](Documentation/REFUND.md)
 11. [IntegrityChecksum](Documentation/CHECKSUM.md)
 
-
-# Alternative Payment Methods
-## Nigerian USSD- GTB and Zenith Bank
-#### For Merchant
-- FOR GTB display ```*737*50*amount*159#```and return flwRef for the customer so as to complete the transaction
-#### For the developer
-- Use webhooks to get notified on transaction, and set it to pending, then complete/failed once notified with same status on webhook. - - Webhooks? See guide on using webhooks here: https://flutterwavedevelopers.readme.io/v2.0/docs/events-webhooks
-- After getting the notofication, requery to confirm final status
-## Ghana Mobile Money
-#### For the developer
-- Use webhooks to get notified on transaction, and set it to pending, then complete/failed once notified with same status on webhook.
-- Webhooks? See guide on using webhooks here: https://flutterwavedevelopers.readme.io/v2.0/docs/events-webhooks
-- After getting the notofication, requery to confirm final status
-## Kenya Mpesa
--Display the Mpesa Buisness account number ```637747``` and the Account number which is returned as orderRef in the charge response.
-#### For the developer
-- Use webhooks to get notified on transaction, and set it to pending, then complete/failed once notified with same status on webhook. - - Webhooks? See guide on using webhooks here: https://flutterwavedevelopers.readme.io/v2.0/docs/events-webhooks
--After getting the notofication, requery to confirm final status
 
 ## Todo
 

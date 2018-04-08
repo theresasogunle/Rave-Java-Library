@@ -25,6 +25,10 @@
 #### Sample
 
 ```java
+        RaveConstant.PUBLIC_KEY="FLWPUBK-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-X";
+        RaveConstant.SECRET_KEY="FLWSECK-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-X";
+        RaveConstant.ENVIRONMENT=Environment.STAGING; //or live
+
   Transaction t=new Transaction();
 
         t.setFlwref("FLW-MOCK-d310263f5f73e51d01e6dab32c893679")
