@@ -6,20 +6,22 @@
 package com.rave;
 
 import com.mashape.unirest.http.JsonNode;
+import org.json.JSONException;
 
+import org.junit.Test;
 
 /**
  *
  * @author Theresa
  */
-public class Bank {
-    private ApiConnection apiConnection;
-    Endpoints ed= new Endpoints();
+public class BankTestCase {
+    @Test
+    public void testBank()throws JSONException{
     
-    public JsonNode getAllBanks(){
-        this.apiConnection = new ApiConnection(ed.getBankEndPoint());
-        
-        return this.apiConnection.connectAndQueryWithGet();
+    Bank b=new Bank();
+    JsonNode result=b.getAllBanks();
+
+   // System.out.println(response);
+    
     }
-    
 }

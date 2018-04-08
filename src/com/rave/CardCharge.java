@@ -6,10 +6,13 @@
 package com.rave;
 
 
+
 import static com.rave.Encryption.encryptData;
 import static com.rave.Encryption.getKey;
 import java.awt.Desktop;
+import java.io.IOException;
 import java.net.URI;
+import java.net.URISyntaxException;
 import org.json.JSONException;
 
 import org.json.JSONObject;
@@ -22,20 +25,21 @@ public class CardCharge {
     JSONObject api=new JSONObject();
     Endpoints ed=new Endpoints();
     ApiConnection apiConnection;
-    Keys key=new Keys();
+  
     Encryption e=new Encryption();
-    private String cardno,cvv,expirymonth,expiryyear,currency,country;
-    private String  pin,suggested_auth, amount,email,phonenumber;
-    private String   firstname,lastname,txRef,redirect_url,device_fingerprint;
-    private String   IP, charge_type;
-    private String transactionreference,otp, authUrl;
+    private String cardno,cvv,expirymonth,expiryyear,currency,country,pin,suggested_auth,
+      amount,email,phonenumber,firstname,lastname,txRef,redirect_url,device_fingerprint,IP,
+            charge_type;
+ 
+   private String transactionreference,otp, authUrl;
     /**
     *
+
     * 
     * @return JSONObject
-    * @throws JSONException
     */
-     public JSONObject setJSON() throws JSONException{
+    
+   public JSONObject setJSON() throws JSONException{
         JSONObject json=new JSONObject();
         
         json.put("cardno", this.getCardno());
@@ -59,24 +63,18 @@ public class CardCharge {
         return json;
    }
      
-     /**
-    *
-    * 
-    * @return JSONObject
-    * @throws JSONException
-    */
     
     public JSONObject chargeMasterAndVerveCard() throws JSONException{
         JSONObject json= setJSON();
         
-        json.put("PBFPubKey",key.getPublicKey());
+        json.put("PBFPubKey",RaveConstant.PUBLIC_KEY);
         json.put("pin",this.getPin() );
         json.put("suggested_auth",this.getSuggested_auth() );
 
         
        String message= json.toString();
 
-        String encrypt_secret_key=getKey(key.getSecretKey());
+        String encrypt_secret_key=getKey(RaveConstant.SECRET_KEY);
         String client= encryptData(message,encrypt_secret_key);
 
         Charge ch=new Charge();
@@ -84,17 +82,10 @@ public class CardCharge {
         return ch.charge(client);  
     
     }
-     /**
-    *
-    * @return JSONObject
-    * @throws JSONException
-    * @param polling
-    */
-    
     public JSONObject chargeMasterAndVerveCard(boolean polling) throws JSONException{
         JSONObject json= setJSON();
         
-        json.put("PBFPubKey",key.getPublicKey());
+        json.put("PBFPubKey",RaveConstant.PUBLIC_KEY);
         json.put("pin",this.getPin() );
         json.put("suggested_auth",this.getSuggested_auth() );
         Polling p=new Polling();
@@ -102,20 +93,14 @@ public class CardCharge {
         return p.handleTimeoutCharge(json);
     
     }
-     /**
-    *
-    * @return JSONObject
-    * @throws JSONException
-    */
-    
     public JSONObject chargeVisaAndIntl() throws JSONException{
         JSONObject json= setJSON();
-        json.put("PBFPubKey",key.getPublicKey());
+        json.put("PBFPubKey",RaveConstant.PUBLIC_KEY);
         json.put("redirect_url", this.getRedirect_url() );
 
         String message= json.toString();
 
-        String encrypt_secret_key=getKey(key.getSecretKey());
+        String encrypt_secret_key=getKey(RaveConstant.SECRET_KEY);
         String client= encryptData(message,encrypt_secret_key);
 
         Charge ch=new Charge();
@@ -123,16 +108,10 @@ public class CardCharge {
         return ch.charge(client); 
     
     }
-     /**
-    *
-    * @return JSONObject
-    * @throws JSONException
-    * @param polling
-    */
     
       public JSONObject chargeVisaAndIntl(boolean polling) throws JSONException{
         JSONObject json= setJSON();
-        json.put("PBFPubKey",key.getPublicKey());
+        json.put("PBFPubKey",RaveConstant.PUBLIC_KEY);
         json.put("redirect_url", this.getRedirect_url() );
         Polling p=new Polling();
 
@@ -141,25 +120,18 @@ public class CardCharge {
     }
     
 
-     /**
-    *
-    * 
-    * @return JSONObject
-    * 
+    /*
+    if AuthMode::"PIN"
+    @params transaction reference(flwRef),OTP 
+      * @return JSONObject
     */
-    
+
     public JSONObject validateCardCharge(){
         Charge vch= new Charge();
 
         return vch.validateCharge(this.getTransactionreference(), this.getOtp());
     }
-     /**
-    *
-    * 
-    * @return JSONObject
-    * @param polling
-    */
-    
+    //if timeout
     public JSONObject validateCardCharge(boolean polling){
        
         Polling p=new Polling();
@@ -167,20 +139,17 @@ public class CardCharge {
         return p.validateChargeTimeout(this.getTransactionreference(), this.getOtp());
     }
     
-  //  if AuthMode::"VBSECURE"or "AVS_VBVSECURECODE"and paste it in the argument and it opens a small window for card validation
-      /**
-    *
-    * 
-    * 
-    * @throws Exception
-    * 
+    /*
+    if AuthMode::"VBSECURE"or "AVS_VBVSECURECODE"
+    @params authUrl This requires that you copy the authurl returned in the response
+    and paste it in the argument and it opens a small window for card validation
     */
-    public void validateCardChargeVB() throws Exception{
+    public void validateCardChargeVB(){
      
       if (Desktop.isDesktopSupported()) {
-         
+          try{
     Desktop.getDesktop().browse(new URI(this.getAuthUrl()));
-         
+          }catch(URISyntaxException | IOException ex){}
             }
     }
    
@@ -211,7 +180,7 @@ public class CardCharge {
 
     /**
      * @param cvv the cvv to set
-     * @return CardCharge
+     *  @return CardCharge
      */
     public CardCharge setCvv(String cvv) {
         this.cvv = cvv;

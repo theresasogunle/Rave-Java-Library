@@ -12,7 +12,7 @@ package com.rave;
  * @author Theresa
  */
 public class Endpoints {
-       Keys key= new Keys();
+       RaveConstant key= new RaveConstant();
       String staging_url="http://flw-pms-dev.eu-west-1.elasticbeanstalk.com/";
       String live_url="https://api.ravepay.co/";
       String  url;
@@ -35,7 +35,8 @@ public class Endpoints {
      
       void init(){
       
-          if(key.getEnvironment().equalsIgnoreCase("live")){
+
+          if(RaveConstant.ENVIRONMENT.toString().equalsIgnoreCase("live")){
            
             url=live_url;
           

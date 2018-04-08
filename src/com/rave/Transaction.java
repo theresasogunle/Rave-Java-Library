@@ -14,7 +14,7 @@ import org.json.JSONObject;
  */
 public class Transaction {
     ApiConnection apiConnection;
-    final  private Keys key=new Keys();
+   
     Endpoints end= new Endpoints();
    private String  flwref, txRef;
     
@@ -29,7 +29,7 @@ public class Transaction {
       ApiQuery api= new ApiQuery();
       api.putParams("txref", this.getTxRef());
       api.putParams("flw_ref", this.getFlwref());
-      api.putParams("SECKEY",key.getSecretKey() );
+      api.putParams("SECKEY", RaveConstant.SECRET_KEY );
     
       return this.apiConnection.connectAndQuery(api);
     }
@@ -46,7 +46,7 @@ public class Transaction {
       
       api.putParams("txref", this.getTxRef());
       api.putParams("txref", this.getTxRef());
-      api.putParams("SECKEY", key.getSecretKey());
+      api.putParams("SECKEY",  RaveConstant.SECRET_KEY);
       api.putParams("last_attempt", 1);
       api.putParams("only_successful", 1);
 

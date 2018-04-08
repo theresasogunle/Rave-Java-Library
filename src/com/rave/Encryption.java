@@ -29,7 +29,7 @@ import org.json.JSONObject;
 public class Encryption {
    
    
-    Keys keys= new Keys();
+    RaveConstant keys= new RaveConstant();
    
         
     // Method to turn bytes in hex
@@ -92,14 +92,14 @@ public class Encryption {
     public String encryptParameters(JSONObject api) {
            
         try{
-            api.put("PBFPubKey",keys.getPublicKey());
+            api.put("PBFPubKey",RaveConstant.PUBLIC_KEY);
         }catch(Exception ex){}
         
       
         
         String message= api.toString();
         
-        String encrypt_secret_key=getKey(keys.getSecretKey());
+        String encrypt_secret_key=getKey(RaveConstant.SECRET_KEY);
         String encrypted_message= encryptData(message,encrypt_secret_key);
 
 

@@ -15,7 +15,7 @@ import org.json.JSONObject;
  */
 public class Fees {
     private ApiConnection apiConnection;
-    Keys key= new Keys();
+   
     Endpoints end= new Endpoints();
 
     private String amount;
@@ -34,7 +34,7 @@ public class Fees {
 
       ApiQuery api= new ApiQuery();
       api.putParams("amount", this.getAmount());
-      api.putParams("PBFPubKey", key.getPublicKey());
+      api.putParams("PBFPubKey",  RaveConstant.PUBLIC_KEY);
       api.putParams("currency", this.getCurrency());
       api.putParams("ptype",2);
 
@@ -51,7 +51,7 @@ public class Fees {
 
       ApiQuery api= new ApiQuery();
       api.putParams("amount", this.getAmount());
-      api.putParams("PBFPubKey", key.getPublicKey());
+      api.putParams("PBFPubKey",  RaveConstant.PUBLIC_KEY);
       api.putParams("currency", this.getCurrency());
       api.putParams("ptype",2);
       api.putParams("card6", this.getCard6());

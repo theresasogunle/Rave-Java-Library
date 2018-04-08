@@ -14,7 +14,7 @@ import org.json.JSONObject;
  */
 public class Refund {
     private ApiConnection apiConnection;
-    final  private Keys key= new Keys();
+    final  private RaveConstant key= new RaveConstant();
     Endpoints end= new Endpoints();
    private String ref;
     /**
@@ -26,7 +26,7 @@ public class Refund {
         ApiQuery api= new ApiQuery();
 
         api.putParams("ref", this.getRef());
-        api.putParams("seckey", key.getSecretKey());
+        api.putParams("seckey",  RaveConstant.SECRET_KEY);
 
 
         return this.apiConnection.connectAndQuery(api);

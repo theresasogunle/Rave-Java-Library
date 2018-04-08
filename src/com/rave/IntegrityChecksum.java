@@ -18,7 +18,7 @@ import java.util.HashMap;
  */
 public class IntegrityChecksum {
       
-        Keys key=new Keys();
+        RaveConstant key=new RaveConstant();
     private String amount, payment_method,custom_description;
     private String custom_logo,country,currency,customer_email; 
     private String customer_lastname,customer_firstname,customer_phone,txref;
@@ -33,7 +33,7 @@ public class IntegrityChecksum {
     public String integrityChecksum(){
          HashMap payload=new HashMap();
          
-        payload.put("PBFPubKey" ,key.getPublicKey());
+        payload.put("PBFPubKey" , RaveConstant.PUBLIC_KEY);
         payload.put("amount" ,this.getAmount());
         payload.put("payment_method", this.getPayment_method());
         payload.put("custom_description",this.getCustom_description());
@@ -46,8 +46,7 @@ public class IntegrityChecksum {
         payload.put("customer_phone", this.getCustomer_phone());
         payload.put( "txref",this.getTxref());
 
-        payload.put("PBFPubKey", key.getPublicKey());
-    
+     
      
        Object[] keys=payload.keySet().toArray();
        Arrays.sort(keys);
@@ -57,7 +56,7 @@ public class IntegrityChecksum {
             for (Object key : keys) {
                 hashedPayload+=payload.get(key);
             }
-              String  hashString  = hashedPayload + key.getSecretKey();
+              String  hashString  = hashedPayload +  RaveConstant.SECRET_KEY;
                 String hash_string="";
 
                 try{

@@ -27,7 +27,6 @@ public class ApiConnection {
 
     final private String url;
   
-
     /**
      * @param url - Flutterwave API url
      */

@@ -22,7 +22,7 @@ public class PreAuthorization {
    Encryption e=new Encryption();
     private String flwref;
     private String action;
-  Keys key=new Keys();
+  RaveConstant key=new RaveConstant();
   private String cardno,cvv,expirymonth,expiryyear,currency,country;
   private String  amount,email,phonenumber,firstname,lastname,IP;
   private String txRef,redirect_url,device_fingerprint,charge_type;

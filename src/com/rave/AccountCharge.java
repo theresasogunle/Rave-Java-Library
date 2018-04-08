@@ -6,8 +6,9 @@
 package com.rave;
 
 
-import static com.rave.Encryption.encryptData;
 
+
+import static com.rave.Encryption.encryptData;
 import org.json.JSONException;
 
 import org.json.JSONObject;
@@ -20,29 +21,20 @@ import org.json.JSONObject;
  * @author Theresa
  */
 public class AccountCharge {
-    
-    
-     private final Keys key = new Keys();
-  
+ 
     Encryption e=new Encryption();
     
-    private String accountnumber,accountbank,currency,country;
-    private String  amount,email,phonenumber,firstname,lastname;
-    private String   IP, txRef,passcode,device_fingerprint;
+    private String accountnumber,accountbank,currency,country,
+               amount,email,phonenumber,firstname,lastname,IP,
+               txRef,passcode,device_fingerprint;
     
     private String transaction_reference;//to be called
     private String otp;//to be called
  
-   
-    
-     /**
-     * @return the JSONObject
-     * @throws JSONException
-     */
     public JSONObject setJSON() throws JSONException{
         JSONObject json=new JSONObject();
         
-        json.put("PBFPubKey",key.getPublicKey());
+        json.put("PBFPubKey",RaveConstant.PUBLIC_KEY);
         json.put("accountnumber",this.getAccountnumber());//expected result'
         json.put("accountbank",this.getAccountbank());
         json.put("currency", this.getCurrency());
@@ -63,9 +55,10 @@ public class AccountCharge {
      
 
     /**
-     * @return the JSONObject
-     * @throws JSONException
-     */
+    *
+
+    * @return json
+    */ 
     
     public JSONObject chargeAccount() throws JSONException{
        
@@ -74,7 +67,7 @@ public class AccountCharge {
         
         String message= json.toString();
         
-        String encrypt_secret_key=Encryption.getKey(key.getSecretKey());
+        String encrypt_secret_key=Encryption.getKey(RaveConstant.SECRET_KEY);
         String client= encryptData(message,encrypt_secret_key);
 
         Charge ch=new Charge();
@@ -82,11 +75,6 @@ public class AccountCharge {
         return ch.charge(client);
 
     }
-      /**
-     * @param polling
-     * @return JSONObjcet
-     * @throws JSONException
-     */
      public JSONObject chargeAccount(boolean polling) throws JSONException{
        
         JSONObject json=setJSON();
@@ -96,20 +84,13 @@ public class AccountCharge {
         return p.handleTimeoutCharge(json);
 
     }
-       /**
-     * @return JSONObject
-     *
-     */
+     
 
      public JSONObject validateAccountCharge(){
       Charge vcharge= new Charge();
      return vcharge.validateCharge(this.getTransaction_reference(), this.getOtp());
     }
-/**
-     * @return JSONObject
-     * @param polling
-     *
-     */
+
     
       public JSONObject validateAccountCharge(boolean polling){
       Polling p=new Polling();
@@ -230,6 +211,7 @@ public class AccountCharge {
 
     /**
      * @return the firstname
+     * 
      */
     public String getFirstname() {
         return firstname;
@@ -355,5 +337,9 @@ public class AccountCharge {
         this.otp = otp;
          return this;
     }
- 
+    
+
+    
+   
+    
 }

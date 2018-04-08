@@ -14,7 +14,7 @@ import org.json.JSONObject;
 public class ExchangeRates {
      ApiConnection apiConnection;
      Endpoints end= new Endpoints();
-     Keys key=new Keys();
+   
     private String amount;
     private String origin_currency;
     private String destination_currency;
@@ -30,7 +30,7 @@ public class ExchangeRates {
       ApiQuery api= new ApiQuery();
      
       //API PARAMETERS
-      api.putParams("SECKEY",key.getSecretKey());
+      api.putParams("SECKEY", RaveConstant.SECRET_KEY);
       api.putParams("origin_currency", this.getOrigin_currency());
       api.putParams("destination_currency", this.getDestination_currency());
       api.putParams("amount", this.getAmount());
