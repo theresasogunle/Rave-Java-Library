@@ -31,9 +31,9 @@ public class AccountCharge {
     private String transaction_reference;//to be called
     private String otp;//to be called
  
-    public JSONObject setJSON() throws JSONException{
+    public JSONObject setJSON() {
         JSONObject json=new JSONObject();
-        
+        try{
         json.put("PBFPubKey",RaveConstant.PUBLIC_KEY);
         json.put("accountnumber",this.getAccountnumber());//expected result'
         json.put("accountbank",this.getAccountbank());
@@ -49,7 +49,7 @@ public class AccountCharge {
         json.put("txRef", this.getTxRef());
         json.put("device_fingerprint", this.getDevice_fingerprint());
 
-        
+        }catch( JSONException ex){ex.getMessage();}
         return json;
    }
      
@@ -60,7 +60,7 @@ public class AccountCharge {
     * @return json
     */ 
     
-    public JSONObject chargeAccount() throws JSONException{
+    public JSONObject chargeAccount() {
        
         JSONObject json=setJSON();
         
@@ -75,7 +75,7 @@ public class AccountCharge {
         return ch.charge(client);
 
     }
-     public JSONObject chargeAccount(boolean polling) throws JSONException{
+     public JSONObject chargeAccount(boolean polling) {
        
         JSONObject json=setJSON();
         
@@ -88,13 +88,13 @@ public class AccountCharge {
 
      public JSONObject validateAccountCharge(){
       Charge vcharge= new Charge();
-     return vcharge.validateCharge(this.getTransaction_reference(), this.getOtp());
+     return vcharge.validateAccountCharge(this.getTransaction_reference(), this.getOtp());
     }
 
     
       public JSONObject validateAccountCharge(boolean polling){
       Polling p=new Polling();
-      return p.validateChargeTimeout(this.getTransaction_reference(),this.getOtp());
+      return p.validateAccountChargeTimeout(this.getTransaction_reference(),this.getOtp());
     }
 
     /**

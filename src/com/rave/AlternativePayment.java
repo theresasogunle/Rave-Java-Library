@@ -38,9 +38,10 @@ public class AlternativePayment {
     
     // charge customers using nigerian USSD for GTB and Zenith Bank,Ghana mobile money and Kenya Mpesa
  
-     public JSONObject chargeNigerianUssd () throws JSONException{
+     public JSONObject chargeNigerianUssd () {
         //getting charge endpoint
          JSONObject json=new JSONObject();
+         try{
           json.put("accountnumber", this.getAccountnumber());
            json.put("accountbank", this.getAccountbank());
            json.put("currency", this.getCurrency());
@@ -54,7 +55,7 @@ public class AlternativePayment {
            json.put("txRef", this.getTxRef());
            json.put("payment_type", "ussd");
            
-           
+         }catch(JSONException ex){ex.getMessage();}
            String message= json.toString();
         
         String encrypt_secret_key=Encryption.getKey(RaveConstant.SECRET_KEY);
@@ -72,9 +73,10 @@ public class AlternativePayment {
     */
     
      
-     public JSONObject chargeGhanaMobileMoney () throws JSONException{
+     public JSONObject chargeGhanaMobileMoney () {
         //getting charge endpoint
          JSONObject json=new JSONObject();
+         try{
        json.put("orderRef",this.getOrderRef());
        json.put("network", this.getNetwork());
        json.put("currency", this.getCurrency());
@@ -89,7 +91,7 @@ public class AlternativePayment {
        json.put("payment_type", "mobilemoneygh");
         json.put("is_mobile_money_gh", "1");
         json.put("phonenumber",this.getPhonenumber());
-           
+         }catch(JSONException ex){ex.getMessage();}  
       String message= json.toString();
         
         String encrypt_secret_key=Encryption.getKey(RaveConstant.SECRET_KEY);
@@ -106,9 +108,10 @@ public class AlternativePayment {
     * @return JSONObject
     */
     
-      public JSONObject chargeKenyaMpesa () throws JSONException{
+      public JSONObject chargeKenyaMpesa () {
         //getting charge endpoint
           JSONObject json=new JSONObject();
+          try{
        json.put("currency", this.getCurrency());
        json.put("country", this.getCountry());
        json.put("amount", this.getAmount());
@@ -122,6 +125,7 @@ public class AlternativePayment {
        json.put("phonenumber", this.getPhonenumber());
        json.put("payment_type", "mpesa");
        json.put("is_mpesa", "1");
+          }catch(JSONException ex){ex.getMessage();}
          String message= json.toString();
         
         String encrypt_secret_key=Encryption.getKey(RaveConstant.SECRET_KEY);

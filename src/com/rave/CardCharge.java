@@ -39,9 +39,10 @@ public class CardCharge {
     * @return JSONObject
     */
     
-   public JSONObject setJSON() throws JSONException{
+   public JSONObject setJSON() {
         JSONObject json=new JSONObject();
-        
+        try{
+            
         json.put("cardno", this.getCardno());
         json.put("cvv", this.getCvv());
         json.put("currency", this.getCurrency());
@@ -59,7 +60,7 @@ public class CardCharge {
         json.put("lastname", this.getLastname());
         json.put("redirect_url", this.getRedirect_url());
         json.put("charge_type", this.getCharge_type());
-        
+        }catch( JSONException ex){ex.getMessage();}
         return json;
    }
      
@@ -129,14 +130,14 @@ public class CardCharge {
     public JSONObject validateCardCharge(){
         Charge vch= new Charge();
 
-        return vch.validateCharge(this.getTransactionreference(), this.getOtp());
+        return vch.validateCardCharge(this.getTransactionreference(), this.getOtp());
     }
     //if timeout
     public JSONObject validateCardCharge(boolean polling){
        
         Polling p=new Polling();
         
-        return p.validateChargeTimeout(this.getTransactionreference(), this.getOtp());
+        return p.validateCardChargeTimeout(this.getTransactionreference(), this.getOtp());
     }
     
     /*

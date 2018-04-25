@@ -27,9 +27,10 @@ public class Polling {
      * @throws JSONException
      * @return JSONObject
      */
-    public JSONObject handleTimeoutCharge(JSONObject json)throws JSONException{
+    public JSONObject handleTimeoutCharge(JSONObject json){
       this.apiConnection = new ApiConnection(ed.getChargeTimeoutEndpoint());
-      
+        JSONObject tcharge= null;
+ 
         String message= json.toString();
         
         String encrypt_secret_key=Encryption.getKey( RaveConstant.SECRET_KEY);
@@ -45,8 +46,10 @@ public class Polling {
 
         api.putParams("alg", alg);
       
-        
-        return this.apiConnection.connectAndQuery(api);
+        tcharge=  this.apiConnection.connectAndQuery(api);
+       
+        return tcharge;
+
     }
      /**
      * 
@@ -54,13 +57,39 @@ public class Polling {
      * @param otp 
      * @return String
      */
-    public JSONObject validateChargeTimeout(String transaction_reference,String otp){
+    public JSONObject validateCardChargeTimeout(String transaction_reference,String otp){
        
+        this.apiConnection = new ApiConnection(ed.getValidateCardChargeTimeoutEndpoint());
+         ApiQuery api=new ApiQuery();
+        
+        api.putParams("PBFPubKey",RaveConstant.PUBLIC_KEY);
+        api.putParams("transaction_reference", transaction_reference);
+    
+        api.putParams("otp", otp);
 
-       Charge vc= new Charge();
-
-        return vc.validateCharge(transaction_reference, otp);
+        return this.apiConnection.connectAndQuery(api);
     }
+    
+    
+      /**
+     * 
+     * @param transaction_reference
+     * @param otp 
+     * @return String
+     */
+    public JSONObject validateAccountChargeTimeout(String transaction_reference,String otp){
+       
+        this.apiConnection = new ApiConnection(ed.getValidateAccountChargeTimeoutEndpoint());
+         ApiQuery api=new ApiQuery();
+        
+        api.putParams("PBFPubKey",RaveConstant.PUBLIC_KEY);
+        api.putParams("transaction_reference", transaction_reference);
+    
+        api.putParams("otp", otp);
+
+        return this.apiConnection.connectAndQuery(api);
+    }
+    
     
 
   

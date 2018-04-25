@@ -34,15 +34,15 @@ public class Test {
         RaveConstant.ENVIRONMENT=Environment.STAGING;
         
         chargeAccountTest();
-        chargeCardTest();
-        getBanks();
-        exchangeRatesTest();
-        feesTest();
-        checksumTest();
-        preAuthTest();
-        refundTest();
-        verifyRequeryXquery();
-        alternativePaymentTest();
+       // chargeCardTest();
+    //    getBanks();
+      //  exchangeRatesTest();
+      //  feesTest();
+      //  checksumTest();
+        //preAuthTest();
+        //refundTest();
+        //verifyRequeryXquery();
+        //alternativePaymentTest();
         
         
        
@@ -55,22 +55,23 @@ public class Test {
             .setCountry("NG")
             .setCurrency("NGN")
             .setLastname("Theresa")
-            .setIP("1.3.4.4")
             .setTxRef("MX-678DH")
             .setEmail("sogunledolapo@gmail.com");
                
           
-          JSONObject result=ch.chargeAccount();
-          System.out.println(result);
+       // JSONObject result=ch.chargeAccount();
+       // System.out.println(result);
           
           
            //validate
-        ch.setTransaction_reference("ACHG-1520795373963");
-        ch.setOtp("12345"); 
+      ch.setTransaction_reference("ACHG-1524613307896");
+       ch.setOtp("12345"); 
         //for polling  JSONObject polling=ch.validateAccountCharge(true);
     
     
-       JSONObject val=ch.validateAccountCharge();
+      JSONObject val=ch.validateAccountCharge();
+       
+      System.out.println(val);
   
           
     }
@@ -96,19 +97,19 @@ public class Test {
           System.out.println(result);
           
          
-            JSONObject poll=ch.chargeMasterAndVerveCard(true);
+       //     JSONObject poll=ch.chargeMasterAndVerveCard(true);
    
        //for visa and intl cards
-           ch.setRedirect_url("http://www.google.com");
-           JSONObject chargevisa=ch.chargeVisaAndIntl();
-           System.out.println(chargevisa);
+           //ch.setRedirect_url("http://www.google.com");
+        //   JSONObject chargevisa=ch.chargeVisaAndIntl();
+          // System.out.println(chargevisa);
             //if timeout, poll JSONObject pollvisa=ch.chargeVisaAndIntl(true);
             //validate
-           ch.setOtp("12345");
-           ch.setTransactionreference("FLW-MOCK-9d8197a1ca6152d762b0b068a80f536b");
+        //   ch.setOtp("12345");
+          // ch.setTransactionreference("FLW-MOCK-2638e6fe8a7713e332f8991f25c415af");
        
-          JSONObject validateCharge=ch.validateCardCharge();
-          System.out.println(validateCharge);
+          //JSONObject validateCharge=ch.validateCardCharge();
+          //System.out.println(validateCharge);
             //if timeout  JSONObject validatepoll=ch.validateCardCharge(true);
         
     }

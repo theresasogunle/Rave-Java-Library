@@ -38,9 +38,10 @@ public class PreAuthorization {
      * @return JSONObject
      * @throws JSONException
      */
-  public JSONObject setJSON()throws JSONException{
+  public JSONObject setJSON(){
       JSONObject json= new JSONObject();
        String public_key="FLWPUBK-8cd258c49f38e05292e5472b2b15906e-X ";
+       try{
         json.put("PBFPubKey",public_key);
         json.put("cardno", this.getCardno());
         json.put("charge_type",this.getCharge_type());
@@ -58,15 +59,15 @@ public class PreAuthorization {
         json.put("txRef", this.getTxRef());
         json.put("redirect_url", this.getRedirect_url());
         json.put("device_fingerprint", this.getDevice_fingerprint());
-        
+       }catch(JSONException ex){ex.getMessage();}
         return json;
   
   }
    /**
      * @return JSONObject
-     * @throws JSONException
+     * 
      */
-   public JSONObject preAuthorizeCard()throws JSONException{
+   public JSONObject preAuthorizeCard(){
        
       this.apiConnection = new ApiConnection(end.getChargeEndPoint());
          JSONObject json= setJSON();
