@@ -2,8 +2,10 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/540ffe707c495f483166/maintainability)](https://codeclimate.com/github/theresasogunle/Rave-Java-Library/maintainability)
 [![Build Status](https://scrutinizer-ci.com/g/theresasogunle/Rave-Java-Library/badges/build.png?b=master)](https://scrutinizer-ci.com/g/theresasogunle/Rave-Java-Library/build-status/master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/theresasogunle/Rave-Java-Library/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/theresasogunle/Rave-Java-Library/?branch=master)
+
 # Flutterwave Rave (Rave-Java-Library)
 Rave-Java-Library facilitates quick and easy development and integration of Java based applications with the Flutterwave API.
+
 - **Contributors:** **Theresa Sogunle**, Oluwole Adebiyi (KingFlamez)
 - **Tags:** rave, flutterwave, payment gateway, bank account, credit card, debit card, nigeria, kenya, ghana, international, mastercard, visa, KES, GHC, NGN,  Java.
 
@@ -16,17 +18,36 @@ Rave-Java-Library facilitates quick and easy development and integration of Java
 
 ## Installation (Jar file)
 
-- Download latest Rave-Java-Library jar file from the [releases tab](https://github.com/theresasogunle/Rave-Java-Library/releases)
-- Install it and the other needed library dependencies which are contained in the `lib.zip` in the [releases tab](https://github.com/theresasogunle/Rave-Java-Library/releases)
+### Maven
 
-### How to Install Libraries
+```bash
+<dependency>
+  <groupId>com.github.theresasogunle</groupId>
+  <artifactId>Rave</artifactId>
+  <version>1.0.1</version>
+  <type>jar</type>
+</dependency>
+```
+
+Visit [Bintray](https://bintray.com/theresasogunle/Rave/Rave)
+
+### Jar
+
+- Download latest Rave-Java-Library jar file from [here](https://github.com/theresasogunle/Rave-Java-Library/releases/latest)
+
+### How to Install `Jar` Libraries
 >On Netbeans IDE: `Project properties -> Libraries -> Compile -> ADD JAR/folder -> Add Jar`
 
 >On Intelli J IDEA: `File > Project Structure -> Project Settings > Modules > Dependencies > "+" sign > JARs or directories`
 
->On Android Studio: Add the rave to your libs folder, right click on it and add as a library
-
 - Set to go 💪
+
+## Test Implementation
+
+[![Web Site](http://imglibv3.successbyemail.com/ImgLib/a564641c-6f39-409b-8c1e-6e006b13b9b2/ViewNowButton.png "View on Heroku")](https://rave-java.herokuapp.com/)
+
+[![Web Site](http://imglibv3.successbyemail.com/ImgLib/a564641c-6f39-409b-8c1e-6e006b13b9b2/ViewNowButton.png "View on GitHub")](https://github.com/kingflamez/Rave-Java-Web-Implementation)
+
 
 ## Sample Use
 
