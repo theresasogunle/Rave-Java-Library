@@ -44,9 +44,9 @@ Visit [Bintray](https://bintray.com/theresasogunle/Rave/Rave)
 
 ## Test Implementation
 
-[![Web Site](http://imglibv3.successbyemail.com/ImgLib/a564641c-6f39-409b-8c1e-6e006b13b9b2/ViewNowButton.png=250x "View on Heroku")](https://rave-java.herokuapp.com/)
+[![Web Site](http://imglibv3.successbyemail.com/ImgLib/a564641c-6f39-409b-8c1e-6e006b13b9b2/ViewNowButton.png =250x "View on Heroku")](https://rave-java.herokuapp.com/)
 
-[![Web Site](https://www.aha.io/assets/github.7433692cabbfa132f34adb034e7909fa.png=250x "View on GitHub")](https://github.com/kingflamez/Rave-Java-Web-Implementation)
+[![Web Site](https://www.aha.io/assets/github.7433692cabbfa132f34adb034e7909fa.png =250x "View on GitHub")](https://github.com/kingflamez/Rave-Java-Web-Implementation)
 
 
 ## Sample Use
