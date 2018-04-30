@@ -69,9 +69,44 @@ public class Main {
 }
 ```
 
+- Simple Card Charge
+
+```java
+import com.rave.*;
+import org.json.JSONObject;
+
+
+public class Main {
+
+    public static void main(String[] args) throws Exception  {
+
+        RaveConstant.PUBLIC_KEY="FLWPUBK-8ba286388b24dbd6c20706def0b4ea23-X";
+        RaveConstant.SECRET_KEY="FLWSECK-c45e0f704619e673263844e584bba013-X";
+        RaveConstant.ENVIRONMENT=Environment.STAGING; //or live
+
+
+        CardCharge ch = new CardCharge();
+
+        ch.setCardno("4187427415564246")
+                .setCvv("828")
+                .setAmount("3000")
+                .setExpiryyear("19")
+                .setExpirymonth("09")
+                .setEmail("flamekeed@gmail.com")
+                .setTxRef("MXX-ASC-4578")
+                .setSuggested_auth("PIN")
+                .setPin("3310");
+
+        JSONObject charge= ch.chargeMasterAndVerveCard();
+
+        System.out.println(charge);
+    }
+}
+```
+
 - Rave Card Charge
 ```java
-import com.rave.Encryption;
+import com.rave.*;
 import org.json.JSONObject;
 
 public class Main {
