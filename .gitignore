@@ -5,3 +5,4 @@ build.xml
 .classpath
 .project
 /.settings
+/bin

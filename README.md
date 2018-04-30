@@ -41,33 +41,7 @@ Visit [Bintray](https://bintray.com/theresasogunle/Rave/Rave)
 
 - Set to go 💪
 
-## Test Implementation
-
-<a href="https://rave-java.herokuapp.com/" target="_blank" style="margin-right: 15px"><img src="http://imglibv3.successbyemail.com/ImgLib/a564641c-6f39-409b-8c1e-6e006b13b9b2/ViewNowButton.png" width="250px"></a>
-<a href="https://github.com/kingflamez/Rave-Java-Web-Implementation" target="_blank" style="margin-right: 15px"><img src="https://www.aha.io/assets/github.7433692cabbfa132f34adb034e7909fa.png" width="250px"></a>
-
-
-
 ## Sample Use
-
-- Getting the list of banks from Flutterwave
-
-```java
-import com.rave.Bank;
-
-public class Main {
-
-    public static void main(String[] args) {
-	//rave constants
-        RaveConstant.ENVIRONMENT=Environment.STAGING; //or live
-
-        // Create a bank Object
-        Bank B = new Bank();
-        // Print all banks with getAllBanks() method
-        System.out.println(B.getAllBanks());
-    }
-}
-```
 
 - Simple Card Charge
 
@@ -193,6 +167,13 @@ public class Main {
 }
 
 ```
+
+## Test Implementation
+
+<a href="https://rave-java.herokuapp.com/" target="_blank" style="margin-right: 15px"><img src="http://imglibv3.successbyemail.com/ImgLib/a564641c-6f39-409b-8c1e-6e006b13b9b2/ViewNowButton.png" width="250px"></a>
+<a href="https://github.com/kingflamez/Rave-Java-Web-Implementation" target="_blank" style="margin-right: 15px"><img src="https://www.aha.io/assets/github.7433692cabbfa132f34adb034e7909fa.png" width="250px"></a>
+
+
 
 ## Classes and Methods
 
